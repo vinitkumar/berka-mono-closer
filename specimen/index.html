@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Berka Mono Closer Specimen</title>
+  <style>
+    @font-face {
+      font-family: "Berka Mono Closer";
+      src: url("../fonts/ttf/BerkaMonoCloser-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer";
+      src: url("../fonts/ttf/BerkaMonoCloser-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer";
+      src: url("../fonts/ttf/BerkaMonoCloser-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    :root {
+      color-scheme: dark;
+      font-family: "Berka Mono Closer", ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #101214;
+      color: #eff2f1;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #101214;
+    }
+    main {
+      box-sizing: border-box;
+      width: 1200px;
+      min-height: 720px;
+      padding: 58px 68px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 54px;
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin-bottom: 40px;
+      color: #aeb8b4;
+      font-size: 20px;
+      line-height: 1.45;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+    }
+    .label {
+      margin-bottom: 10px;
+      color: #95a09b;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font: 20px/1.48 "Berka Mono Closer", ui-monospace, monospace;
+      font-variant-ligatures: contextual common-ligatures;
+    }
+    .sample {
+      padding-top: 6px;
+      border-top: 1px solid #2b302e;
+    }
+    .italic {
+      font-style: italic;
+      color: #d8dedb;
+    }
+    .accent { color: #9dd3b0; }
+    .muted { color: #aeb8b4; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Berka Mono Closer</h1>
+    <div class="sub">An open Iosevka custom build with a calm, wide, rectangular coding texture.</div>
+    <div class="grid">
+      <section class="sample">
+        <div class="label">Code</div>
+        <pre><span class="muted">const</span> glyphs = ["a", "g", "0", "1"];
+<span class="muted">function</span> render(input) {
+  <span class="muted">return</span> input !== null && input.ok
+    ? input.map(x =&gt; x.trim())
+    : "Berka Mono Closer";
+}</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Texture</div>
+        <pre>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789  == != <= >= => ->
+{} [] () @ # $ % & * / \ | ~</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Weights</div>
+        <pre>Regular  The quick brown fox
+<span style="font-weight:500">Medium   The quick brown fox</span>
+<span style="font-weight:600">SemiBold The quick brown fox</span>
+<strong>Bold     The quick brown fox</strong></pre>
+      </section>
+      <section class="sample">
+        <div class="label">Italic</div>
+        <pre class="italic">// Italics stay restrained and readable.
+let comment = "quiet, not theatrical";
+type Mood = "focused" | "warm";</pre>
+      </section>
+    </div>
+  </main>
+</body>
+<script>
+  if (new URLSearchParams(location.search).get("theme") === "light") {
+    document.documentElement.style.colorScheme = "light";
+    document.documentElement.style.background = "#f7f5ef";
+    document.documentElement.style.color = "#171916";
+    document.body.style.background = "#f7f5ef";
+    document.querySelectorAll(".sub,.muted").forEach(el => el.style.color = "#5e6762");
+    document.querySelectorAll(".label").forEach(el => el.style.color = "#6f7873");
+    document.querySelectorAll(".sample").forEach(el => el.style.borderTopColor = "#d8d4c8");
+    document.querySelectorAll(".italic").forEach(el => el.style.color = "#2d312e");
+    document.querySelectorAll(".accent").forEach(el => el.style.color = "#2e7d4f");
+  }
+</script>
+</html>
