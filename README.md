@@ -2,11 +2,18 @@
 
 Berka Mono Closer is a custom build of [Iosevka](https://github.com/be5invis/Iosevka) tuned for a calm, wide, rectangular coding-font feel.
 
+The repository includes two families:
+
+- `Berka Mono Closer`: the original wider cut.
+- `Berka Mono Closer Compact`: the same glyph design, ligatures, leading, and italic angle, with a slightly narrower width for a more focused coding texture.
+
 It is built only from Iosevka's open source build system and variant parameters. It does not contain proprietary outlines, copied glyphs, or commercial font files.
 
 ![Berka Mono Closer dark specimen](images/specimen-dark.png)
 
 ![Berka Mono Closer light specimen](images/specimen-light.png)
+
+![Berka Mono Closer Compact comparison](images/compact-comparison.png)
 
 ## Download
 
@@ -14,6 +21,7 @@ Install the TTF files from:
 
 ```text
 fonts/ttf/
+fonts/ttf-compact/
 ```
 
 On macOS, you can copy them into `~/Library/Fonts`:
@@ -26,6 +34,7 @@ Use this font family name in editors and terminals:
 
 ```text
 Berka Mono Closer
+Berka Mono Closer Compact
 ```
 
 ## Styles
@@ -66,6 +75,15 @@ font-thicken = true
 
 Full example: [examples/ghostty.conf](examples/ghostty.conf)
 
+For Compact, replace the family name with:
+
+```conf
+font-family = "Berka Mono Closer Compact"
+font-family-bold = "Berka Mono Closer Compact"
+font-family-italic = "Berka Mono Closer Compact"
+font-family-bold-italic = "Berka Mono Closer Compact"
+```
+
 ## Kitty
 
 ```conf
@@ -78,6 +96,15 @@ disable_ligatures never
 ```
 
 Full example: [examples/kitty.conf](examples/kitty.conf)
+
+For Compact, replace the family name with:
+
+```conf
+font_family      family="Berka Mono Closer Compact"
+bold_font        family="Berka Mono Closer Compact" style="Bold"
+italic_font      family="Berka Mono Closer Compact" style="Italic"
+bold_italic_font family="Berka Mono Closer Compact" style="Bold Italic"
+```
 
 ## Build From Source
 
@@ -102,12 +129,14 @@ cd Iosevka
 cp /path/to/berka-mono-closer/sources/private-build-plans.toml ./private-build-plans.toml
 npm install
 npm run build -- ttf::BerkaMonoCloser --jCmd=2
+npm run build -- ttf::BerkaMonoCloserCompact --jCmd=2
 ```
 
 The generated files will be in:
 
 ```text
 dist/BerkaMonoCloser/TTF/
+dist/BerkaMonoCloserCompact/TTF/
 ```
 
 You can also run:

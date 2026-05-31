@@ -18,6 +18,8 @@ cp "$repo_dir/sources/private-build-plans.toml" "$iosevka_dir/private-build-plan
 cd "$iosevka_dir"
 npm install
 npm run build -- ttf::BerkaMonoCloser --jCmd="${JOBS:-2}"
+npm run build -- ttf::BerkaMonoCloserCompact --jCmd="${JOBS:-2}"
 
-echo "Built fonts in $iosevka_dir/dist/BerkaMonoCloser/TTF"
-
+echo "Built fonts in:"
+echo "  $iosevka_dir/dist/BerkaMonoCloser/TTF"
+echo "  $iosevka_dir/dist/BerkaMonoCloserCompact/TTF"
