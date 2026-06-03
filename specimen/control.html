@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Berka Mono Control Specimen</title>
+  <style>
+    @font-face {
+      font-family: "Berka Mono Control";
+      src: url("../fonts/ttf-control/BerkaMonoControl-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Control";
+      src: url("../fonts/ttf-control/BerkaMonoControl-Book.ttf") format("truetype");
+      font-weight: 450;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Control";
+      src: url("../fonts/ttf-control/BerkaMonoControl-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "Berka Mono Control";
+      src: url("../fonts/ttf-control/BerkaMonoControl-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    :root {
+      color-scheme: dark;
+      font-family: "Berka Mono Control", ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #111315;
+      color: #eef2ef;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #111315;
+    }
+    main {
+      box-sizing: border-box;
+      width: 1200px;
+      min-height: 720px;
+      padding: 56px 64px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 52px;
+      line-height: 1.04;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin-bottom: 38px;
+      color: #abb5b0;
+      font-size: 19px;
+      line-height: 1.45;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px 36px;
+    }
+    .label {
+      margin-bottom: 10px;
+      color: #8f9a95;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font: 20px/1.44 "Berka Mono Control", ui-monospace, monospace;
+      font-variant-ligatures: contextual common-ligatures;
+    }
+    .sample {
+      padding-top: 6px;
+      border-top: 1px solid #2c3230;
+    }
+    .italic {
+      font-style: italic;
+      color: #d9dfdc;
+    }
+    .muted { color: #abb5b0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Berka Mono Control</h1>
+    <div class="sub">A denser Iosevka custom build tuned for explicit, engineered coding texture.</div>
+    <div class="grid">
+      <section class="sample">
+        <div class="label">Code</div>
+        <pre><span class="muted">const</span> route = input !== null && input.ok
+  ? input.map(x =&gt; x.trim())
+  : fallback ?? "control";
+
+state := ready && count &gt;= 0</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Glyph Texture</div>
+        <pre>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789  == != <= >= => ->
+{} [] () @ # $ % & * / \ | ~</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Weights</div>
+        <pre>Regular  The quick brown fox
+<span style="font-weight:450">Book     The quick brown fox</span>
+<span style="font-weight:500">Medium   The quick brown fox</span>
+<span style="font-weight:600">SemiBold The quick brown fox</span>
+<strong>Bold     The quick brown fox</strong></pre>
+      </section>
+      <section class="sample">
+        <div class="label">Oblique Slant</div>
+        <pre class="italic">// Restrained angle, terminal-first.
+let mode = "dense" | "explicit";
+type Cut = "normal" | "control";</pre>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
