@@ -2,10 +2,11 @@
 
 Berka Mono Closer is a custom build of [Iosevka](https://github.com/be5invis/Iosevka) tuned for a calm, wide, rectangular coding-font feel.
 
-The repository includes three families:
+The repository includes four families:
 
 - `Berka Mono Closer`: the original wider cut.
 - `Berka Mono Closer Compact`: the same glyph design, ligatures, leading, and italic angle, with a slightly narrower width for a more focused coding texture.
+- `Berka Mono Closer SemiCondensed`: a denser cut at width 585 for tighter terminal and editor columns.
 - `Berka Mono Control`: the densest experiment, tuned from the TX-02 datasheet's broad functional brief while staying legally distinct: narrower spacing, tighter leading, oblique-style slants, a Book weight, and fuller Iosevka ligature coverage.
 
 It is built only from Iosevka's open source build system and variant parameters. It does not contain proprietary outlines, copied glyphs, or commercial font files.
@@ -16,6 +17,8 @@ It is built only from Iosevka's open source build system and variant parameters.
 
 ![Berka Mono Closer Compact comparison](images/compact-comparison.png)
 
+![Berka Mono Closer SemiCondensed specimen](images/semi-condensed-specimen.png)
+
 ![Berka Mono Control specimen](images/control-specimen.png)
 
 ## Download
@@ -25,6 +28,7 @@ Install the TTF files from:
 ```text
 fonts/ttf/
 fonts/ttf-compact/
+fonts/ttf-semi-condensed/
 fonts/ttf-control/
 ```
 
@@ -39,6 +43,7 @@ Use this font family name in editors and terminals:
 ```text
 Berka Mono Closer
 Berka Mono Closer Compact
+Berka Mono Closer SemiCondensed
 Berka Mono Control
 ```
 
@@ -59,7 +64,7 @@ Berka Mono Control
 
 Programming ligatures are enabled through Iosevka's `default-calt` set.
 
-Closer and Compact intentionally disable a few more decorative groups:
+Closer, Compact, and SemiCondensed intentionally disable a few more decorative groups:
 
 - `arrow-wave`
 - `counter-arrow-wave`
@@ -93,6 +98,15 @@ font-family-italic = "Berka Mono Closer Compact"
 font-family-bold-italic = "Berka Mono Closer Compact"
 ```
 
+For SemiCondensed, replace the family name with:
+
+```conf
+font-family = "Berka Mono Closer SemiCondensed"
+font-family-bold = "Berka Mono Closer SemiCondensed"
+font-family-italic = "Berka Mono Closer SemiCondensed"
+font-family-bold-italic = "Berka Mono Closer SemiCondensed"
+```
+
 For Control, replace the family name with:
 
 ```conf
@@ -122,6 +136,15 @@ font_family      family="Berka Mono Closer Compact"
 bold_font        family="Berka Mono Closer Compact" style="Bold"
 italic_font      family="Berka Mono Closer Compact" style="Italic"
 bold_italic_font family="Berka Mono Closer Compact" style="Bold Italic"
+```
+
+For SemiCondensed, replace the family name with:
+
+```conf
+font_family      family="Berka Mono Closer SemiCondensed"
+bold_font        family="Berka Mono Closer SemiCondensed" style="Bold"
+italic_font      family="Berka Mono Closer SemiCondensed" style="Italic"
+bold_italic_font family="Berka Mono Closer SemiCondensed" style="Bold Italic"
 ```
 
 For Control, replace the family name with:
@@ -157,6 +180,7 @@ cp /path/to/berka-mono-closer/sources/private-build-plans.toml ./private-build-p
 npm install
 npm run build -- ttf::BerkaMonoCloser --jCmd=2
 npm run build -- ttf::BerkaMonoCloserCompact --jCmd=2
+npm run build -- ttf::BerkaMonoCloserSemiCondensed --jCmd=2
 npm run build -- ttf::BerkaMonoControl --jCmd=2
 ```
 
@@ -165,6 +189,7 @@ The generated files will be in:
 ```text
 dist/BerkaMonoCloser/TTF/
 dist/BerkaMonoCloserCompact/TTF/
+dist/BerkaMonoCloserSemiCondensed/TTF/
 dist/BerkaMonoControl/TTF/
 ```
 
