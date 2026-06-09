@@ -47,6 +47,53 @@ Berka Mono Closer SemiCondensed
 Berka Mono Control
 ```
 
+## VS Code
+
+After installing the TTF files, open `settings.json` with `Preferences: Open User Settings (JSON)` and add:
+
+```json
+{
+  "editor.fontFamily": "'Berka Mono Closer', monospace",
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "'Berka Mono Closer'"
+}
+```
+
+For Compact, SemiCondensed, or Control, replace `Berka Mono Closer` with the matching family name from the Download section.
+
+## Cursor
+
+Cursor uses VS Code-compatible settings. After installing the TTF files, open `settings.json` with `Preferences: Open User Settings (JSON)` and add:
+
+```json
+{
+  "editor.fontFamily": "'Berka Mono Closer', monospace",
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "'Berka Mono Closer'"
+}
+```
+
+You can also import existing VS Code settings from Cursor Settings if you already configured the font in VS Code.
+
+## Zed
+
+After installing the TTF files, open Zed settings and add:
+
+```json
+{
+  "buffer_font_family": "Berka Mono Closer",
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true
+  },
+  "terminal": {
+    "font_family": "Berka Mono Closer"
+  }
+}
+```
+
+For Compact, SemiCondensed, or Control, replace `Berka Mono Closer` with the matching family name from the Download section.
+
 ## Styles
 
 - Regular
