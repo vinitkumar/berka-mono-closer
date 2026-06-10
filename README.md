@@ -22,6 +22,8 @@ It is built only from Iosevka's open source build system and variant parameters.
 
 ![Berka Mono Control specimen](images/control-specimen.png)
 
+![Berka Mono Retina specimen](images/retina-specimen.png)
+
 ## Download
 
 Install the TTF files from:

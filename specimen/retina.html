@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Berka Mono Retina Specimen</title>
+  <style>
+    @font-face {
+      font-family: "Berka Mono Retina";
+      src: url("../fonts/ttf-retina/BerkaMonoRetina-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Retina";
+      src: url("../fonts/ttf-retina/BerkaMonoRetina-Book.ttf") format("truetype");
+      font-weight: 450;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Retina";
+      src: url("../fonts/ttf-retina/BerkaMonoRetina-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "Berka Mono Retina";
+      src: url("../fonts/ttf-retina/BerkaMonoRetina-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    :root {
+      color-scheme: dark;
+      font-family: "Berka Mono Retina", ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #101214;
+      color: #eef3ef;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(93, 115, 101, 0.18), transparent 34%),
+        #101214;
+    }
+    main {
+      box-sizing: border-box;
+      width: 1200px;
+      min-height: 720px;
+      padding: 56px 64px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 54px;
+      line-height: 1.04;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin-bottom: 38px;
+      color: #aeb9b3;
+      font-size: 19px;
+      line-height: 1.45;
+      max-width: 780px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 30px 36px;
+    }
+    .label {
+      margin-bottom: 10px;
+      color: #95a19a;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font: 20px/1.42 "Berka Mono Retina", ui-monospace, monospace;
+      font-variant-ligatures: contextual common-ligatures;
+    }
+    .sample {
+      padding-top: 8px;
+      border-top: 1px solid #303833;
+    }
+    .wide {
+      grid-column: 1 / -1;
+    }
+    .italic {
+      font-style: italic;
+      color: #dce4df;
+    }
+    .muted {
+      color: #aeb9b3;
+    }
+    .accent {
+      color: #c8f0d2;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Berka Mono Retina</h1>
+    <div class="sub">A high-DPI coding cut with sturdier optical strokes, tight rhythm, full ligatures, and just enough room to breathe.</div>
+    <div class="grid">
+      <section class="sample wide">
+        <div class="label">Retina Code Texture</div>
+        <pre><span class="muted">export</span> const render = async (input: Payload) =&gt; {
+  const rows = input.items?.map(row =&gt; row.trim()) ?? [];
+  return rows.length &gt;= 120 ? <span class="accent">"sharp on glass"</span> : "quietly readable";
+};</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Glyph Texture</div>
+        <pre>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789  == != <= >= => ->
+{} [] () @ # $ % & * / \ | ~</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Weights</div>
+        <pre>Regular  The quick brown fox
+<span style="font-weight:450">Book     The quick brown fox</span>
+<span style="font-weight:500">Medium   The quick brown fox</span>
+<span style="font-weight:600">SemiBold The quick brown fox</span>
+<strong>Bold     The quick brown fox</strong></pre>
+      </section>
+      <section class="sample">
+        <div class="label">Oblique Slant</div>
+        <pre class="italic">// Cleaner motion, still terminal-safe.
+type Cut = "control" | "retina";
+let density = width >= 605;</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Tuning</div>
+        <pre>Width:      605
+Leading:    1180
+Strokes:    optically heavier
+Ligatures:  full default-calt</pre>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
