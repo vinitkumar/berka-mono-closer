@@ -1,0 +1,103 @@
+# A legally distinct Iosevka custom build tuned for crisp high-DPI coding:
+# slightly heavier optical strokes, compact-but-readable width, tight leading,
+# and full programming ligature coverage.
+
+[buildPlans.BerkaMonoRetina]
+family = "Berka Mono Retina"
+spacing = "normal"
+serifs = "sans"
+noCvSs = false
+noLigation = false
+exportGlyphNames = true
+
+[buildPlans.BerkaMonoRetina.variants]
+inherits = "ss09"
+
+[buildPlans.BerkaMonoRetina.variants.design]
+capital-a = "straight-serifless"
+capital-b = "standard-serifless"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-corner-serifless-hooked"
+capital-i = "serifed"
+capital-j = "serifed"
+capital-k = "straight-serifless"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-r = "straight-serifless"
+capital-w = "straight-flat-top-serifless"
+capital-y = "straight-serifless"
+
+a = "double-storey-serifless"
+b = "toothless-corner-serifless"
+d = "toothed-serifless"
+f = "flat-hook-serifless-crossbar-at-x-height"
+g = "double-storey"
+i = "serifed"
+j = "serifed"
+k = "straight-serifless"
+l = "serifed"
+m = "serifless"
+n = "straight-serifless"
+p = "earless-corner-serifless"
+q = "earless-corner-straight-serifless"
+r = "serifless"
+t = "flat-hook"
+u = "toothed-serifless"
+w = "straight-serifless"
+y = "straight-serifless"
+
+one = "base"
+two = "straight-neck-serifless"
+three = "flat-top-serifless"
+four = "closed-serifless"
+five = "upright-flat-serifless"
+six = "straight-bar"
+seven = "straight-serifless"
+eight = "two-circles"
+nine = "straight-bar"
+zero = "slashed"
+
+asterisk = "penta-low"
+brace = "straight"
+caret = "medium"
+dollar = "through"
+ampersand = "upper-open"
+at = "fourfold"
+percent = "rings-continuous-slash"
+number-sign = "upright"
+pilcrow = "low"
+lig-ltgteq = "slanted"
+lig-neq = "slightly-slanted"
+
+[buildPlans.BerkaMonoRetina.ligations]
+inherits = "default-calt"
+disables = []
+
+[buildPlans.BerkaMonoRetina.weights]
+Regular = { shape = 430, menu = 400, css = 400 }
+Book = { shape = 470, menu = 450, css = 450 }
+Medium = { shape = 530, menu = 500, css = 500 }
+SemiBold = { shape = 630, menu = 600, css = 600 }
+Bold = { shape = 730, menu = 700, css = 700 }
+
+[buildPlans.BerkaMonoRetina.widths]
+Normal = { shape = 605, menu = 5, css = "normal" }
+
+[buildPlans.BerkaMonoRetina.slopes.Upright]
+angle = 0
+shape = "upright"
+menu = "upright"
+css = "normal"
+
+[buildPlans.BerkaMonoRetina.slopes.Italic]
+angle = 6
+shape = "oblique"
+menu = "italic"
+css = "italic"
+
+[buildPlans.BerkaMonoRetina.metricOverride]
+leading = 1180
+winMetricAscenderPad = 0
+winMetricDescenderPad = 0
+powerlineScaleY = 1.08
+powerlineScaleX = 1.0

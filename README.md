@@ -2,12 +2,13 @@
 
 Berka Mono Closer is a custom build of [Iosevka](https://github.com/be5invis/Iosevka) tuned for a calm, wide, rectangular coding-font feel.
 
-The repository includes four families:
+The repository includes five families:
 
 - `Berka Mono Closer`: the original wider cut.
 - `Berka Mono Closer Compact`: the same glyph design, ligatures, leading, and italic angle, with a slightly narrower width for a more focused coding texture.
 - `Berka Mono Closer SemiCondensed`: a denser cut at width 585 for tighter terminal and editor columns.
 - `Berka Mono Control`: the densest experiment, tuned from the TX-02 datasheet's broad functional brief while staying legally distinct: narrower spacing, tighter leading, oblique-style slants, a Book weight, and fuller Iosevka ligature coverage.
+- `Berka Mono Retina`: a high-DPI coding cut with slightly heavier optical strokes, a little more breathing room than Control, tight leading, oblique-style slants, a Book weight, and full programming ligatures.
 
 It is built only from Iosevka's open source build system and variant parameters. It does not contain proprietary outlines, copied glyphs, or commercial font files.
 
@@ -30,6 +31,7 @@ fonts/ttf/
 fonts/ttf-compact/
 fonts/ttf-semi-condensed/
 fonts/ttf-control/
+fonts/ttf-retina/
 ```
 
 Use the WOFF2 files for websites:
@@ -39,6 +41,7 @@ fonts/woff2/
 fonts/woff2-compact/
 fonts/woff2-semi-condensed/
 fonts/woff2-control/
+fonts/woff2-retina/
 ```
 
 On macOS, you can copy them into `~/Library/Fonts`:
@@ -54,6 +57,7 @@ Berka Mono Closer
 Berka Mono Closer Compact
 Berka Mono Closer SemiCondensed
 Berka Mono Control
+Berka Mono Retina
 ```
 
 ## VS Code
@@ -68,7 +72,7 @@ After installing the TTF files, open `settings.json` with `Preferences: Open Use
 }
 ```
 
-For Compact, SemiCondensed, or Control, replace `Berka Mono Closer` with the matching family name from the Download section.
+For Compact, SemiCondensed, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
 
 ## Cursor
 
@@ -101,7 +105,7 @@ After installing the TTF files, open Zed settings and add:
 }
 ```
 
-For Compact, SemiCondensed, or Control, replace `Berka Mono Closer` with the matching family name from the Download section.
+For Compact, SemiCondensed, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
 
 ## Styles
 
@@ -114,7 +118,7 @@ For Compact, SemiCondensed, or Control, replace `Berka Mono Closer` with the mat
 - Bold
 - Bold Italic
 
-`Berka Mono Control` also includes Book and Book Italic.
+`Berka Mono Control` and `Berka Mono Retina` also include Book and Book Italic.
 
 ## Ligatures
 
@@ -127,7 +131,7 @@ Closer, Compact, and SemiCondensed intentionally disable a few more decorative g
 - `html-comment`
 - `trig`
 
-Control keeps the full `default-calt` set for broader language and markup coverage.
+Control and Retina keep the full `default-calt` set for broader language and markup coverage.
 
 ## Ghostty
 
@@ -172,6 +176,15 @@ font-family-italic = "Berka Mono Control"
 font-family-bold-italic = "Berka Mono Control"
 ```
 
+For Retina, replace the family name with:
+
+```conf
+font-family = "Berka Mono Retina"
+font-family-bold = "Berka Mono Retina"
+font-family-italic = "Berka Mono Retina"
+font-family-bold-italic = "Berka Mono Retina"
+```
+
 ## Kitty
 
 ```conf
@@ -212,6 +225,15 @@ italic_font      family="Berka Mono Control" style="Italic"
 bold_italic_font family="Berka Mono Control" style="Bold Italic"
 ```
 
+For Retina, replace the family name with:
+
+```conf
+font_family      family="Berka Mono Retina"
+bold_font        family="Berka Mono Retina" style="Bold"
+italic_font      family="Berka Mono Retina" style="Italic"
+bold_italic_font family="Berka Mono Retina" style="Bold Italic"
+```
+
 ## Build From Source
 
 Requirements:
@@ -239,6 +261,7 @@ npm run build -- ttf::BerkaMonoCloser --jCmd=2
 npm run build -- ttf::BerkaMonoCloserCompact --jCmd=2
 npm run build -- ttf::BerkaMonoCloserSemiCondensed --jCmd=2
 npm run build -- ttf::BerkaMonoControl --jCmd=2
+npm run build -- ttf::BerkaMonoRetina --jCmd=2
 ```
 
 The generated files will be in:
@@ -248,6 +271,7 @@ dist/BerkaMonoCloser/TTF/
 dist/BerkaMonoCloserCompact/TTF/
 dist/BerkaMonoCloserSemiCondensed/TTF/
 dist/BerkaMonoControl/TTF/
+dist/BerkaMonoRetina/TTF/
 ```
 
 You can also run:
@@ -255,6 +279,8 @@ You can also run:
 ```sh
 ./scripts/build.sh /path/to/Iosevka
 ```
+
+The script copies each family-specific build plan before building that family, including `sources/retina/private-build-plans.toml` for `Berka Mono Retina`.
 
 Generate WOFF2 files from the checked-in TTF files:
 
