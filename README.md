@@ -32,6 +32,15 @@ fonts/ttf-semi-condensed/
 fonts/ttf-control/
 ```
 
+Use the WOFF2 files for websites:
+
+```text
+fonts/woff2/
+fonts/woff2-compact/
+fonts/woff2-semi-condensed/
+fonts/woff2-control/
+```
+
 On macOS, you can copy them into `~/Library/Fonts`:
 
 ```sh
@@ -210,6 +219,7 @@ Requirements:
 - Node.js 16 or newer
 - npm
 - `ttfautohint`
+- Python 3 with `fonttools` for WOFF2 generation
 - git
 
 On macOS:
@@ -244,6 +254,12 @@ You can also run:
 
 ```sh
 ./scripts/build.sh /path/to/Iosevka
+```
+
+Generate WOFF2 files from the checked-in TTF files:
+
+```sh
+./scripts/build-woff2.sh
 ```
 
 ## Legal Notes
