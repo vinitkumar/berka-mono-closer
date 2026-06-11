@@ -26,6 +26,40 @@ It is built only from Iosevka's open source build system and variant parameters.
 
 ## Download
 
+## Install
+
+Install every Berka TTF family and configure your editor and terminal to use one selected family:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh
+```
+
+Use a specific family non-interactively:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- retina
+```
+
+Available choices:
+
+```text
+closer
+compact
+semi-condensed
+control
+retina
+```
+
+The installer supports macOS, Linux, and Windows through Git Bash/MSYS/Cygwin. It installs the fonts and configures VS Code, Cursor, JetBrains IDEs, Zed, Ghostty, Kitty, Alacritty, Windows Terminal, and GNOME Terminal when their config locations are present.
+
+Try the fonts in the browser at:
+
+```text
+https://vinitkumar.github.io/berka-mono-closer/
+```
+
+## Manual Download
+
 Install the TTF files from:
 
 ```text
@@ -46,7 +80,7 @@ fonts/woff2-control/
 fonts/woff2-retina/
 ```
 
-On macOS, you can copy them into `~/Library/Fonts`:
+On macOS, you can copy them into `~/Library/Fonts` manually:
 
 ```sh
 ./scripts/install-macos.sh
