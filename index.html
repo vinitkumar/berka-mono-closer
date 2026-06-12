@@ -329,6 +329,11 @@
       tab-size: 2;
     }
 
+    .preview code {
+      color: inherit;
+      font: inherit;
+    }
+
     .kw { color: #85d6c9; }
     .fn { color: #e3cf8b; }
     .str { color: #b8dc8e; }
@@ -524,14 +529,31 @@ export function pickFont(input: string) {
         .replaceAll(">", "&gt;");
     }
 
+    function wrapToken(token) {
+      const escaped = escapeHtml(token);
+      if (/^\/\/.*/.test(token)) return `<span class="com">${escaped}</span>`;
+      if (/^"[^"]*"$/.test(token)) return `<span class="str">${escaped}</span>`;
+      if (/^(type|export|function|const|return|true|false)$/.test(token)) return `<span class="kw">${escaped}</span>`;
+      if (/^\d+$/.test(token)) return `<span class="num">${escaped}</span>`;
+      if (/^(<=|>=|=>|->|!=|===|==|\|>|&&)$/.test(token)) return `<span class="op">${escaped}</span>`;
+      return escaped;
+    }
+
+    function highlightLine(line) {
+      const tokenPattern = /(\/\/.*|"[^"]*"|<=|>=|=>|->|!=|===|==|\|>|&&|\b(?:type|export|function|const|return|true|false)\b|\b\d+\b)/g;
+      let html = "";
+      let offset = 0;
+      for (const match of line.matchAll(tokenPattern)) {
+        html += escapeHtml(line.slice(offset, match.index));
+        html += wrapToken(match[0]);
+        offset = match.index + match[0].length;
+      }
+      html += escapeHtml(line.slice(offset));
+      return html.replace(/\b([A-Za-z_][A-Za-z0-9_]*)(?=\()/g, '<span class="fn">$1</span>');
+    }
+
     function highlight(value) {
-      return escapeHtml(value)
-        .replace(/(\/\/.*)$/gm, '<span class="com">$1</span>')
-        .replace(/"([^"]*)"/g, '<span class="str">"$1"</span>')
-        .replace(/\b(type|export|function|const|return|true|false)\b/g, '<span class="kw">$1</span>')
-        .replace(/\b([A-Za-z_][A-Za-z0-9_]*)\(/g, '<span class="fn">$1</span>(')
-        .replace(/\b(\d+)\b/g, '<span class="num">$1</span>')
-        .replace(/(&lt;=|&gt;=|=&gt;|-&gt;|!=|===|==|\|&gt;|&amp;&amp;)/g, '<span class="op">$1</span>');
+      return value.split("\n").map(highlightLine).join("\n");
     }
 
     function renderButtons() {
