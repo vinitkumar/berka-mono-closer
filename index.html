@@ -60,6 +60,24 @@
       font-style: italic;
     }
     @font-face {
+      font-family: "Berka Mono Closer Narrow";
+      src: url("fonts/woff2-narrow/BerkaMonoCloserNarrow-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer Narrow";
+      src: url("fonts/woff2-narrow/BerkaMonoCloserNarrow-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer Narrow";
+      src: url("fonts/woff2-narrow/BerkaMonoCloserNarrow-Italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
       font-family: "Berka Mono Control";
       src: url("fonts/woff2-control/BerkaMonoControl-Regular.woff2") format("woff2");
       font-weight: 400;
@@ -424,11 +442,12 @@
           <textarea id="source" spellcheck="false">type FontFamily =
   | "Berka Mono Closer"
   | "Berka Mono Closer Compact"
-  | "Berka Mono Closer SemiCondensed";
+  | "Berka Mono Closer SemiCondensed"
+  | "Berka Mono Closer Narrow";
 
 export function pickFont(input: string) {
-  const compact = input.length >= 120;
-  return compact ? "SemiCondensed" : "Retina";
+  const narrow = input.length >= 120;
+  return narrow ? "Narrow" : "Retina";
 }
 
 // ligatures: != <= >= => -> ===</textarea>
@@ -474,6 +493,7 @@ export function pickFont(input: string) {
       { key: "closer", name: "Berka Mono Closer", width: "Wide" },
       { key: "compact", name: "Berka Mono Closer Compact", width: "Compact" },
       { key: "semi", name: "Berka Mono Closer SemiCondensed", width: "Dense" },
+      { key: "narrow", name: "Berka Mono Closer Narrow", width: "Narrow" },
       { key: "control", name: "Berka Mono Control", width: "Tight" },
       { key: "retina", name: "Berka Mono Retina", width: "Retina" }
     ];

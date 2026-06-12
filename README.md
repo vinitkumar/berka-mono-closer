@@ -2,13 +2,19 @@
 
 Berka Mono Closer is a custom build of [Iosevka](https://github.com/be5invis/Iosevka) tuned for a calm, wide, rectangular coding-font feel.
 
-The repository includes five families:
+The repository includes six families. They share the same core upright glyph
+design, so the visual difference between cuts is intentionally modest. The real
+differences are in width, weight, leading, italic construction, and ligature
+policy:
 
-- `Berka Mono Closer`: the original wider cut.
-- `Berka Mono Closer Compact`: the same glyph design, ligatures, leading, and italic angle, with a slightly narrower width for a more focused coding texture.
-- `Berka Mono Closer SemiCondensed`: a denser cut at width 585 for tighter terminal and editor columns.
-- `Berka Mono Control`: the densest experiment, tuned from the TX-02 datasheet's broad functional brief while staying legally distinct: narrower spacing, tighter leading, oblique-style slants, a Book weight, and fuller Iosevka ligature coverage.
-- `Berka Mono Retina`: a high-DPI coding cut with slightly heavier optical strokes, a little more breathing room than Control, tight leading, oblique-style slants, a Book weight, and full programming ligatures.
+| Family | Cell width | Weights | Leading | Italic | Ligature policy |
+| --- | ---: | --- | ---: | --- | --- |
+| `Berka Mono Closer` | 620 | 400, 500, 600, 700 | 1200 | italic | disables `arrow-wave`, `counter-arrow-wave`, `html-comment`, `trig` |
+| `Berka Mono Closer Compact` | 605 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
+| `Berka Mono Closer SemiCondensed` | 585 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
+| `Berka Mono Closer Narrow` | 520 | 400, 500, 600, 700 | 1180 | italic | same disables as Closer |
+| `Berka Mono Control` | 595 | 400, 450, 500, 600, 700 | 1180 | oblique | full Iosevka `default-calt` |
+| `Berka Mono Retina` | 605 | 430, 470, 530, 630, 730 | 1180 | oblique | full Iosevka `default-calt` |
 
 It is built only from Iosevka's open source build system and variant parameters. It does not contain proprietary outlines, copied glyphs, or commercial font files.
 
@@ -19,6 +25,8 @@ It is built only from Iosevka's open source build system and variant parameters.
 ![Berka Mono Closer Compact comparison](images/compact-comparison.png)
 
 ![Berka Mono Closer SemiCondensed specimen](images/semi-condensed-specimen.png)
+
+![Berka Mono Closer Narrow specimen](images/narrow-specimen.png)
 
 ![Berka Mono Control specimen](images/control-specimen.png)
 
@@ -46,6 +54,7 @@ Available choices:
 closer
 compact
 semi-condensed
+narrow
 control
 retina
 ```
@@ -66,6 +75,7 @@ Install the TTF files from:
 fonts/ttf/
 fonts/ttf-compact/
 fonts/ttf-semi-condensed/
+fonts/ttf-narrow/
 fonts/ttf-control/
 fonts/ttf-retina/
 ```
@@ -76,6 +86,7 @@ Use the WOFF2 files for websites:
 fonts/woff2/
 fonts/woff2-compact/
 fonts/woff2-semi-condensed/
+fonts/woff2-narrow/
 fonts/woff2-control/
 fonts/woff2-retina/
 ```
@@ -92,6 +103,7 @@ Use this font family name in editors and terminals:
 Berka Mono Closer
 Berka Mono Closer Compact
 Berka Mono Closer SemiCondensed
+Berka Mono Closer Narrow
 Berka Mono Control
 Berka Mono Retina
 ```
@@ -108,7 +120,7 @@ After installing the TTF files, open `settings.json` with `Preferences: Open Use
 }
 ```
 
-For Compact, SemiCondensed, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
+For Compact, SemiCondensed, Narrow, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
 
 ## Cursor
 
@@ -141,7 +153,7 @@ After installing the TTF files, open Zed settings and add:
 }
 ```
 
-For Compact, SemiCondensed, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
+For Compact, SemiCondensed, Narrow, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
 
 ## Styles
 
@@ -160,7 +172,7 @@ For Compact, SemiCondensed, Control, or Retina, replace `Berka Mono Closer` with
 
 Programming ligatures are enabled through Iosevka's `default-calt` set.
 
-Closer, Compact, and SemiCondensed intentionally disable a few more decorative groups:
+Closer, Compact, SemiCondensed, and Narrow intentionally disable a few more decorative groups:
 
 - `arrow-wave`
 - `counter-arrow-wave`
@@ -201,6 +213,15 @@ font-family = "Berka Mono Closer SemiCondensed"
 font-family-bold = "Berka Mono Closer SemiCondensed"
 font-family-italic = "Berka Mono Closer SemiCondensed"
 font-family-bold-italic = "Berka Mono Closer SemiCondensed"
+```
+
+For Narrow, replace the family name with:
+
+```conf
+font-family = "Berka Mono Closer Narrow"
+font-family-bold = "Berka Mono Closer Narrow"
+font-family-italic = "Berka Mono Closer Narrow"
+font-family-bold-italic = "Berka Mono Closer Narrow"
 ```
 
 For Control, replace the family name with:
@@ -252,6 +273,15 @@ italic_font      family="Berka Mono Closer SemiCondensed" style="Italic"
 bold_italic_font family="Berka Mono Closer SemiCondensed" style="Bold Italic"
 ```
 
+For Narrow, replace the family name with:
+
+```conf
+font_family      family="Berka Mono Closer Narrow"
+bold_font        family="Berka Mono Closer Narrow" style="Bold"
+italic_font      family="Berka Mono Closer Narrow" style="Italic"
+bold_italic_font family="Berka Mono Closer Narrow" style="Bold Italic"
+```
+
 For Control, replace the family name with:
 
 ```conf
@@ -294,9 +324,15 @@ cd Iosevka
 cp /path/to/berka-mono-closer/sources/private-build-plans.toml ./private-build-plans.toml
 npm install
 npm run build -- ttf::BerkaMonoCloser --jCmd=2
+cp /path/to/berka-mono-closer/sources/compact/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoCloserCompact --jCmd=2
+cp /path/to/berka-mono-closer/sources/semi-condensed/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoCloserSemiCondensed --jCmd=2
+cp /path/to/berka-mono-closer/sources/narrow/private-build-plans.toml ./private-build-plans.toml
+npm run build -- ttf::BerkaMonoCloserNarrow --jCmd=2
+cp /path/to/berka-mono-closer/sources/control/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoControl --jCmd=2
+cp /path/to/berka-mono-closer/sources/retina/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoRetina --jCmd=2
 ```
 
@@ -306,6 +342,7 @@ The generated files will be in:
 dist/BerkaMonoCloser/TTF/
 dist/BerkaMonoCloserCompact/TTF/
 dist/BerkaMonoCloserSemiCondensed/TTF/
+dist/BerkaMonoCloserNarrow/TTF/
 dist/BerkaMonoControl/TTF/
 dist/BerkaMonoRetina/TTF/
 ```
@@ -316,7 +353,7 @@ You can also run:
 ./scripts/build.sh /path/to/Iosevka
 ```
 
-The script copies each family-specific build plan before building that family, including `sources/retina/private-build-plans.toml` for `Berka Mono Retina`.
+The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow` and `sources/retina/private-build-plans.toml` for `Berka Mono Retina`.
 
 Generate WOFF2 files from the checked-in TTF files:
 

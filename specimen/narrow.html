@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Berka Mono Closer Narrow Specimen</title>
+  <style>
+    @font-face {
+      font-family: "Berka Mono Closer Narrow";
+      src: url("../fonts/ttf-narrow/BerkaMonoCloserNarrow-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer Narrow";
+      src: url("../fonts/ttf-narrow/BerkaMonoCloserNarrow-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer Narrow";
+      src: url("../fonts/ttf-narrow/BerkaMonoCloserNarrow-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    :root {
+      color-scheme: dark;
+      font-family: "Berka Mono Closer Narrow", ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #101214;
+      color: #eef2ef;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #101214;
+    }
+    main {
+      box-sizing: border-box;
+      width: 1200px;
+      min-height: 720px;
+      padding: 56px 64px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 50px;
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin-bottom: 36px;
+      color: #aeb8b4;
+      font-size: 19px;
+      line-height: 1.45;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 30px 34px;
+    }
+    .label {
+      margin-bottom: 10px;
+      color: #95a09b;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font: 20px/1.42 "Berka Mono Closer Narrow", ui-monospace, monospace;
+      font-variant-ligatures: contextual common-ligatures;
+    }
+    .sample {
+      padding-top: 6px;
+      border-top: 1px solid #2c3230;
+    }
+    .wide {
+      grid-column: 1 / -1;
+    }
+    .italic {
+      font-style: italic;
+      color: #d9dfdc;
+    }
+    .muted {
+      color: #aeb8b4;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Berka Mono Closer Narrow</h1>
+    <div class="sub">A genuinely narrow width-520 cut for dense editor panes, terminals, and code review columns.</div>
+    <div class="grid">
+      <section class="sample wide">
+        <div class="label">Dense Code</div>
+        <pre><span class="muted">type</span> Release = { family: "Narrow"; width: 520; styles: 8 };
+<span class="muted">const</span> fits = columns.map(col =&gt; col.trim()).filter(Boolean);
+<span class="muted">return</span> fits.length &gt;= 120 ? "more code per line" : "same Berka texture";</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Glyph Texture</div>
+        <pre>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789  == != <= >= => ->
+{} [] () @ # $ % & * / \ | ~</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Weights</div>
+        <pre>Regular  The quick brown fox
+<span style="font-weight:500">Medium   The quick brown fox</span>
+<span style="font-weight:600">SemiBold The quick brown fox</span>
+<strong>Bold     The quick brown fox</strong></pre>
+      </section>
+      <section class="sample">
+        <div class="label">Italic</div>
+        <pre class="italic">// Restrained six-degree italics.
+let editor = "terminal" | "review";
+type Columns = 100 | 120 | 140;</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Density</div>
+        <pre>Closer:        width 620
+SemiCondensed: width 585
+Narrow:        width 520
+Texture:       compressed, rectangular</pre>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

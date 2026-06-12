@@ -5,7 +5,7 @@ repo="vinitkumar/berka-mono-closer"
 branch="${BERKA_BRANCH:-main}"
 raw_base="https://raw.githubusercontent.com/$repo/$branch"
 
-families='closer compact semi-condensed control retina'
+families='closer compact semi-condensed narrow control retina'
 choice="${1:-${BERKA_FONT:-}}"
 current_step="starting"
 
@@ -44,6 +44,7 @@ family_name() {
     closer) printf '%s\n' "Berka Mono Closer" ;;
     compact) printf '%s\n' "Berka Mono Closer Compact" ;;
     semi-condensed|semicondensed|semi) printf '%s\n' "Berka Mono Closer SemiCondensed" ;;
+    narrow) printf '%s\n' "Berka Mono Closer Narrow" ;;
     control) printf '%s\n' "Berka Mono Control" ;;
     retina) printf '%s\n' "Berka Mono Retina" ;;
     *) return 1 ;;
@@ -55,6 +56,7 @@ family_xcode_name() {
     closer) printf '%s\n' "BerkaMonoCloser-Regular" ;;
     compact) printf '%s\n' "BerkaMonoCloserCompact-Regular" ;;
     semi-condensed|semicondensed|semi) printf '%s\n' "BerkaMonoCloserSemiCondensed-Regular" ;;
+    narrow) printf '%s\n' "BerkaMonoCloserNarrow-Regular" ;;
     control) printf '%s\n' "BerkaMonoControl-Regular" ;;
     retina) printf '%s\n' "BerkaMonoRetina-Regular" ;;
     *) return 1 ;;
@@ -66,6 +68,7 @@ family_dir() {
     closer) printf '%s\n' "fonts/ttf" ;;
     compact) printf '%s\n' "fonts/ttf-compact" ;;
     semi-condensed|semicondensed|semi) printf '%s\n' "fonts/ttf-semi-condensed" ;;
+    narrow) printf '%s\n' "fonts/ttf-narrow" ;;
     control) printf '%s\n' "fonts/ttf-control" ;;
     retina) printf '%s\n' "fonts/ttf-retina" ;;
     *) return 1 ;;
@@ -77,6 +80,7 @@ family_files() {
     closer) prefix="BerkaMonoCloser"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     compact) prefix="BerkaMonoCloserCompact"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     semi-condensed|semicondensed|semi) prefix="BerkaMonoCloserSemiCondensed"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
+    narrow) prefix="BerkaMonoCloserNarrow"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     control) prefix="BerkaMonoControl"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     retina) prefix="BerkaMonoRetina"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     *) return 1 ;;
@@ -90,6 +94,23 @@ need() {
   command -v "$1" >/dev/null 2>&1 || {
     die "Missing required command: $1"
   }
+}
+
+validate_ttf() {
+  file="$1"
+  size=$(wc -c < "$file" | tr -d ' ')
+  if [ "$size" -lt 100000 ]; then
+    die "Downloaded $file is too small to be a Berka TTF file ($size bytes)"
+  fi
+
+  magic=$(od -An -N4 -tx1 "$file" | tr -d ' \n')
+  case "$magic" in
+    00010000|4f54544f|74727565)
+      ;;
+    *)
+      die "Downloaded $file is not a real TTF/OTF font file (magic: ${magic:-empty})"
+      ;;
+  esac
 }
 
 select_family() {
@@ -106,16 +127,18 @@ select_family() {
     printf '  1) Berka Mono Closer\n' > /dev/tty
     printf '  2) Berka Mono Closer Compact\n' > /dev/tty
     printf '  3) Berka Mono Closer SemiCondensed\n' > /dev/tty
-    printf '  4) Berka Mono Control\n' > /dev/tty
-    printf '  5) Berka Mono Retina\n' > /dev/tty
+    printf '  4) Berka Mono Closer Narrow\n' > /dev/tty
+    printf '  5) Berka Mono Control\n' > /dev/tty
+    printf '  6) Berka Mono Retina\n' > /dev/tty
     printf 'Selection [1]: ' > /dev/tty
     read -r answer < /dev/tty
     case "${answer:-1}" in
       1) printf '%s\n' closer ;;
       2) printf '%s\n' compact ;;
       3) printf '%s\n' semi-condensed ;;
-      4) printf '%s\n' control ;;
-      5) printf '%s\n' retina ;;
+      4) printf '%s\n' narrow ;;
+      5) printf '%s\n' control ;;
+      6) printf '%s\n' retina ;;
       *) die "Invalid selection: $answer" ;;
     esac
   else
@@ -132,7 +155,10 @@ download_family() {
   mkdir -p "$dest"
   for file in $(family_files "$key"); do
     log "  -> $file"
-    curl -fL --progress-bar "$raw_base/$dir/$file" -o "$dest/$file" || die "Failed to download $file from $raw_base/$dir/$file"
+    tmp="$dest/$file.part"
+    curl -fL --retry 3 --retry-delay 1 --progress-bar "$raw_base/$dir/$file" -o "$tmp" || die "Failed to download $file from $raw_base/$dir/$file"
+    validate_ttf "$tmp"
+    mv "$tmp" "$dest/$file"
   done
   log "Downloaded $name."
 }
