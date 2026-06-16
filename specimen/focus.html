@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Berka Mono Focus Specimen</title>
+  <style>
+    @font-face {
+      font-family: "Berka Mono Focus";
+      src: url("../fonts/ttf-focus/BerkaMonoFocus-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Focus";
+      src: url("../fonts/ttf-focus/BerkaMonoFocus-Book.ttf") format("truetype");
+      font-weight: 450;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Focus";
+      src: url("../fonts/ttf-focus/BerkaMonoFocus-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "Berka Mono Focus";
+      src: url("../fonts/ttf-focus/BerkaMonoFocus-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    :root {
+      color-scheme: dark;
+      font-family: "Berka Mono Focus", ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #0f1115;
+      color: #f2f4ef;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(25, 111, 99, 0.22), transparent 36%),
+        linear-gradient(90deg, rgba(182, 151, 78, 0.12), transparent 48%),
+        #0f1115;
+    }
+    main {
+      box-sizing: border-box;
+      width: 1200px;
+      min-height: 720px;
+      padding: 44px 64px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 48px;
+      line-height: 1.04;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin-bottom: 26px;
+      color: #b8c0bb;
+      font-size: 19px;
+      line-height: 1.45;
+      max-width: 850px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 22px 36px;
+    }
+    .label {
+      margin-bottom: 10px;
+      color: #98a39d;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font: 18px/1.34 "Berka Mono Focus", ui-monospace, monospace;
+      font-variant-ligatures: contextual common-ligatures;
+    }
+    .sample {
+      padding-top: 8px;
+      border-top: 1px solid #30383a;
+    }
+    .wide {
+      grid-column: 1 / -1;
+    }
+    .italic {
+      font-style: italic;
+      color: #dfe7e2;
+    }
+    .muted {
+      color: #b8c0bb;
+    }
+    .accent {
+      color: #d7c27a;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Berka Mono Focus</h1>
+    <div class="sub">A debugging-first coding cut with compact rhythm, high-DPI weight, clearer punctuation, and ambiguity traps designed out.</div>
+    <div class="grid">
+      <section class="sample wide">
+        <div class="label">Real Code Texture</div>
+        <pre><span class="muted">export</span> function parse_env(id: string, line_no = 101) {
+  const row_0 = cache.get(id) ?? { state: <span class="accent">"missing"</span>, retry_count: 0 };
+  return row_0.retry_count &gt;= 3 ? "backoff" : "continue";
+}</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Ambiguity Checks</div>
+        <pre>0 O o    1 l I i    5 S s
+rn m     vv w W     {} [] ()
+snake_case  __dunder__  /path/to/log</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Operators</div>
+        <pre>== != !== <= >= => -> <- <->
+&& || ?? :: ... ++ -- ** //
+~> ~~ &lt;!-- sin cos tan</pre>
+      </section>
+      <section class="sample">
+        <div class="label">Weights</div>
+        <pre>Regular  The quick brown fox
+<span style="font-weight:450">Book     The quick brown fox</span>
+<span style="font-weight:500">Medium   The quick brown fox</span>
+<span style="font-weight:600">SemiBold The quick brown fox</span>
+<strong>Bold     The quick brown fox</strong></pre>
+      </section>
+      <section class="sample">
+        <div class="label">Tuning</div>
+        <pre class="italic">Width:      592
+Leading:    1170
+Zero:       oval dotted
+Underscore: high
+Ligatures:  useful, not decorative</pre>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

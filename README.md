@@ -2,7 +2,7 @@
 
 Berka Mono Closer is a custom build of [Iosevka](https://github.com/be5invis/Iosevka) tuned for a calm, wide, rectangular coding-font feel.
 
-The repository includes six families. They share the same core upright glyph
+The repository includes seven families. They share the same core upright glyph
 design, so the visual difference between cuts is intentionally modest. The real
 differences are in width, weight, leading, italic construction, and ligature
 policy:
@@ -15,6 +15,7 @@ policy:
 | `Berka Mono Closer Narrow` | 520 | 400, 500, 600, 700 | 1180 | italic | same disables as Closer |
 | `Berka Mono Control` | 595 | 400, 450, 500, 600, 700 | 1180 | oblique | full Iosevka `default-calt` |
 | `Berka Mono Retina` | 605 | 430, 470, 530, 630, 730 | 1180 | oblique | full Iosevka `default-calt` |
+| `Berka Mono Focus` | 592 | 425, 465, 525, 620, 710 | 1170 | oblique | debugging-first `default-calt` subset |
 
 It is built only from Iosevka's open source build system and variant parameters. It does not contain proprietary outlines, copied glyphs, or commercial font files.
 
@@ -31,6 +32,8 @@ It is built only from Iosevka's open source build system and variant parameters.
 ![Berka Mono Control specimen](images/control-specimen.png)
 
 ![Berka Mono Retina specimen](images/retina-specimen.png)
+
+![Berka Mono Focus specimen](images/focus-specimen.png)
 
 ## Download
 
@@ -57,6 +60,7 @@ semi-condensed
 narrow
 control
 retina
+focus
 ```
 
 The installer supports macOS, Linux, and Windows through Git Bash/MSYS/Cygwin. It installs the fonts and configures VS Code, Cursor, JetBrains IDEs, Zed, Ghostty, Kitty, Alacritty, Windows Terminal, and GNOME Terminal when their config locations are present.
@@ -78,6 +82,7 @@ fonts/ttf-semi-condensed/
 fonts/ttf-narrow/
 fonts/ttf-control/
 fonts/ttf-retina/
+fonts/ttf-focus/
 ```
 
 Use the WOFF2 files for websites:
@@ -89,6 +94,7 @@ fonts/woff2-semi-condensed/
 fonts/woff2-narrow/
 fonts/woff2-control/
 fonts/woff2-retina/
+fonts/woff2-focus/
 ```
 
 On macOS, you can copy them into `~/Library/Fonts` manually:
@@ -106,6 +112,7 @@ Berka Mono Closer SemiCondensed
 Berka Mono Closer Narrow
 Berka Mono Control
 Berka Mono Retina
+Berka Mono Focus
 ```
 
 ## VS Code
@@ -120,7 +127,7 @@ After installing the TTF files, open `settings.json` with `Preferences: Open Use
 }
 ```
 
-For Compact, SemiCondensed, Narrow, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
+For Compact, SemiCondensed, Narrow, Control, Retina, or Focus, replace `Berka Mono Closer` with the matching family name from the Download section.
 
 ## Cursor
 
@@ -153,7 +160,7 @@ After installing the TTF files, open Zed settings and add:
 }
 ```
 
-For Compact, SemiCondensed, Narrow, Control, or Retina, replace `Berka Mono Closer` with the matching family name from the Download section.
+For Compact, SemiCondensed, Narrow, Control, Retina, or Focus, replace `Berka Mono Closer` with the matching family name from the Download section.
 
 ## Styles
 
@@ -166,7 +173,7 @@ For Compact, SemiCondensed, Narrow, Control, or Retina, replace `Berka Mono Clos
 - Bold
 - Bold Italic
 
-`Berka Mono Control` and `Berka Mono Retina` also include Book and Book Italic.
+`Berka Mono Control`, `Berka Mono Retina`, and `Berka Mono Focus` also include Book and Book Italic.
 
 ## Ligatures
 
@@ -180,6 +187,12 @@ Closer, Compact, SemiCondensed, and Narrow intentionally disable a few more deco
 - `trig`
 
 Control and Retina keep the full `default-calt` set for broader language and markup coverage.
+
+Focus is the recommended everyday coding cut. It keeps useful operator ligatures
+but disables decorative wave arrows, HTML comment ligatures, trig ligatures, and
+tilde chaining so raw source stays easy to inspect. It also uses a dotted zero,
+a flat-top `1`, a high underscore for `snake_case`, larger parentheses, and
+curly-flat braces for nested code.
 
 ## Ghostty
 
@@ -242,6 +255,15 @@ font-family-italic = "Berka Mono Retina"
 font-family-bold-italic = "Berka Mono Retina"
 ```
 
+For Focus, replace the family name with:
+
+```conf
+font-family = "Berka Mono Focus"
+font-family-bold = "Berka Mono Focus"
+font-family-italic = "Berka Mono Focus"
+font-family-bold-italic = "Berka Mono Focus"
+```
+
 ## Kitty
 
 ```conf
@@ -300,6 +322,15 @@ italic_font      family="Berka Mono Retina" style="Italic"
 bold_italic_font family="Berka Mono Retina" style="Bold Italic"
 ```
 
+For Focus, replace the family name with:
+
+```conf
+font_family      family="Berka Mono Focus"
+bold_font        family="Berka Mono Focus" style="Bold"
+italic_font      family="Berka Mono Focus" style="Italic"
+bold_italic_font family="Berka Mono Focus" style="Bold Italic"
+```
+
 ## Build From Source
 
 Requirements:
@@ -334,6 +365,8 @@ cp /path/to/berka-mono-closer/sources/control/private-build-plans.toml ./private
 npm run build -- ttf::BerkaMonoControl --jCmd=2
 cp /path/to/berka-mono-closer/sources/retina/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoRetina --jCmd=2
+cp /path/to/berka-mono-closer/sources/focus/private-build-plans.toml ./private-build-plans.toml
+npm run build -- ttf::BerkaMonoFocus --jCmd=2
 ```
 
 The generated files will be in:
@@ -345,6 +378,7 @@ dist/BerkaMonoCloserSemiCondensed/TTF/
 dist/BerkaMonoCloserNarrow/TTF/
 dist/BerkaMonoControl/TTF/
 dist/BerkaMonoRetina/TTF/
+dist/BerkaMonoFocus/TTF/
 ```
 
 You can also run:
@@ -353,7 +387,7 @@ You can also run:
 ./scripts/build.sh /path/to/Iosevka
 ```
 
-The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow` and `sources/retina/private-build-plans.toml` for `Berka Mono Retina`.
+The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow`, `sources/retina/private-build-plans.toml` for `Berka Mono Retina`, and `sources/focus/private-build-plans.toml` for `Berka Mono Focus`.
 
 Generate WOFF2 files from the checked-in TTF files:
 
@@ -373,6 +407,7 @@ What makes this legal:
 - No commercial font software, outlines, metrics files, or binaries are included.
 - The design goal is a general visual direction: calm, wide, rectangular, readable coding text. It is not a clone of any proprietary font.
 - The Control variant is guided by public high-level design language from a datasheet, but it is generated only from Iosevka source and documented custom-build parameters.
+- The Focus variant is an original coding-readability tuning built from Iosevka parameters for ambiguity reduction, compact scan density, and restrained ligatures.
 
 This project is not affiliated with, endorsed by, or derived from Berkeley Mono or US Graphics Company. Berkeley Mono is a separate commercial font.
 

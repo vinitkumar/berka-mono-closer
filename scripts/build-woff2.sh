@@ -27,6 +27,7 @@ build_family "$repo_dir/fonts/ttf-semi-condensed" "$repo_dir/fonts/woff2-semi-co
 build_family "$repo_dir/fonts/ttf-narrow" "$repo_dir/fonts/woff2-narrow"
 build_family "$repo_dir/fonts/ttf-control" "$repo_dir/fonts/woff2-control"
 build_family "$repo_dir/fonts/ttf-retina" "$repo_dir/fonts/woff2-retina"
+build_family "$repo_dir/fonts/ttf-focus" "$repo_dir/fonts/woff2-focus"
 
 echo "Built WOFF2 fonts in:"
 echo "  $repo_dir/fonts/woff2"
@@ -35,3 +36,4 @@ echo "  $repo_dir/fonts/woff2-semi-condensed"
 echo "  $repo_dir/fonts/woff2-narrow"
 echo "  $repo_dir/fonts/woff2-control"
 echo "  $repo_dir/fonts/woff2-retina"
+echo "  $repo_dir/fonts/woff2-focus"

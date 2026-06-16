@@ -72,7 +72,7 @@ set_step "Ensuring macOS font directory exists: $font_dir"
 mkdir -p "$font_dir"
 
 set_step "Removing existing Berka TTF files from $font_dir"
-existing_fonts=$(find "$font_dir" -maxdepth 1 -type f \( -name "BerkaMonoCloser*.ttf" -o -name "BerkaMonoCloserCompact*.ttf" -o -name "BerkaMonoCloserSemiCondensed*.ttf" -o -name "BerkaMonoCloserNarrow*.ttf" -o -name "BerkaMonoControl*.ttf" -o -name "BerkaMonoRetina*.ttf" \) -print)
+existing_fonts=$(find "$font_dir" -maxdepth 1 -type f \( -name "BerkaMonoCloser*.ttf" -o -name "BerkaMonoCloserCompact*.ttf" -o -name "BerkaMonoCloserSemiCondensed*.ttf" -o -name "BerkaMonoCloserNarrow*.ttf" -o -name "BerkaMonoControl*.ttf" -o -name "BerkaMonoRetina*.ttf" -o -name "BerkaMonoFocus*.ttf" \) -print)
 if [ -n "$existing_fonts" ]; then
   printf '%s\n' "$existing_fonts" | while IFS= read -r file; do
     log "  -> deleting $file"
@@ -90,5 +90,6 @@ copy_fonts "Berka Mono Closer SemiCondensed" "$repo_dir/fonts/ttf-semi-condensed
 copy_fonts "Berka Mono Closer Narrow" "$repo_dir/fonts/ttf-narrow" "BerkaMonoCloserNarrow*.ttf"
 copy_fonts "Berka Mono Control" "$repo_dir/fonts/ttf-control" "BerkaMonoControl*.ttf"
 copy_fonts "Berka Mono Retina" "$repo_dir/fonts/ttf-retina" "BerkaMonoRetina*.ttf"
+copy_fonts "Berka Mono Focus" "$repo_dir/fonts/ttf-focus" "BerkaMonoFocus*.ttf"
 
-set_step "Installed Berka Mono Closer, Berka Mono Closer Compact, Berka Mono Closer SemiCondensed, Berka Mono Closer Narrow, Berka Mono Control, and Berka Mono Retina into $font_dir"
+set_step "Installed Berka Mono Closer, Berka Mono Closer Compact, Berka Mono Closer SemiCondensed, Berka Mono Closer Narrow, Berka Mono Control, Berka Mono Retina, and Berka Mono Focus into $font_dir"

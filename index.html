@@ -113,6 +113,24 @@
       font-weight: 400;
       font-style: italic;
     }
+    @font-face {
+      font-family: "Berka Mono Focus";
+      src: url("fonts/woff2-focus/BerkaMonoFocus-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Focus";
+      src: url("fonts/woff2-focus/BerkaMonoFocus-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Focus";
+      src: url("fonts/woff2-focus/BerkaMonoFocus-Italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
 
     :root {
       color-scheme: light;
@@ -448,14 +466,18 @@
   | "Berka Mono Closer"
   | "Berka Mono Closer Compact"
   | "Berka Mono Closer SemiCondensed"
-  | "Berka Mono Closer Narrow";
+  | "Berka Mono Closer Narrow"
+  | "Berka Mono Control"
+  | "Berka Mono Retina"
+  | "Berka Mono Focus";
 
 export function pickFont(input: string) {
-  const narrow = input.length >= 120;
-  return narrow ? "Narrow" : "Retina";
+  const row_0 = input.trim().length >= 120;
+  return row_0 ? "Narrow" : "Focus";
 }
 
-// ligatures: != <= >= => -> ===</textarea>
+// ambiguity: 0O 1Il rn m snake_case
+// ligatures: != !== <= >= => -> === ~~ <!--</textarea>
         </div>
       </aside>
 
@@ -500,7 +522,8 @@ export function pickFont(input: string) {
       { key: "semi", name: "Berka Mono Closer SemiCondensed", width: "Dense" },
       { key: "narrow", name: "Berka Mono Closer Narrow", width: "Narrow" },
       { key: "control", name: "Berka Mono Control", width: "Tight" },
-      { key: "retina", name: "Berka Mono Retina", width: "Retina" }
+      { key: "retina", name: "Berka Mono Retina", width: "Retina" },
+      { key: "focus", name: "Berka Mono Focus", width: "Focus" }
     ];
 
     const state = {
@@ -535,12 +558,12 @@ export function pickFont(input: string) {
       if (/^"[^"]*"$/.test(token)) return `<span class="str">${escaped}</span>`;
       if (/^(type|export|function|const|return|true|false)$/.test(token)) return `<span class="kw">${escaped}</span>`;
       if (/^\d+$/.test(token)) return `<span class="num">${escaped}</span>`;
-      if (/^(<=|>=|=>|->|!=|===|==|\|>|&&)$/.test(token)) return `<span class="op">${escaped}</span>`;
+      if (/^(<=|>=|=>|->|!==|!=|===|==|~~|\|>|&&)$/.test(token)) return `<span class="op">${escaped}</span>`;
       return escaped;
     }
 
     function highlightLine(line) {
-      const tokenPattern = /(\/\/.*|"[^"]*"|<=|>=|=>|->|!=|===|==|\|>|&&|\b(?:type|export|function|const|return|true|false)\b|\b\d+\b)/g;
+      const tokenPattern = /(\/\/.*|"[^"]*"|<=|>=|=>|->|!==|!=|===|==|~~|\|>|&&|\b(?:type|export|function|const|return|true|false)\b|\b\d+\b)/g;
       let html = "";
       let offset = 0;
       for (const match of line.matchAll(tokenPattern)) {

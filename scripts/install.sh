@@ -5,7 +5,7 @@ repo="vinitkumar/berka-mono-closer"
 branch="${BERKA_BRANCH:-main}"
 raw_base="https://raw.githubusercontent.com/$repo/$branch"
 
-families='closer compact semi-condensed narrow control retina'
+families='closer compact semi-condensed narrow control retina focus'
 choice="${1:-${BERKA_FONT:-}}"
 current_step="starting"
 
@@ -47,6 +47,7 @@ family_name() {
     narrow) printf '%s\n' "Berka Mono Closer Narrow" ;;
     control) printf '%s\n' "Berka Mono Control" ;;
     retina) printf '%s\n' "Berka Mono Retina" ;;
+    focus) printf '%s\n' "Berka Mono Focus" ;;
     *) return 1 ;;
   esac
 }
@@ -59,6 +60,7 @@ family_xcode_name() {
     narrow) printf '%s\n' "BerkaMonoCloserNarrow-Regular" ;;
     control) printf '%s\n' "BerkaMonoControl-Regular" ;;
     retina) printf '%s\n' "BerkaMonoRetina-Regular" ;;
+    focus) printf '%s\n' "BerkaMonoFocus-Regular" ;;
     *) return 1 ;;
   esac
 }
@@ -71,6 +73,7 @@ family_dir() {
     narrow) printf '%s\n' "fonts/ttf-narrow" ;;
     control) printf '%s\n' "fonts/ttf-control" ;;
     retina) printf '%s\n' "fonts/ttf-retina" ;;
+    focus) printf '%s\n' "fonts/ttf-focus" ;;
     *) return 1 ;;
   esac
 }
@@ -83,6 +86,7 @@ family_files() {
     narrow) prefix="BerkaMonoCloserNarrow"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     control) prefix="BerkaMonoControl"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     retina) prefix="BerkaMonoRetina"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
+    focus) prefix="BerkaMonoFocus"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     *) return 1 ;;
   esac
   for style in $styles; do
@@ -130,6 +134,7 @@ select_family() {
     printf '  4) Berka Mono Closer Narrow\n' > /dev/tty
     printf '  5) Berka Mono Control\n' > /dev/tty
     printf '  6) Berka Mono Retina\n' > /dev/tty
+    printf '  7) Berka Mono Focus\n' > /dev/tty
     printf 'Selection [1]: ' > /dev/tty
     read -r answer < /dev/tty
     case "${answer:-1}" in
@@ -139,6 +144,7 @@ select_family() {
       4) printf '%s\n' narrow ;;
       5) printf '%s\n' control ;;
       6) printf '%s\n' retina ;;
+      7) printf '%s\n' focus ;;
       *) die "Invalid selection: $answer" ;;
     esac
   else
