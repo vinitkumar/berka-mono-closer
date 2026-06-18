@@ -1,77 +1,55 @@
 # Berka Mono Closer
 
-Berka Mono Closer is a custom build of [Iosevka](https://github.com/be5invis/Iosevka) tuned for a calm, wide, rectangular coding-font feel.
-
-The repository includes seven families. They share the same core upright glyph
-design, so the visual difference between cuts is intentionally modest. The real
-differences are in width, weight, leading, italic construction, and ligature
-policy:
-
-| Family | Cell width | Weights | Leading | Italic | Ligature policy |
-| --- | ---: | --- | ---: | --- | --- |
-| `Berka Mono Closer` | 620 | 400, 500, 600, 700 | 1200 | italic | disables `arrow-wave`, `counter-arrow-wave`, `html-comment`, `trig` |
-| `Berka Mono Closer Compact` | 605 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
-| `Berka Mono Closer SemiCondensed` | 585 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
-| `Berka Mono Closer Narrow` | 520 | 400, 500, 600, 700 | 1180 | italic | same disables as Closer |
-| `Berka Mono Control` | 595 | 400, 450, 500, 600, 700 | 1180 | oblique | full Iosevka `default-calt` |
-| `Berka Mono Retina` | 605 | 430, 470, 530, 630, 730 | 1180 | oblique | full Iosevka `default-calt` |
-| `Berka Mono Focus` | 592 | 425, 465, 525, 620, 710 | 1170 | oblique | debugging-first `default-calt` subset |
-
-It is built only from Iosevka's open source build system and variant parameters. It does not contain proprietary outlines, copied glyphs, or commercial font files.
-
-![Berka Mono Closer dark specimen](images/specimen-dark.png)
-
-![Berka Mono Closer light specimen](images/specimen-light.png)
-
-![Berka Mono Closer Compact comparison](images/compact-comparison.png)
-
-![Berka Mono Closer SemiCondensed specimen](images/semi-condensed-specimen.png)
-
-![Berka Mono Closer Narrow specimen](images/narrow-specimen.png)
-
-![Berka Mono Control specimen](images/control-specimen.png)
-
-![Berka Mono Retina specimen](images/retina-specimen.png)
-
-![Berka Mono Focus specimen](images/focus-specimen.png)
-
-## Download
+Berka Mono Closer is a family of custom [Iosevka](https://github.com/be5invis/Iosevka) builds tuned for calm, rectangular, readable coding text.
 
 ## Install
 
-Install every Berka TTF family and configure your editor and terminal to use one selected family:
+Recommended everyday setup:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- focus
+```
+
+Interactive setup:
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh
 ```
 
-Use a specific family non-interactively:
+The installer downloads all required TTF files for the selected family, installs
+them, and configures supported editors/terminals when their config files are
+present.
+
+Supported app setup:
+
+```text
+VS Code, Cursor, Windsurf, JetBrains IDEs, Zed, Ghostty, Kitty, Alacritty,
+Windows Terminal, GNOME Terminal, Neovim, Vim, MacVim, Neovide, and Xcode.
+```
+
+## Pick A Family
+
+| Choice | Family name | Best for |
+| --- | --- | --- |
+| `focus` | `Berka Mono Focus` | Recommended default. Debugging-first, clearer ambiguity cases, compact rhythm. |
+| `retina` | `Berka Mono Retina` | High-DPI screens where you want heavier optical strokes and full ligatures. |
+| `control` | `Berka Mono Control` | Terminal-first compact feel with full Iosevka `default-calt`. |
+| `closer` | `Berka Mono Closer` | Wider, calm original cut. |
+| `compact` | `Berka Mono Closer Compact` | Slightly denser original cut. |
+| `semi-condensed` | `Berka Mono Closer SemiCondensed` | More columns without going narrow. |
+| `narrow` | `Berka Mono Closer Narrow` | Maximum terminal/editor density. |
+
+Use a different family by changing the final argument:
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- retina
 ```
 
-Available choices:
+Try the fonts in the browser: <https://vinitkumar.github.io/berka-mono-closer/>
 
-```text
-closer
-compact
-semi-condensed
-narrow
-control
-retina
-focus
-```
+## Manual Setup
 
-The installer supports macOS, Linux, and Windows through Git Bash/MSYS/Cygwin. It installs the fonts and configures VS Code, Cursor, JetBrains IDEs, Zed, Ghostty, Kitty, Alacritty, Windows Terminal, and GNOME Terminal when their config locations are present.
-
-Try the fonts in the browser at:
-
-```text
-https://vinitkumar.github.io/berka-mono-closer/
-```
-
-## Manual Download
+Download the latest release: <https://github.com/vinitkumar/berka-mono-closer/releases/latest>
 
 Install the TTF files from:
 
@@ -103,7 +81,7 @@ On macOS, you can copy them into `~/Library/Fonts` manually:
 ./scripts/install-macos.sh
 ```
 
-Use this font family name in editors and terminals:
+Use one of these family names in editors and terminals:
 
 ```text
 Berka Mono Closer
@@ -115,65 +93,104 @@ Berka Mono Retina
 Berka Mono Focus
 ```
 
-## VS Code
+## Editor Setup
 
-After installing the TTF files, open `settings.json` with `Preferences: Open User Settings (JSON)` and add:
+VS Code, Cursor, and Windsurf:
 
 ```json
 {
-  "editor.fontFamily": "'Berka Mono Closer', monospace",
+  "editor.fontFamily": "'Berka Mono Focus', Menlo, Monaco, monospace",
   "editor.fontLigatures": true,
-  "terminal.integrated.fontFamily": "'Berka Mono Closer'"
+  "terminal.integrated.fontFamily": "Berka Mono Focus"
 }
 ```
 
-For Compact, SemiCondensed, Narrow, Control, Retina, or Focus, replace `Berka Mono Closer` with the matching family name from the Download section.
-
-## Cursor
-
-Cursor uses VS Code-compatible settings. After installing the TTF files, open `settings.json` with `Preferences: Open User Settings (JSON)` and add:
+Zed:
 
 ```json
 {
-  "editor.fontFamily": "'Berka Mono Closer', monospace",
-  "editor.fontLigatures": true,
-  "terminal.integrated.fontFamily": "'Berka Mono Closer'"
-}
-```
-
-You can also import existing VS Code settings from Cursor Settings if you already configured the font in VS Code.
-
-## Zed
-
-After installing the TTF files, open Zed settings and add:
-
-```json
-{
-  "buffer_font_family": "Berka Mono Closer",
+  "buffer_font_family": "Berka Mono Focus",
   "buffer_font_features": {
     "calt": true,
     "liga": true
   },
   "terminal": {
-    "font_family": "Berka Mono Closer"
+    "font_family": "Berka Mono Focus"
   }
 }
 ```
 
-For Compact, SemiCondensed, Narrow, Control, Retina, or Focus, replace `Berka Mono Closer` with the matching family name from the Download section.
+Ghostty:
 
-## Styles
+```conf
+font-family = "Berka Mono Focus"
+font-family-bold = "Berka Mono Focus"
+font-family-italic = "Berka Mono Focus"
+font-family-bold-italic = "Berka Mono Focus"
+font-size = 15
+font-feature = liga
+font-feature = calt
+font-feature = clig
+font-thicken = true
+```
 
-- Regular
-- Italic
-- Medium
-- Medium Italic
-- SemiBold
-- SemiBold Italic
-- Bold
-- Bold Italic
+Kitty:
 
-`Berka Mono Control`, `Berka Mono Retina`, and `Berka Mono Focus` also include Book and Book Italic.
+```conf
+font_family      family="Berka Mono Focus"
+bold_font        family="Berka Mono Focus" style="Bold"
+italic_font      family="Berka Mono Focus" style="Italic"
+bold_italic_font family="Berka Mono Focus" style="Bold Italic"
+font_size        15.0
+disable_ligatures never
+```
+
+For another family, replace `Berka Mono Focus` with the matching family name
+from the table above. Full terminal examples are in:
+
+```text
+examples/ghostty.conf
+examples/kitty.conf
+```
+
+## Website Fonts
+
+Use WOFF2 files for websites. Example:
+
+```css
+@font-face {
+  font-family: "Berka Mono Focus";
+  src: url("fonts/woff2-focus/BerkaMonoFocus-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+```
+
+## Families
+
+The families share the same core upright glyph design. The real differences are
+width, weight, leading, italic construction, and ligature policy:
+
+| Family | Cell width | Weights | Leading | Italic | Ligature policy |
+| --- | ---: | --- | ---: | --- | --- |
+| `Berka Mono Closer` | 620 | 400, 500, 600, 700 | 1200 | italic | disables `arrow-wave`, `counter-arrow-wave`, `html-comment`, `trig` |
+| `Berka Mono Closer Compact` | 605 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
+| `Berka Mono Closer SemiCondensed` | 585 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
+| `Berka Mono Closer Narrow` | 520 | 400, 500, 600, 700 | 1180 | italic | same disables as Closer |
+| `Berka Mono Control` | 595 | 400, 450, 500, 600, 700 | 1180 | oblique | full Iosevka `default-calt` |
+| `Berka Mono Retina` | 605 | 430, 470, 530, 630, 730 | 1180 | oblique | full Iosevka `default-calt` |
+| `Berka Mono Focus` | 592 | 425, 465, 525, 620, 710 | 1170 | oblique | debugging-first `default-calt` subset |
+
+All families include Regular, Italic, Medium, Medium Italic, SemiBold,
+SemiBold Italic, Bold, and Bold Italic. Control, Retina, and Focus also include
+Book and Book Italic.
+
+Focus is the recommended everyday coding cut. It keeps useful operator
+ligatures but disables decorative wave arrows, HTML comment ligatures, trig
+ligatures, and tilde chaining so raw source stays easy to inspect. It also uses
+a dotted zero, a flat-top `1`, a high underscore for `snake_case`, larger
+parentheses, and curly-flat braces for nested code.
 
 ## Ligatures
 
@@ -186,150 +203,31 @@ Closer, Compact, SemiCondensed, and Narrow intentionally disable a few more deco
 - `html-comment`
 - `trig`
 
-Control and Retina keep the full `default-calt` set for broader language and markup coverage.
+Control and Retina keep the full `default-calt` set for broader language and
+markup coverage.
 
-Focus is the recommended everyday coding cut. It keeps useful operator ligatures
-but disables decorative wave arrows, HTML comment ligatures, trig ligatures, and
-tilde chaining so raw source stays easy to inspect. It also uses a dotted zero,
-a flat-top `1`, a high underscore for `snake_case`, larger parentheses, and
-curly-flat braces for nested code.
+## Specimen Gallery
 
-## Ghostty
+<table>
+  <tr>
+    <td><img src="images/focus-specimen.png" alt="Berka Mono Focus specimen" width="420"><br><strong>Focus</strong></td>
+    <td><img src="images/retina-specimen.png" alt="Berka Mono Retina specimen" width="420"><br><strong>Retina</strong></td>
+  </tr>
+  <tr>
+    <td><img src="images/control-specimen.png" alt="Berka Mono Control specimen" width="420"><br><strong>Control</strong></td>
+    <td><img src="images/narrow-specimen.png" alt="Berka Mono Closer Narrow specimen" width="420"><br><strong>Narrow</strong></td>
+  </tr>
+  <tr>
+    <td><img src="images/semi-condensed-specimen.png" alt="Berka Mono Closer SemiCondensed specimen" width="420"><br><strong>SemiCondensed</strong></td>
+    <td><img src="images/compact-comparison.png" alt="Berka Mono Closer Compact comparison" width="420"><br><strong>Compact</strong></td>
+  </tr>
+</table>
 
-```conf
-font-family = "Berka Mono Closer"
-font-family-bold = "Berka Mono Closer"
-font-family-italic = "Berka Mono Closer"
-font-family-bold-italic = "Berka Mono Closer"
-font-size = 15
-font-feature = liga
-font-feature = calt
-font-feature = clig
-font-thicken = true
-```
-
-Full example: [examples/ghostty.conf](examples/ghostty.conf)
-
-For Compact, replace the family name with:
-
-```conf
-font-family = "Berka Mono Closer Compact"
-font-family-bold = "Berka Mono Closer Compact"
-font-family-italic = "Berka Mono Closer Compact"
-font-family-bold-italic = "Berka Mono Closer Compact"
-```
-
-For SemiCondensed, replace the family name with:
-
-```conf
-font-family = "Berka Mono Closer SemiCondensed"
-font-family-bold = "Berka Mono Closer SemiCondensed"
-font-family-italic = "Berka Mono Closer SemiCondensed"
-font-family-bold-italic = "Berka Mono Closer SemiCondensed"
-```
-
-For Narrow, replace the family name with:
-
-```conf
-font-family = "Berka Mono Closer Narrow"
-font-family-bold = "Berka Mono Closer Narrow"
-font-family-italic = "Berka Mono Closer Narrow"
-font-family-bold-italic = "Berka Mono Closer Narrow"
-```
-
-For Control, replace the family name with:
-
-```conf
-font-family = "Berka Mono Control"
-font-family-bold = "Berka Mono Control"
-font-family-italic = "Berka Mono Control"
-font-family-bold-italic = "Berka Mono Control"
-```
-
-For Retina, replace the family name with:
-
-```conf
-font-family = "Berka Mono Retina"
-font-family-bold = "Berka Mono Retina"
-font-family-italic = "Berka Mono Retina"
-font-family-bold-italic = "Berka Mono Retina"
-```
-
-For Focus, replace the family name with:
-
-```conf
-font-family = "Berka Mono Focus"
-font-family-bold = "Berka Mono Focus"
-font-family-italic = "Berka Mono Focus"
-font-family-bold-italic = "Berka Mono Focus"
-```
-
-## Kitty
-
-```conf
-font_family      family="Berka Mono Closer"
-bold_font        family="Berka Mono Closer" style="Bold"
-italic_font      family="Berka Mono Closer" style="Italic"
-bold_italic_font family="Berka Mono Closer" style="Bold Italic"
-font_size        15.0
-disable_ligatures never
-```
-
-Full example: [examples/kitty.conf](examples/kitty.conf)
-
-For Compact, replace the family name with:
-
-```conf
-font_family      family="Berka Mono Closer Compact"
-bold_font        family="Berka Mono Closer Compact" style="Bold"
-italic_font      family="Berka Mono Closer Compact" style="Italic"
-bold_italic_font family="Berka Mono Closer Compact" style="Bold Italic"
-```
-
-For SemiCondensed, replace the family name with:
-
-```conf
-font_family      family="Berka Mono Closer SemiCondensed"
-bold_font        family="Berka Mono Closer SemiCondensed" style="Bold"
-italic_font      family="Berka Mono Closer SemiCondensed" style="Italic"
-bold_italic_font family="Berka Mono Closer SemiCondensed" style="Bold Italic"
-```
-
-For Narrow, replace the family name with:
-
-```conf
-font_family      family="Berka Mono Closer Narrow"
-bold_font        family="Berka Mono Closer Narrow" style="Bold"
-italic_font      family="Berka Mono Closer Narrow" style="Italic"
-bold_italic_font family="Berka Mono Closer Narrow" style="Bold Italic"
-```
-
-For Control, replace the family name with:
-
-```conf
-font_family      family="Berka Mono Control"
-bold_font        family="Berka Mono Control" style="Bold"
-italic_font      family="Berka Mono Control" style="Italic"
-bold_italic_font family="Berka Mono Control" style="Bold Italic"
-```
-
-For Retina, replace the family name with:
-
-```conf
-font_family      family="Berka Mono Retina"
-bold_font        family="Berka Mono Retina" style="Bold"
-italic_font      family="Berka Mono Retina" style="Italic"
-bold_italic_font family="Berka Mono Retina" style="Bold Italic"
-```
-
-For Focus, replace the family name with:
-
-```conf
-font_family      family="Berka Mono Focus"
-bold_font        family="Berka Mono Focus" style="Bold"
-italic_font      family="Berka Mono Focus" style="Italic"
-bold_italic_font family="Berka Mono Focus" style="Bold Italic"
-```
+<details>
+  <summary>Original Closer specimens</summary>
+  <p><img src="images/specimen-dark.png" alt="Berka Mono Closer dark specimen" width="720"></p>
+  <p><img src="images/specimen-light.png" alt="Berka Mono Closer light specimen" width="720"></p>
+</details>
 
 ## Build From Source
 
