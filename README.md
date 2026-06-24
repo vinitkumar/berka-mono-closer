@@ -16,15 +16,23 @@ Interactive setup:
 curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh
 ```
 
-The installer downloads all required TTF files for the selected family, installs
-them, and configures supported editors/terminals when their config files are
-present.
+The installer downloads every Berka TTF family, installs them into the current
+user's font directory, then prints editor and terminal setup snippets for the
+family you select. It does not rewrite editor, IDE, or terminal config files.
 
-Supported app setup:
+Per-user install locations:
+
+```text
+macOS:   ~/Library/Fonts
+Linux:   ${XDG_DATA_HOME:-~/.local/share}/fonts
+Windows: %LOCALAPPDATA%\Microsoft\Windows\Fonts plus HKCU font registration
+```
+
+Printed setup guidance covers:
 
 ```text
 VS Code, Cursor, Windsurf, JetBrains IDEs, Zed, Ghostty, Kitty, Alacritty,
-Windows Terminal, GNOME Terminal, Neovim, Vim, MacVim, Neovide, and Xcode.
+WezTerm, Windows Terminal, Neovim GUI, Neovide, Vim GUI, and CSS.
 ```
 
 ## Pick A Family
@@ -40,7 +48,8 @@ Windows Terminal, GNOME Terminal, Neovim, Vim, MacVim, Neovide, and Xcode.
 | `narrow` | `Berka Mono Closer Narrow` | Maximum terminal/editor density. |
 | `text` | `Berka Text` | Blog prose and long-form reading, with quasi-proportional spacing. |
 
-Use a different family by changing the final argument:
+Install all families, but print setup guidance for a different family by
+changing the final argument:
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- retina
@@ -78,10 +87,10 @@ fonts/woff2-focus/
 fonts/woff2-text/
 ```
 
-On macOS, you can copy them into `~/Library/Fonts` manually:
+From a repo checkout, install all families without downloading:
 
 ```sh
-./scripts/install-macos.sh
+./scripts/install.sh --source-dir . focus
 ```
 
 Use one of these family names in editors and terminals:
