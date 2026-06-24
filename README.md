@@ -38,6 +38,7 @@ Windows Terminal, GNOME Terminal, Neovim, Vim, MacVim, Neovide, and Xcode.
 | `compact` | `Berka Mono Closer Compact` | Slightly denser original cut. |
 | `semi-condensed` | `Berka Mono Closer SemiCondensed` | More columns without going narrow. |
 | `narrow` | `Berka Mono Closer Narrow` | Maximum terminal/editor density. |
+| `text` | `Berka Text` | Blog prose and long-form reading, with quasi-proportional spacing. |
 
 Use a different family by changing the final argument:
 
@@ -61,6 +62,7 @@ fonts/ttf-narrow/
 fonts/ttf-control/
 fonts/ttf-retina/
 fonts/ttf-focus/
+fonts/ttf-text/
 ```
 
 Use the WOFF2 files for websites:
@@ -73,6 +75,7 @@ fonts/woff2-narrow/
 fonts/woff2-control/
 fonts/woff2-retina/
 fonts/woff2-focus/
+fonts/woff2-text/
 ```
 
 On macOS, you can copy them into `~/Library/Fonts` manually:
@@ -91,6 +94,7 @@ Berka Mono Closer Narrow
 Berka Mono Control
 Berka Mono Retina
 Berka Mono Focus
+Berka Text
 ```
 
 ## Editor Setup
@@ -159,11 +163,27 @@ Use WOFF2 files for websites. Example:
 
 ```css
 @font-face {
-  font-family: "Berka Mono Focus";
-  src: url("fonts/woff2-focus/BerkaMonoFocus-Regular.woff2") format("woff2");
+  font-family: "Berka Text";
+  src: url("fonts/woff2-text/BerkaText-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+}
+```
+
+`Berka Text` is the recommended website body family. Pair it with `Berka Mono
+Focus` or `Berka Mono Closer` for inline code and code blocks:
+
+```css
+body {
+  font-family: "Berka Text", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+code,
+pre {
+  font-family: "Berka Mono Focus", ui-monospace, monospace;
 }
 ```
 
@@ -181,16 +201,22 @@ width, weight, leading, italic construction, and ligature policy:
 | `Berka Mono Control` | 595 | 400, 450, 500, 600, 700 | 1180 | oblique | full Iosevka `default-calt` |
 | `Berka Mono Retina` | 605 | 430, 470, 530, 630, 730 | 1180 | oblique | full Iosevka `default-calt` |
 | `Berka Mono Focus` | 592 | 425, 465, 525, 620, 710 | 1170 | oblique | debugging-first `default-calt` subset |
+| `Berka Text` | 600 | 410, 455, 520, 610, 690 | 1260 | italic | no programming ligatures |
 
 All families include Regular, Italic, Medium, Medium Italic, SemiBold,
-SemiBold Italic, Bold, and Bold Italic. Control, Retina, and Focus also include
-Book and Book Italic.
+SemiBold Italic, Bold, and Bold Italic. Control, Retina, Focus, and Text also
+include Book and Book Italic.
 
 Focus is the recommended everyday coding cut. It keeps useful operator
 ligatures but disables decorative wave arrows, HTML comment ligatures, trig
 ligatures, and tilde chaining so raw source stays easy to inspect. It also uses
 a dotted zero, a flat-top `1`, a high underscore for `snake_case`, larger
 parentheses, and curly-flat braces for nested code.
+
+Text is the prose cut. It keeps the Berka rectangular voice, but switches to
+quasi-proportional spacing, taller leading, true italic emphasis, an unslashed
+zero, smoother punctuation, and no programming ligatures so paragraphs feel
+like essays instead of source code.
 
 ## Ligatures
 
@@ -210,16 +236,20 @@ markup coverage.
 
 <table>
   <tr>
+    <td><img src="images/text-specimen.png" alt="Berka Text specimen" width="420"><br><strong>Text</strong></td>
     <td><img src="images/focus-specimen.png" alt="Berka Mono Focus specimen" width="420"><br><strong>Focus</strong></td>
+  </tr>
+  <tr>
     <td><img src="images/retina-specimen.png" alt="Berka Mono Retina specimen" width="420"><br><strong>Retina</strong></td>
-  </tr>
-  <tr>
     <td><img src="images/control-specimen.png" alt="Berka Mono Control specimen" width="420"><br><strong>Control</strong></td>
-    <td><img src="images/narrow-specimen.png" alt="Berka Mono Closer Narrow specimen" width="420"><br><strong>Narrow</strong></td>
   </tr>
   <tr>
+    <td><img src="images/narrow-specimen.png" alt="Berka Mono Closer Narrow specimen" width="420"><br><strong>Narrow</strong></td>
     <td><img src="images/semi-condensed-specimen.png" alt="Berka Mono Closer SemiCondensed specimen" width="420"><br><strong>SemiCondensed</strong></td>
+  </tr>
+  <tr>
     <td><img src="images/compact-comparison.png" alt="Berka Mono Closer Compact comparison" width="420"><br><strong>Compact</strong></td>
+    <td></td>
   </tr>
 </table>
 
@@ -265,6 +295,8 @@ cp /path/to/berka-mono-closer/sources/retina/private-build-plans.toml ./private-
 npm run build -- ttf::BerkaMonoRetina --jCmd=2
 cp /path/to/berka-mono-closer/sources/focus/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoFocus --jCmd=2
+cp /path/to/berka-mono-closer/sources/text/private-build-plans.toml ./private-build-plans.toml
+npm run build -- ttf::BerkaText --jCmd=2
 ```
 
 The generated files will be in:
@@ -277,6 +309,7 @@ dist/BerkaMonoCloserNarrow/TTF/
 dist/BerkaMonoControl/TTF/
 dist/BerkaMonoRetina/TTF/
 dist/BerkaMonoFocus/TTF/
+dist/BerkaText/TTF/
 ```
 
 You can also run:
@@ -285,7 +318,7 @@ You can also run:
 ./scripts/build.sh /path/to/Iosevka
 ```
 
-The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow`, `sources/retina/private-build-plans.toml` for `Berka Mono Retina`, and `sources/focus/private-build-plans.toml` for `Berka Mono Focus`.
+The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow`, `sources/retina/private-build-plans.toml` for `Berka Mono Retina`, `sources/focus/private-build-plans.toml` for `Berka Mono Focus`, and `sources/text/private-build-plans.toml` for `Berka Text`.
 
 Generate WOFF2 files from the checked-in TTF files:
 
@@ -306,6 +339,7 @@ What makes this legal:
 - The design goal is a general visual direction: calm, wide, rectangular, readable coding text. It is not a clone of any proprietary font.
 - The Control variant is guided by public high-level design language from a datasheet, but it is generated only from Iosevka source and documented custom-build parameters.
 - The Focus variant is an original coding-readability tuning built from Iosevka parameters for ambiguity reduction, compact scan density, and restrained ligatures.
+- The Text variant is an original prose-readability tuning built from Iosevka parameters for quasi-proportional spacing, taller reading rhythm, and website body text.
 
 This project is not affiliated with, endorsed by, or derived from Berkeley Mono or US Graphics Company. Berkeley Mono is a separate commercial font.
 

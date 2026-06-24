@@ -1,0 +1,114 @@
+# A legally distinct Iosevka custom build tuned for blog prose and essays:
+# quasi-proportional spacing, warm text rhythm, true italic emphasis, and
+# distinctive-but-legible letterforms that still feel related to Berka Mono.
+
+[buildPlans.BerkaText]
+family = "Berka Text"
+spacing = "quasi-proportional"
+serifs = "sans"
+noCvSs = false
+noLigation = true
+exportGlyphNames = true
+
+[buildPlans.BerkaText.variants]
+inherits = "ss09"
+
+[buildPlans.BerkaText.variants.design]
+capital-a = "straight-serifless"
+capital-b = "standard-serifless"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-corner-serifless-hooked"
+capital-i = "short-serifed"
+capital-j = "serifed"
+capital-k = "straight-serifless"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-r = "straight-serifless"
+capital-w = "straight-flat-top-serifless"
+capital-y = "straight-serifless"
+
+a = "double-storey-serifless"
+b = "toothless-corner-serifless"
+d = "toothed-serifless"
+e = "flat-crossbar"
+f = "flat-hook-serifless"
+g = "double-storey"
+i = "serifed"
+j = "serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+m = "serifless"
+n = "straight-serifless"
+p = "earless-corner-serifless"
+q = "earless-corner-straight-serifless"
+r = "compact-serifless"
+t = "flat-hook"
+u = "toothed-serifless"
+w = "straight-flat-top-serifless"
+y = "straight-serifless"
+
+zero = "oval-unslashed"
+one = "base"
+two = "straight-neck-serifless"
+three = "flat-top-serifless"
+four = "closed-serifless"
+five = "upright-flat-serifless"
+six = "closed-contour"
+seven = "straight-serifless"
+eight = "two-circles"
+nine = "closed-contour"
+
+asterisk = "penta-low"
+brace = "straight"
+paren = "normal"
+caret = "medium"
+dollar = "through"
+ampersand = "upper-open"
+at = "fourfold"
+percent = "rings-continuous-slash"
+number-sign = "upright"
+underscore = "low"
+question = "smooth"
+pilcrow = "low"
+guillemet = "straight"
+
+[buildPlans.BerkaText.variants.italic]
+a = "double-storey-serifless"
+f = "flat-hook-tailed"
+g = "double-storey"
+i = "serifed"
+j = "serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+r = "compact-serifless"
+t = "flat-hook"
+y = "straight-serifless"
+
+[buildPlans.BerkaText.weights]
+Regular = { shape = 410, menu = 400, css = 400 }
+Book = { shape = 455, menu = 450, css = 450 }
+Medium = { shape = 520, menu = 500, css = 500 }
+SemiBold = { shape = 610, menu = 600, css = 600 }
+Bold = { shape = 690, menu = 700, css = 700 }
+
+[buildPlans.BerkaText.widths]
+Normal = { shape = 600, menu = 5, css = "normal" }
+
+[buildPlans.BerkaText.slopes.Upright]
+angle = 0
+shape = "upright"
+menu = "upright"
+css = "normal"
+
+[buildPlans.BerkaText.slopes.Italic]
+angle = 6
+shape = "italic"
+menu = "italic"
+css = "italic"
+
+[buildPlans.BerkaText.metricOverride]
+leading = 1260
+winMetricAscenderPad = 0
+winMetricDescenderPad = 0
+powerlineScaleY = 1.08
+powerlineScaleX = 1.0

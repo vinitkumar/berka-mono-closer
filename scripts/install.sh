@@ -5,7 +5,7 @@ repo="vinitkumar/berka-mono-closer"
 branch="${BERKA_BRANCH:-main}"
 raw_base="https://raw.githubusercontent.com/$repo/$branch"
 
-families='closer compact semi-condensed narrow control retina focus'
+families='closer compact semi-condensed narrow control retina focus text'
 choice="${1:-${BERKA_FONT:-}}"
 current_step="starting"
 
@@ -48,6 +48,7 @@ family_name() {
     control) printf '%s\n' "Berka Mono Control" ;;
     retina) printf '%s\n' "Berka Mono Retina" ;;
     focus) printf '%s\n' "Berka Mono Focus" ;;
+    text) printf '%s\n' "Berka Text" ;;
     *) return 1 ;;
   esac
 }
@@ -61,6 +62,7 @@ family_xcode_name() {
     control) printf '%s\n' "BerkaMonoControl-Regular" ;;
     retina) printf '%s\n' "BerkaMonoRetina-Regular" ;;
     focus) printf '%s\n' "BerkaMonoFocus-Regular" ;;
+    text) printf '%s\n' "BerkaText-Regular" ;;
     *) return 1 ;;
   esac
 }
@@ -74,6 +76,7 @@ family_dir() {
     control) printf '%s\n' "fonts/ttf-control" ;;
     retina) printf '%s\n' "fonts/ttf-retina" ;;
     focus) printf '%s\n' "fonts/ttf-focus" ;;
+    text) printf '%s\n' "fonts/ttf-text" ;;
     *) return 1 ;;
   esac
 }
@@ -87,6 +90,7 @@ family_files() {
     control) prefix="BerkaMonoControl"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     retina) prefix="BerkaMonoRetina"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     focus) prefix="BerkaMonoFocus"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
+    text) prefix="BerkaText"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     *) return 1 ;;
   esac
   for style in $styles; do
@@ -135,6 +139,7 @@ select_family() {
     printf '  5) Berka Mono Control\n' > /dev/tty
     printf '  6) Berka Mono Retina\n' > /dev/tty
     printf '  7) Berka Mono Focus\n' > /dev/tty
+    printf '  8) Berka Text\n' > /dev/tty
     printf 'Selection [1]: ' > /dev/tty
     read -r answer < /dev/tty
     case "${answer:-1}" in
@@ -145,6 +150,7 @@ select_family() {
       5) printf '%s\n' control ;;
       6) printf '%s\n' retina ;;
       7) printf '%s\n' focus ;;
+      8) printf '%s\n' text ;;
       *) die "Invalid selection: $answer" ;;
     esac
   else
@@ -179,7 +185,7 @@ install_fonts_unix() {
   esac
   set_step "Installing TTF files into $font_dir"
   mkdir -p "$font_dir"
-  find "$font_dir" -maxdepth 1 -type f \( -name "BerkaMonoCloser*.ttf" -o -name "BerkaMonoControl*.ttf" -o -name "BerkaMonoRetina*.ttf" \) -delete
+  find "$font_dir" -maxdepth 1 -type f \( -name "BerkaMonoCloser*.ttf" -o -name "BerkaMonoControl*.ttf" -o -name "BerkaMonoRetina*.ttf" -o -name "BerkaMonoFocus*.ttf" -o -name "BerkaText*.ttf" \) -delete
   cp "$src"/*.ttf "$font_dir"/
   if command -v fc-cache >/dev/null 2>&1; then
     log "Refreshing font cache for $font_dir"

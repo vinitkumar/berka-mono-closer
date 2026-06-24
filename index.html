@@ -131,6 +131,24 @@
       font-weight: 400;
       font-style: italic;
     }
+    @font-face {
+      font-family: "Berka Text";
+      src: url("fonts/woff2-text/BerkaText-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Text";
+      src: url("fonts/woff2-text/BerkaText-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Text";
+      src: url("fonts/woff2-text/BerkaText-Italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
 
     :root {
       color-scheme: light;
@@ -314,6 +332,10 @@
       background: var(--panel);
     }
 
+    .preview[hidden] {
+      display: none;
+    }
+
     .preview-head {
       display: flex;
       align-items: center;
@@ -350,6 +372,81 @@
     .preview code {
       color: inherit;
       font: inherit;
+    }
+
+    .article-preview {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #fbfaf6;
+    }
+
+    .article-preview[hidden] {
+      display: none;
+    }
+
+    .article-surface {
+      min-height: 500px;
+      padding: clamp(22px, 5vw, 46px);
+      color: #171916;
+      font-family: var(--sample-font), ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .article {
+      max-width: 68ch;
+      margin: 0 auto;
+    }
+
+    .article-kicker,
+    .article-meta {
+      color: var(--muted);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .article-title {
+      max-width: 14ch;
+      margin: 10px 0 10px;
+      font-family: var(--sample-font), ui-sans-serif, system-ui, sans-serif;
+      font-size: clamp(2.1rem, 6vw, 4.3rem);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 0.98;
+    }
+
+    .article-meta {
+      margin-bottom: clamp(22px, 4vw, 34px);
+      text-transform: none;
+    }
+
+    .article-copy {
+      display: grid;
+      gap: 1.05em;
+      font-size: var(--sample-size);
+      font-style: var(--sample-style);
+      line-height: var(--sample-leading);
+    }
+
+    .article-copy p,
+    .article-copy blockquote {
+      margin: 0;
+    }
+
+    .article-copy em {
+      font-style: italic;
+    }
+
+    .article-copy blockquote {
+      margin: 0.25em 0;
+      padding-left: 1em;
+      border-left: 3px solid color-mix(in srgb, var(--accent), transparent 35%);
+      color: #29302c;
+      font-weight: 450;
     }
 
     .kw { color: #85d6c9; }
@@ -460,7 +557,7 @@
           </select>
         </div>
 
-        <div>
+        <div id="sampleControl">
           <label for="source">Sample</label>
           <textarea id="source" spellcheck="false">type FontFamily =
   | "Berka Mono Closer"
@@ -469,7 +566,8 @@
   | "Berka Mono Closer Narrow"
   | "Berka Mono Control"
   | "Berka Mono Retina"
-  | "Berka Mono Focus";
+  | "Berka Mono Focus"
+  | "Berka Text";
 
 export function pickFont(input: string) {
   const row_0 = input.trim().length >= 120;
@@ -482,15 +580,38 @@ export function pickFont(input: string) {
       </aside>
 
       <section>
-        <div class="preview">
+        <div class="preview" id="codePreview">
           <div class="preview-head">
             <span id="activeName">Berka Mono Closer</span>
             <span class="metrics">
               <span id="widthName">Wide</span>
-              <span>Ligatures on</span>
+              <span id="ligatureName">Ligatures on</span>
             </span>
           </div>
           <pre aria-label="Code preview"><code id="previewCode"></code></pre>
+        </div>
+
+        <div class="article-preview" id="articlePreview" hidden>
+          <div class="preview-head">
+            <span id="articleActiveName">Berka Text</span>
+            <span class="metrics">
+              <span>Article view</span>
+              <span>Ligatures off</span>
+            </span>
+          </div>
+          <div class="article-surface">
+            <article class="article" aria-label="Article preview">
+              <div class="article-kicker">Field Note</div>
+              <h2 class="article-title">A quieter page for longer thoughts</h2>
+              <div class="article-meta">June 24, 2026 · 5 minute read</div>
+              <div class="article-copy">
+                <p>The blog page is a quiet machine for thought. It should hold long sentences without turning them into code, let emphasis feel natural, and keep numbers, initials, and punctuation clear at reading speed.</p>
+                <p>Berka Text keeps the rectangular Berka voice, but the rhythm loosens: narrow letters get their own space, wide letters stop forcing every line into the same grid, and paragraphs feel written instead of assembled.</p>
+                <blockquote>Good prose type does not disappear by becoming bland. It disappears by making the sentence easier to trust.</blockquote>
+                <p>The result should still feel related to Berka Mono Focus in code blocks, but the body copy now has its own texture, pace, and editorial voice.</p>
+              </div>
+            </article>
+          </div>
         </div>
 
         <div class="samples" aria-label="Glyph texture samples">
@@ -523,11 +644,14 @@ export function pickFont(input: string) {
       { key: "narrow", name: "Berka Mono Closer Narrow", width: "Narrow" },
       { key: "control", name: "Berka Mono Control", width: "Tight" },
       { key: "retina", name: "Berka Mono Retina", width: "Retina" },
-      { key: "focus", name: "Berka Mono Focus", width: "Focus" }
+      { key: "focus", name: "Berka Mono Focus", width: "Focus" },
+      { key: "text", name: "Berka Text", width: "Prose" }
     ];
+    const requestedFamily = new URLSearchParams(location.search).get("family");
+    const initialFont = fonts.find(font => font.key === requestedFamily) || fonts[0];
 
     const state = {
-      font: fonts[0],
+      font: initialFont,
       size: 18,
       leading: 1.45,
       style: "normal"
@@ -535,10 +659,15 @@ export function pickFont(input: string) {
 
     const root = document.documentElement;
     const fontList = document.querySelector("#fontList");
+    const codePreview = document.querySelector("#codePreview");
+    const articlePreview = document.querySelector("#articlePreview");
     const preview = document.querySelector("#previewCode");
     const source = document.querySelector("#source");
+    const sampleControl = document.querySelector("#sampleControl");
     const activeName = document.querySelector("#activeName");
+    const articleActiveName = document.querySelector("#articleActiveName");
     const widthName = document.querySelector("#widthName");
+    const ligatureName = document.querySelector("#ligatureName");
     const size = document.querySelector("#size");
     const leading = document.querySelector("#leading");
     const style = document.querySelector("#style");
@@ -596,14 +725,20 @@ export function pickFont(input: string) {
     }
 
     function render() {
+      const isText = state.font.key === "text";
       root.style.setProperty("--sample-font", `"${state.font.name}"`);
       root.style.setProperty("--sample-size", `${state.size}px`);
       root.style.setProperty("--sample-leading", state.leading);
       root.style.setProperty("--sample-style", state.style);
       activeName.textContent = state.font.name;
+      articleActiveName.textContent = state.font.name;
       widthName.textContent = state.font.width;
+      ligatureName.textContent = isText ? "Ligatures off" : "Ligatures on";
       sizeValue.textContent = state.size;
       leadingValue.textContent = state.leading.toFixed(2);
+      codePreview.hidden = isText;
+      articlePreview.hidden = !isText;
+      sampleControl.hidden = isText;
       preview.innerHTML = highlight(source.value);
       renderButtons();
     }
