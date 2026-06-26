@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Berka VS Code Preview</title>
+  <title>Berka Editor Close-Up</title>
   <style>
     @font-face {
       font-family: "Berka Mono Closer";
@@ -105,22 +105,21 @@
     :root {
       color-scheme: dark;
       --editor-font: "Berka Mono Focus";
+      --font-size: 31px;
+      --line-height: 1.48;
       --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --bg: #0f1419;
-      --chrome: #181f27;
-      --chrome-2: #111820;
-      --panel: #151c24;
-      --activity: #0d1117;
-      --line: #26313d;
-      --text: #d8dee9;
-      --muted: #7d8590;
+      --chrome: #151b23;
+      --line: #293340;
+      --text: #dbe3ec;
+      --muted: #788492;
       --blue: #82aaff;
       --green: #c3e88d;
       --yellow: #ffcb6b;
       --orange: #f78c6c;
       --cyan: #89ddff;
       --purple: #c792ea;
-      --comment: #676e95;
+      --comment: #727ca8;
       font-family: var(--ui);
       background: #05080c;
       color: var(--text);
@@ -133,193 +132,92 @@
     body {
       margin: 0;
       width: 1440px;
-      height: 820px;
+      height: 900px;
       overflow: hidden;
       background:
-        radial-gradient(circle at 18% 8%, rgba(20, 108, 92, 0.28), transparent 34%),
+        radial-gradient(circle at 15% 4%, rgba(20, 108, 92, 0.24), transparent 34%),
         linear-gradient(135deg, #0b1016, #05080c 72%);
     }
 
     .stage {
       width: 1440px;
-      height: 820px;
-      padding: 40px 56px;
-    }
-
-    .window {
-      display: grid;
-      grid-template-rows: 34px 1fr 28px;
-      width: 1328px;
-      height: 740px;
-      overflow: hidden;
-      border: 1px solid #2a3441;
-      border-radius: 8px;
-      background: var(--chrome);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
-    }
-
-    .titlebar {
-      display: grid;
-      grid-template-columns: 92px 1fr 140px;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-      background: #151b23;
-      color: #9da7b3;
-      font-size: 12px;
-    }
-
-    .traffic {
-      display: flex;
-      gap: 8px;
-      padding-left: 16px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .red { background: #ff5f57; }
-    .amber { background: #febc2e; }
-    .green-dot { background: #28c840; }
-
-    .title {
-      justify-self: center;
-      font-weight: 600;
-    }
-
-    .main {
-      display: grid;
-      grid-template-columns: 48px 232px 1fr;
-      min-height: 0;
-    }
-
-    .activity {
-      display: grid;
-      align-content: start;
-      gap: 18px;
-      padding-top: 18px;
-      border-right: 1px solid var(--line);
-      background: var(--activity);
-      color: #7f8a99;
-      text-align: center;
-      font-size: 20px;
-    }
-
-    .activity span {
-      display: block;
-      line-height: 1;
-    }
-
-    .sidebar {
-      border-right: 1px solid var(--line);
-      background: var(--panel);
-      color: #abb2bf;
-      font-size: 13px;
-    }
-
-    .side-title {
-      padding: 16px 18px 12px;
-      color: #c5ccd6;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .tree {
-      display: grid;
-      gap: 2px;
-      padding: 0 8px;
-    }
-
-    .file {
-      min-height: 28px;
-      padding: 6px 10px;
-      border-radius: 4px;
-      color: #9ba5b4;
-      white-space: nowrap;
-    }
-
-    .file.active {
-      background: #26313d;
-      color: #ffffff;
+      height: 900px;
+      padding: 52px 60px;
     }
 
     .editor {
       display: grid;
-      grid-template-rows: 39px 1fr;
-      min-width: 0;
+      grid-template-rows: 54px 1fr;
+      width: 1320px;
+      height: 796px;
+      overflow: hidden;
+      border: 1px solid #2a3441;
+      border-radius: 8px;
       background: var(--bg);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.46);
     }
 
-    .tabs {
-      display: flex;
-      align-items: end;
+    .bar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
       border-bottom: 1px solid var(--line);
-      background: var(--chrome-2);
+      background: var(--chrome);
     }
 
     .tab {
-      min-width: 196px;
-      padding: 12px 16px 10px;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      width: 360px;
+      padding: 0 22px;
       border-right: 1px solid var(--line);
       background: var(--bg);
-      color: #cdd6e3;
-      font-size: 13px;
-      font-weight: 600;
+      color: #d6dee8;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .family {
+      padding-right: 22px;
+      color: #9aa6b5;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .content {
       display: grid;
-      grid-template-columns: 56px 1fr;
+      grid-template-columns: 76px 1fr;
       min-height: 0;
       overflow: hidden;
     }
 
     .gutter,
     .code {
-      padding-top: 22px;
+      padding-top: 38px;
       font-family: var(--editor-font), ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: var(--font-size, 18px);
-      line-height: 1.55;
+      font-size: var(--font-size);
+      line-height: var(--line-height);
       font-variant-ligatures: contextual common-ligatures;
       tab-size: 2;
     }
 
     .gutter {
-      border-right: 1px solid rgba(38, 49, 61, 0.64);
-      color: #4f5b69;
+      border-right: 1px solid rgba(38, 49, 61, 0.74);
+      color: #536170;
       text-align: right;
       user-select: none;
     }
 
     .gutter div {
-      padding-right: 14px;
+      padding-right: 18px;
     }
 
     .code {
       overflow: hidden;
-      padding-left: 22px;
+      padding-left: 30px;
       color: var(--text);
       white-space: pre;
-    }
-
-    .statusbar {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      padding: 0 12px;
-      background: #0e639c;
-      color: white;
-      font-size: 12px;
-    }
-
-    .status-right {
-      display: flex;
-      gap: 18px;
-      opacity: 0.95;
     }
 
     .kw { color: var(--purple); }
@@ -330,60 +228,20 @@
     .op { color: var(--cyan); }
     .com { color: var(--comment); font-style: italic; }
     .prop { color: #f07178; }
-    .plain { color: var(--text); }
   </style>
 </head>
 <body>
   <div class="stage">
-    <div class="window">
-      <div class="titlebar">
-        <div class="traffic">
-          <span class="dot red"></span>
-          <span class="dot amber"></span>
-          <span class="dot green-dot"></span>
-        </div>
-        <div class="title" id="title">berka-mono-closer - Visual Studio Code</div>
-        <div></div>
+    <section class="editor">
+      <div class="bar">
+        <div class="tab" id="tabName">debug-session.ts</div>
+        <div class="family" id="familyName">Berka Mono Focus</div>
       </div>
-      <div class="main">
-        <div class="activity" aria-hidden="true">
-          <span>▦</span>
-          <span>⌕</span>
-          <span>⑂</span>
-          <span>▷</span>
-          <span>⚙</span>
-        </div>
-        <aside class="sidebar">
-          <div class="side-title">Explorer</div>
-          <div class="tree">
-            <div class="file">BERKA-MONO-CLOSER</div>
-            <div class="file active" id="fileName">font-preview.ts</div>
-            <div class="file">README.md</div>
-            <div class="file">scripts/install.sh</div>
-            <div class="file">fonts/woff2</div>
-            <div class="file">specimen/vscode.html</div>
-          </div>
-        </aside>
-        <section class="editor">
-          <div class="tabs">
-            <div class="tab" id="tabName">font-preview.ts</div>
-          </div>
-          <div class="content">
-            <div class="gutter" id="gutter"></div>
-            <pre class="code" id="code"></pre>
-          </div>
-        </section>
+      <div class="content">
+        <div class="gutter" id="gutter"></div>
+        <pre class="code" id="code"></pre>
       </div>
-      <div class="statusbar">
-        <div id="statusFamily">Berka Mono Focus</div>
-        <div class="status-right">
-          <span>TypeScript</span>
-          <span>UTF-8</span>
-          <span>Spaces: 2</span>
-          <span>Ln 12, Col 28</span>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 
   <script>
@@ -391,95 +249,106 @@
       closer: {
         name: "Berka Mono Closer",
         label: "Closer",
+        ident: "closer",
         file: "font-preview.ts",
-        size: "18px",
-        code: [
-          '<span class="kw">type</span> <span class="type">FontFamily</span> <span class="op">=</span> <span class="str">"__FAMILY__"</span>;',
-          "",
-          '<span class="kw">export</span> <span class="kw">function</span> <span class="fn">pickFont</span>(input: <span class="type">string</span>) {',
-          '  <span class="kw">const</span> row_0 <span class="op">=</span> input.<span class="fn">trim</span>().length <span class="op">&gt;=</span> <span class="num">120</span>;',
-          '  <span class="kw">return</span> row_0 ? <span class="str">"Wide rhythm"</span> : <span class="str">"__LABEL__"</span>;',
-          "}",
-          "",
-          '<span class="com">// ambiguity: 0O 1Il rn m snake_case</span>',
-          '<span class="com">// ligatures: != !== &lt;= &gt;= =&gt; -&gt; ===</span>',
-          '<span class="kw">const</span> glyphs <span class="op">=</span> <span class="str">"{} [] () @ # $ % &amp; * / \\\\ | ~"</span>;',
-          '<span class="kw">const</span> ok <span class="op">=</span> row_0 <span class="op">!==</span> <span class="kw">false</span>;',
-          '<span class="kw">export</span> <span class="kw">default</span> { <span class="prop">glyphs</span>, <span class="prop">ok</span> };'
-        ]
+        size: "31px"
       },
       compact: {
         name: "Berka Mono Closer Compact",
         label: "Compact",
+        ident: "compact",
         file: "compact-layout.ts",
-        size: "18px"
+        size: "31px"
       },
       semi: {
         name: "Berka Mono Closer SemiCondensed",
         label: "SemiCondensed",
+        ident: "semiCondensed",
         file: "dense-terminal.ts",
-        size: "18px"
+        size: "31px"
       },
       narrow: {
         name: "Berka Mono Closer Narrow",
         label: "Narrow",
+        ident: "narrow",
         file: "long-lines.ts",
-        size: "18px"
+        size: "31px"
       },
       control: {
         name: "Berka Mono Control",
         label: "Control",
+        ident: "control",
         file: "control-plane.ts",
-        size: "18px"
+        size: "31px"
       },
       retina: {
         name: "Berka Mono Retina",
         label: "Retina",
+        ident: "retina",
         file: "retina-render.ts",
-        size: "18px"
+        size: "31px"
       },
       focus: {
         name: "Berka Mono Focus",
         label: "Focus",
+        ident: "focus",
         file: "debug-session.ts",
-        size: "18px"
+        size: "31px"
       },
       text: {
         name: "Berka Text",
         label: "Text",
+        ident: "text",
         file: "release-notes.md",
-        size: "19px",
+        size: "30px",
+        lineHeight: "1.5",
         code: [
           '<span class="kw">#</span> A quieter page for longer thoughts',
           "",
           'Berka Text keeps the rectangular Berka voice, but the rhythm loosens.',
-          'Narrow letters get their own space, wide letters stop forcing every',
+          'Narrow letters get their own space; wide letters stop forcing every',
           'line into the same grid, and paragraphs feel written instead of assembled.',
           "",
-          '<span class="kw">##</span> Pairing',
+          '<span class="kw">##</span> Texture check',
           "",
-          'Use <span class="str">Berka Text</span> for prose and <span class="str">Berka Mono Focus</span> for code blocks.',
-          'The two families share a texture, but they solve different reading jobs.',
+          'Numbers: <span class="str">0123456789</span>  Ambiguity: <span class="str">0O 1Il rn m</span>',
+          'Punctuation: <span class="str">{ } [ ] ( ) @ # $ % &amp; * / \\\\ | ~</span>',
           "",
           '<span class="com">&gt; Good prose type does not disappear by becoming bland.</span>'
         ]
       }
     };
 
+    const baseCode = [
+      '<span class="kw">type</span> <span class="type">FontFamily</span> <span class="op">=</span> <span class="str">"__FAMILY__"</span>;',
+      "",
+      '<span class="kw">export</span> <span class="kw">function</span> <span class="fn">inspect__IDENT__</span>(input: <span class="type">string</span>) {',
+      '  <span class="kw">const</span> row_0 <span class="op">=</span> input.<span class="fn">trim</span>().length <span class="op">&gt;=</span> <span class="num">120</span>;',
+      '  <span class="kw">const</span> ok <span class="op">=</span> row_0 <span class="op">!==</span> <span class="kw">false</span> <span class="op">&amp;&amp;</span> input <span class="op">!=</span> <span class="kw">null</span>;',
+      '  <span class="kw">return</span> ok ? <span class="str">"__LABEL__ =&gt; clear"</span> : <span class="str">"retry -&gt; &lt;="</span>;',
+      "}",
+      "",
+      '<span class="com">// 0O 1Il | rn m nn snake_case kebab-case</span>',
+      '<span class="com">// != !== == === &lt;= &gt;= =&gt; -&gt; &lt;- :: |&gt; &amp;&amp;</span>',
+      '<span class="kw">const</span> glyphs <span class="op">=</span> <span class="str">"{} [] () @ # $ % &amp; * / \\\\ | ~"</span>;',
+      '<span class="kw">export</span> <span class="kw">default</span> { <span class="prop">glyphs</span>, <span class="prop">inspect__IDENT__</span> };'
+    ];
+
     const query = new URLSearchParams(location.search);
     const key = query.get("family") || "focus";
     const family = families[key] || families.focus;
-    const baseCode = families.closer.code;
     const sourceCode = family.code || baseCode;
     const code = sourceCode.map(line => line
       .replaceAll("__FAMILY__", family.name)
-      .replaceAll("__LABEL__", family.label));
+      .replaceAll("__LABEL__", family.label)
+      .replaceAll("__IDENT__", family.ident));
 
     document.documentElement.style.setProperty("--editor-font", `"${family.name}"`);
     document.documentElement.style.setProperty("--font-size", family.size);
-    document.querySelector("#title").textContent = `${family.name} - Visual Studio Code`;
-    document.querySelector("#statusFamily").textContent = family.name;
-    document.querySelector("#fileName").textContent = family.file;
+    if (family.lineHeight) {
+      document.documentElement.style.setProperty("--line-height", family.lineHeight);
+    }
+    document.querySelector("#familyName").textContent = family.name;
     document.querySelector("#tabName").textContent = family.file;
     document.querySelector("#code").innerHTML = code.join("\n");
     document.querySelector("#gutter").innerHTML = code.map((_, index) => `<div>${index + 1}</div>`).join("");

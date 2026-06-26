@@ -242,8 +242,8 @@ markup coverage.
 
 ## VS Code Screenshots
 
-Each family below is shown in the same VS Code-style editor frame, using the
-actual checked-in WOFF2 files.
+Each family below is shown as a close-up editor crop, using the actual
+checked-in WOFF2 files.
 
 ### Berka Mono Focus
 
