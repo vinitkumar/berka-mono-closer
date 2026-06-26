@@ -240,32 +240,58 @@ Closer, Compact, SemiCondensed, and Narrow intentionally disable a few more deco
 Control and Retina keep the full `default-calt` set for broader language and
 markup coverage.
 
-## Specimen Gallery
+## VS Code Screenshots
 
-<table>
-  <tr>
-    <td><img src="images/text-specimen.png" alt="Berka Text specimen" width="420"><br><strong>Text</strong></td>
-    <td><img src="images/focus-specimen.png" alt="Berka Mono Focus specimen" width="420"><br><strong>Focus</strong></td>
-  </tr>
-  <tr>
-    <td><img src="images/retina-specimen.png" alt="Berka Mono Retina specimen" width="420"><br><strong>Retina</strong></td>
-    <td><img src="images/control-specimen.png" alt="Berka Mono Control specimen" width="420"><br><strong>Control</strong></td>
-  </tr>
-  <tr>
-    <td><img src="images/narrow-specimen.png" alt="Berka Mono Closer Narrow specimen" width="420"><br><strong>Narrow</strong></td>
-    <td><img src="images/semi-condensed-specimen.png" alt="Berka Mono Closer SemiCondensed specimen" width="420"><br><strong>SemiCondensed</strong></td>
-  </tr>
-  <tr>
-    <td><img src="images/compact-comparison.png" alt="Berka Mono Closer Compact comparison" width="420"><br><strong>Compact</strong></td>
-    <td></td>
-  </tr>
-</table>
+Each family below is shown in the same VS Code-style editor frame, using the
+actual checked-in WOFF2 files.
 
-<details>
-  <summary>Original Closer specimens</summary>
-  <p><img src="images/specimen-dark.png" alt="Berka Mono Closer dark specimen" width="720"></p>
-  <p><img src="images/specimen-light.png" alt="Berka Mono Closer light specimen" width="720"></p>
-</details>
+### Berka Mono Focus
+
+Recommended default for everyday coding.
+
+<img src="images/vscode-focus.png" alt="Berka Mono Focus in VS Code" width="960">
+
+### Berka Mono Retina
+
+Heavier optical strokes for high-DPI screens.
+
+<img src="images/vscode-retina.png" alt="Berka Mono Retina in VS Code" width="960">
+
+### Berka Mono Control
+
+Compact terminal-first rhythm with full Iosevka `default-calt`.
+
+<img src="images/vscode-control.png" alt="Berka Mono Control in VS Code" width="960">
+
+### Berka Mono Closer
+
+The wider original cut.
+
+<img src="images/vscode-closer.png" alt="Berka Mono Closer in VS Code" width="960">
+
+### Berka Mono Closer Compact
+
+Slightly denser than the original cut.
+
+<img src="images/vscode-compact.png" alt="Berka Mono Closer Compact in VS Code" width="960">
+
+### Berka Mono Closer SemiCondensed
+
+More columns without going fully narrow.
+
+<img src="images/vscode-semi-condensed.png" alt="Berka Mono Closer SemiCondensed in VS Code" width="960">
+
+### Berka Mono Closer Narrow
+
+Maximum density for terminals and narrow editor panes.
+
+<img src="images/vscode-narrow.png" alt="Berka Mono Closer Narrow in VS Code" width="960">
+
+### Berka Text
+
+The prose cut, shown in a Markdown editing context.
+
+<img src="images/vscode-text.png" alt="Berka Text in VS Code" width="960">
 
 ## Build From Source
 
