@@ -16,9 +16,9 @@ Interactive setup:
 curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh
 ```
 
-The installer downloads every Berka TTF family, installs them into the current
-user's font directory, then prints editor and terminal setup snippets for the
-family you select. It does not rewrite editor, IDE, or terminal config files.
+The installer downloads and installs only the family you select, then prints
+editor and terminal setup snippets for that family. It does not rewrite editor,
+IDE, or terminal config files.
 
 Per-user install locations:
 
@@ -48,8 +48,7 @@ WezTerm, Windows Terminal, Neovim GUI, Neovide, Vim GUI, and CSS.
 | `narrow` | `Berka Mono Closer Narrow` | Maximum terminal/editor density. |
 | `text` | `Berka Text` | Blog prose and long-form reading, with quasi-proportional spacing. |
 
-Install all families, but print setup guidance for a different family by
-changing the final argument:
+Install a different family by changing the final argument:
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- retina
@@ -87,7 +86,7 @@ fonts/woff2-focus/
 fonts/woff2-text/
 ```
 
-From a repo checkout, install all families without downloading:
+From a repo checkout, install one family without downloading:
 
 ```sh
 ./scripts/install.sh --source-dir . focus

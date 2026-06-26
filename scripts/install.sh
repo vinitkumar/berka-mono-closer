@@ -7,6 +7,7 @@ raw_base="${BERKA_RAW_BASE:-https://raw.githubusercontent.com/$repo/$branch}"
 families="focus retina control closer compact semi-condensed narrow text"
 
 family="${BERKA_FONT:-}"
+family_from_arg=0
 dry_run="${BERKA_DRY_RUN:-0}"
 source_dir="${BERKA_SOURCE_DIR:-}"
 download_dir=""
@@ -25,7 +26,7 @@ die() {
 usage() {
   cat <<'EOF'
 Usage:
-  scripts/install.sh [guide-family]
+  scripts/install.sh [family]
   scripts/install.sh --family focus
   scripts/install.sh --dry-run --source-dir .
 
@@ -40,7 +41,7 @@ Families:
   text             Berka Text
 
 Environment:
-  BERKA_FONT       Default guide family when no positional family is passed
+  BERKA_FONT       Default family when no positional family is passed
   BERKA_BRANCH     Git branch/tag for raw GitHub downloads (default: main)
   BERKA_RAW_BASE   Override raw download base URL
   BERKA_SOURCE_DIR Install from an existing repo checkout instead of download
@@ -68,7 +69,7 @@ canonical_family() {
   esac
 }
 
-select_guide_family() {
+select_family() {
   if [ -n "$family" ]; then
     canonical_family "$family" || return 1
     return 0
@@ -76,7 +77,7 @@ select_guide_family() {
 
   if [ -r /dev/tty ] && [ -w /dev/tty ]; then
     {
-      printf 'Choose the Berka family for the editor/terminal setup guide:\n'
+      printf 'Choose the Berka family to install:\n'
       printf '  1) Berka Mono Focus (recommended)\n'
       printf '  2) Berka Mono Retina\n'
       printf '  3) Berka Mono Control\n'
@@ -163,7 +164,9 @@ parse_args() {
         ;;
       --family)
         [ "$#" -ge 2 ] || die "--family requires a value"
+        [ "$family_from_arg" = 0 ] || die "Only one family can be selected"
         family="$2"
+        family_from_arg=1
         shift
         ;;
       --source-dir)
@@ -179,7 +182,9 @@ parse_args() {
         die "Unknown option: $1"
         ;;
       *)
+        [ "$family_from_arg" = 0 ] || die "Only one family can be selected"
         family="$1"
+        family_from_arg=1
         ;;
     esac
     shift
@@ -204,11 +209,7 @@ validate_ttf() {
 
 expected_file_count() {
   count_key="$1"
-  count=0
-  for count_file in $(family_files "$count_key"); do
-    count=$((count + 1))
-  done
-  printf '%s\n' "$count"
+  family_files "$count_key" | wc -l | tr -d ' '
 }
 
 verify_local_fonts() {
@@ -230,19 +231,6 @@ verify_local_fonts() {
     die "$verify_label verification failed for $(family_name "$verify_key"): expected $expected files, found $verified"
 
   log "Verified $verified local TTF files for $(family_name "$verify_key") in $verify_dir."
-}
-
-verify_all_local_fonts() {
-  verify_all_dir="$1"
-  verify_all_label="$2"
-  total_verified=0
-
-  for verify_family in $families; do
-    verify_local_fonts "$verify_family" "$verify_all_dir" "$verify_all_label"
-    total_verified=$((total_verified + $(expected_file_count "$verify_family")))
-  done
-
-  log "Verified $total_verified total local TTF files for all Berka families in $verify_all_dir."
 }
 
 cleanup() {
@@ -268,13 +256,6 @@ stage_from_source() {
   done
 }
 
-stage_all_from_source() {
-  all_source_dest="$1"
-  for all_source_key in $families; do
-    stage_from_source "$all_source_key" "$all_source_dest"
-  done
-}
-
 stage_from_download() {
   download_key="$1"
   stage_dest="$2"
@@ -294,28 +275,23 @@ stage_from_download() {
   done
 }
 
-stage_all_from_download() {
-  all_download_dest="$1"
-  for all_download_key in $families; do
-    stage_from_download "$all_download_key" "$all_download_dest"
-  done
-}
+stage_selected_fonts() {
+  stage_key="$1"
 
-stage_all_fonts() {
   if [ "$dry_run" = 1 ]; then
     return
   fi
 
   download_dir=$(mktemp -d "${TMPDIR:-/tmp}/berka-fonts.XXXXXX")
   if [ -n "$source_dir" ]; then
-    log "Using local font files from $source_dir"
-    stage_all_from_source "$download_dir"
+    log "Using local font files for $(family_name "$stage_key") from $source_dir"
+    stage_from_source "$stage_key" "$download_dir"
   else
-    log "Downloading from $raw_base"
-    stage_all_from_download "$download_dir"
+    log "Downloading $(family_name "$stage_key") from $raw_base"
+    stage_from_download "$stage_key" "$download_dir"
   fi
 
-  verify_all_local_fonts "$download_dir" "Downloaded"
+  verify_local_fonts "$stage_key" "$download_dir" "Staged"
 }
 
 detect_os() {
@@ -356,25 +332,26 @@ windows_path() {
 }
 
 install_unix_fonts() {
+  install_key="$1"
   install_dest="$2"
+  install_name=$(family_name "$install_key")
 
   if [ "$dry_run" = 1 ]; then
-    log "Dry run: would install all Berka font families into $install_dest"
-    for dry_family in $families; do
-      for dry_file in $(family_files "$dry_family"); do
-        log "Dry run: would install $dry_file"
-      done
+    log "Dry run: would install $install_name into $install_dest"
+    for dry_file in $(family_files "$install_key"); do
+      log "Dry run: would install $dry_file"
     done
     return
   fi
 
   mkdir -p "$install_dest"
-  for install_file in "$download_dir"/*.ttf; do
-    validate_ttf "$install_file"
-    cp "$install_file" "$install_dest/"
+  for install_file in $(family_files "$install_key"); do
+    install_path="$download_dir/$install_file"
+    validate_ttf "$install_path"
+    cp "$install_path" "$install_dest/"
   done
 
-  verify_all_local_fonts "$install_dest" "Installed"
+  verify_local_fonts "$install_key" "$install_dest" "Installed"
 
   if command -v fc-cache >/dev/null 2>&1; then
     fc-cache -f "$install_dest" >/dev/null 2>&1 || true
@@ -383,13 +360,12 @@ install_unix_fonts() {
 
 install_windows_fonts() {
   install_key="$1"
+  install_name=$(family_name "$install_key")
 
   if [ "$dry_run" = 1 ]; then
-    log "Dry run: would install all Berka font families into the Windows user font directory"
-    for dry_family in $families; do
-      for dry_file in $(family_files "$dry_family"); do
-        log "Dry run: would install $dry_file and register it in HKCU"
-      done
+    log "Dry run: would install $install_name into the Windows user font directory"
+    for dry_file in $(family_files "$install_key"); do
+      log "Dry run: would install $dry_file and register it in HKCU"
     done
     return
   fi
@@ -488,24 +464,23 @@ EOF
 
 main() {
   parse_args "$@"
-  guide_family=$(select_guide_family) || die "Unknown family. Use one of: $families"
-  guide_name=$(family_name "$guide_family")
+  selected_family=$(select_family) || die "Unknown family. Use one of: $families"
+  selected_name=$(family_name "$selected_family")
   selected_os=$(detect_os)
   target_dir=$(default_font_dir "$selected_os")
 
-  log "Installing all Berka font families."
-  log "Selected $guide_name for setup guidance."
+  log "Selected $selected_name."
   log "Detected OS: $selected_os."
-  stage_all_fonts
-  install_fonts "$guide_family" "$selected_os" "$target_dir"
+  stage_selected_fonts "$selected_family"
+  install_fonts "$selected_family" "$selected_os" "$target_dir"
 
   if [ "$dry_run" = 1 ]; then
     log "Dry run complete. No files were changed."
   else
-    log "Installed all Berka font families into $target_dir."
+    log "Installed $selected_name into $target_dir."
   fi
 
-  print_editor_docs "$guide_name"
+  print_editor_docs "$selected_name"
 }
 
 trap cleanup 0
