@@ -165,6 +165,15 @@ examples/ghostty.conf
 examples/kitty.conf
 ```
 
+macOS Terminal.app does not use a dotfile-style font config. Use the profile
+settings UI instead:
+
+```text
+Terminal -> Settings -> Profiles -> Text -> Font
+```
+
+See [Mac Terminal setup](docs/macos-terminal.md) for screenshots and steps.
+
 ## Website Fonts
 
 Use WOFF2 files for websites. Example:
