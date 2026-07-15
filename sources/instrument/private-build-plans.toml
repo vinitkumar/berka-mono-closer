@@ -1,0 +1,129 @@
+# A legally distinct Iosevka custom build for an instrument-panel coding voice:
+# compact, technical, explicit under debugging pressure, and broad in ligature
+# coverage. This uses only Iosevka build parameters; it does not copy TX-02
+# outlines, metrics, font data, or protected names.
+
+[buildPlans.BerkaMonoInstrument]
+family = "Berka Mono Instrument"
+spacing = "normal"
+serifs = "sans"
+noCvSs = false
+noLigation = false
+exportGlyphNames = true
+
+[buildPlans.BerkaMonoInstrument.variants]
+inherits = "ss09"
+
+[buildPlans.BerkaMonoInstrument.variants.design]
+capital-a = "straight-serifless"
+capital-b = "standard-serifless"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-corner-serifless-hooked"
+capital-i = "short-serifed"
+capital-j = "serifed"
+capital-k = "straight-serifless"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-r = "straight-serifless"
+capital-w = "straight-flat-top-serifless"
+capital-y = "straight-serifless"
+
+a = "double-storey-serifless"
+b = "toothless-corner-serifless"
+d = "toothed-serifless"
+f = "flat-hook-serifless-crossbar-at-x-height"
+g = "double-storey"
+i = "serifed"
+j = "serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+m = "serifless"
+n = "straight-serifless"
+p = "earless-corner-serifless"
+q = "earless-corner-straight-serifless"
+r = "hookless-serifless"
+t = "flat-hook"
+u = "toothed-serifless"
+w = "straight-flat-top-serifless"
+y = "straight-serifless"
+
+zero = "oval-dotted"
+one = "base-flat-top-serif"
+two = "straight-neck-serifless"
+three = "flat-top-serifless"
+four = "closed-serifless"
+five = "upright-flat-serifless"
+six = "straight-bar"
+seven = "straight-serifless"
+eight = "two-circles"
+nine = "straight-bar"
+
+asterisk = "penta-low"
+brace = "curly-flat-boundary"
+paren = "large-contour"
+caret = "medium"
+dollar = "through"
+ampersand = "upper-open"
+at = "compact"
+percent = "rings-continuous-slash"
+number-sign = "slanted-open"
+underscore = "high"
+bar = "force-upright"
+question = "corner-flat-hooked"
+pilcrow = "low"
+lig-ltgteq = "slanted"
+lig-neq = "slightly-slanted-dotted"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+lig-plus-chain = "without-notch"
+lig-double-arrow-bar = "with-notch"
+lig-single-arrow-bar = "with-notch"
+
+[buildPlans.BerkaMonoInstrument.ligations]
+inherits = "default-calt"
+enables = [
+  "counter-arrow-l",
+  "counter-arrow-r",
+  "center-op-influence-dot",
+  "center-op-trigger-bar-l",
+  "center-op-trigger-bar-r",
+  "slasheq",
+  "logic",
+  "brace-bar",
+  "brack-bar",
+  "plus-plus",
+  "minus-minus",
+  "underscore-underscore",
+  "hash-hash",
+  "tilde-tilde",
+]
+disables = []
+
+[buildPlans.BerkaMonoInstrument.weights]
+Regular = { shape = 420, menu = 400, css = 400 }
+Book = { shape = 460, menu = 450, css = 450 }
+Medium = { shape = 520, menu = 500, css = 500 }
+SemiBold = { shape = 615, menu = 600, css = 600 }
+Bold = { shape = 705, menu = 700, css = 700 }
+
+[buildPlans.BerkaMonoInstrument.widths]
+Normal = { shape = 590, menu = 5, css = "normal" }
+
+[buildPlans.BerkaMonoInstrument.slopes.Upright]
+angle = 0
+shape = "upright"
+menu = "upright"
+css = "normal"
+
+[buildPlans.BerkaMonoInstrument.slopes.Italic]
+angle = 6
+shape = "oblique"
+menu = "italic"
+css = "italic"
+
+[buildPlans.BerkaMonoInstrument.metricOverride]
+leading = 1165
+winMetricAscenderPad = 0
+winMetricDescenderPad = 0
+powerlineScaleY = 1.08
+powerlineScaleX = 1.0

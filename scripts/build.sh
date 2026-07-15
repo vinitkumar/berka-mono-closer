@@ -37,6 +37,9 @@ npm run build -- ttf::BerkaMonoRetina --jCmd="${JOBS:-2}"
 cp "$repo_dir/sources/focus/private-build-plans.toml" "$iosevka_dir/private-build-plans.toml"
 npm run build -- ttf::BerkaMonoFocus --jCmd="${JOBS:-2}"
 
+cp "$repo_dir/sources/instrument/private-build-plans.toml" "$iosevka_dir/private-build-plans.toml"
+npm run build -- ttf::BerkaMonoInstrument --jCmd="${JOBS:-2}"
+
 cp "$repo_dir/sources/text/private-build-plans.toml" "$iosevka_dir/private-build-plans.toml"
 npm run build -- ttf::BerkaText --jCmd="${JOBS:-2}"
 
@@ -48,4 +51,5 @@ echo "  $iosevka_dir/dist/BerkaMonoCloserNarrow/TTF"
 echo "  $iosevka_dir/dist/BerkaMonoControl/TTF"
 echo "  $iosevka_dir/dist/BerkaMonoRetina/TTF"
 echo "  $iosevka_dir/dist/BerkaMonoFocus/TTF"
+echo "  $iosevka_dir/dist/BerkaMonoInstrument/TTF"
 echo "  $iosevka_dir/dist/BerkaText/TTF"

@@ -4,7 +4,7 @@ set -eu
 repo="vinitkumar/berka-mono-closer"
 branch="${BERKA_BRANCH:-main}"
 raw_base="${BERKA_RAW_BASE:-https://raw.githubusercontent.com/$repo/$branch}"
-families="focus retina control closer compact semi-condensed narrow text"
+families="instrument focus retina control closer compact semi-condensed narrow text"
 
 family="${BERKA_FONT:-}"
 family_from_arg=0
@@ -27,11 +27,12 @@ usage() {
   cat <<'EOF'
 Usage:
   scripts/install.sh [family]
-  scripts/install.sh --family focus
+  scripts/install.sh --family instrument
   scripts/install.sh --dry-run --source-dir .
 
 Families:
-  focus            Berka Mono Focus (default)
+  instrument       Berka Mono Instrument
+  focus            Berka Mono Focus
   retina           Berka Mono Retina
   control          Berka Mono Control
   closer           Berka Mono Closer
@@ -58,6 +59,7 @@ need() {
 canonical_family() {
   case "$1" in
     focus) printf '%s\n' focus ;;
+    instrument) printf '%s\n' instrument ;;
     retina) printf '%s\n' retina ;;
     control) printf '%s\n' control ;;
     closer) printf '%s\n' closer ;;
@@ -78,37 +80,40 @@ select_family() {
   if [ -r /dev/tty ] && [ -w /dev/tty ]; then
     {
       printf 'Choose the Berka family to install:\n'
-      printf '  1) Berka Mono Focus (recommended)\n'
-      printf '  2) Berka Mono Retina\n'
-      printf '  3) Berka Mono Control\n'
-      printf '  4) Berka Mono Closer\n'
-      printf '  5) Berka Mono Closer Compact\n'
-      printf '  6) Berka Mono Closer SemiCondensed\n'
-      printf '  7) Berka Mono Closer Narrow\n'
-      printf '  8) Berka Text\n'
+      printf '  1) Berka Mono Instrument (recommended)\n'
+      printf '  2) Berka Mono Focus\n'
+      printf '  3) Berka Mono Retina\n'
+      printf '  4) Berka Mono Control\n'
+      printf '  5) Berka Mono Closer\n'
+      printf '  6) Berka Mono Closer Compact\n'
+      printf '  7) Berka Mono Closer SemiCondensed\n'
+      printf '  8) Berka Mono Closer Narrow\n'
+      printf '  9) Berka Text\n'
       printf 'Selection [1]: '
     } >/dev/tty
     read -r answer </dev/tty
     case "${answer:-1}" in
-      1) printf '%s\n' focus ;;
-      2) printf '%s\n' retina ;;
-      3) printf '%s\n' control ;;
-      4) printf '%s\n' closer ;;
-      5) printf '%s\n' compact ;;
-      6) printf '%s\n' semi-condensed ;;
-      7) printf '%s\n' narrow ;;
-      8) printf '%s\n' text ;;
+      1) printf '%s\n' instrument ;;
+      2) printf '%s\n' focus ;;
+      3) printf '%s\n' retina ;;
+      4) printf '%s\n' control ;;
+      5) printf '%s\n' closer ;;
+      6) printf '%s\n' compact ;;
+      7) printf '%s\n' semi-condensed ;;
+      8) printf '%s\n' narrow ;;
+      9) printf '%s\n' text ;;
       *) return 1 ;;
     esac
     return 0
   fi
 
-  printf '%s\n' focus
+  printf '%s\n' instrument
 }
 
 family_name() {
   case "$1" in
     focus) printf '%s\n' "Berka Mono Focus" ;;
+    instrument) printf '%s\n' "Berka Mono Instrument" ;;
     retina) printf '%s\n' "Berka Mono Retina" ;;
     control) printf '%s\n' "Berka Mono Control" ;;
     closer) printf '%s\n' "Berka Mono Closer" ;;
@@ -129,6 +134,7 @@ family_dir() {
     control) printf '%s\n' "fonts/ttf-control" ;;
     retina) printf '%s\n' "fonts/ttf-retina" ;;
     focus) printf '%s\n' "fonts/ttf-focus" ;;
+    instrument) printf '%s\n' "fonts/ttf-instrument" ;;
     text) printf '%s\n' "fonts/ttf-text" ;;
     *) return 1 ;;
   esac
@@ -143,6 +149,7 @@ family_files() {
     control) prefix="BerkaMonoControl"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     retina) prefix="BerkaMonoRetina"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     focus) prefix="BerkaMonoFocus"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
+    instrument) prefix="BerkaMonoInstrument"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     text) prefix="BerkaText"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     *) return 1 ;;
   esac

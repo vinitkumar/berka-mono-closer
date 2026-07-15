@@ -132,6 +132,24 @@
       font-style: italic;
     }
     @font-face {
+      font-family: "Berka Mono Instrument";
+      src: url("fonts/woff2-instrument/BerkaMonoInstrument-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Instrument";
+      src: url("fonts/woff2-instrument/BerkaMonoInstrument-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Berka Mono Instrument";
+      src: url("fonts/woff2-instrument/BerkaMonoInstrument-Italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
       font-family: "Berka Text";
       src: url("fonts/woff2-text/BerkaText-Regular.woff2") format("woff2");
       font-weight: 400;
@@ -567,6 +585,7 @@
   | "Berka Mono Control"
   | "Berka Mono Retina"
   | "Berka Mono Focus"
+  | "Berka Mono Instrument"
   | "Berka Text";
 
 export function pickFont(input: string) {
@@ -638,6 +657,7 @@ export function pickFont(input: string) {
 
   <script>
     const fonts = [
+      { key: "instrument", name: "Berka Mono Instrument", width: "Instrument" },
       { key: "closer", name: "Berka Mono Closer", width: "Wide" },
       { key: "compact", name: "Berka Mono Closer Compact", width: "Compact" },
       { key: "semi", name: "Berka Mono Closer SemiCondensed", width: "Dense" },

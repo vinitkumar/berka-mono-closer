@@ -7,7 +7,7 @@ Berka Mono Closer is a family of custom [Iosevka](https://github.com/be5invis/Io
 Recommended everyday setup:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- focus
+curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- instrument
 ```
 
 Interactive setup:
@@ -39,7 +39,8 @@ WezTerm, Windows Terminal, Neovim GUI, Neovide, Vim GUI, and CSS.
 
 | Choice | Family name | Best for |
 | --- | --- | --- |
-| `focus` | `Berka Mono Focus` | Recommended default. Debugging-first, clearer ambiguity cases, compact rhythm. |
+| `instrument` | `Berka Mono Instrument` | Recommended default. Instrument-panel coding feel, expanded audited ligatures, compact scan density, explicit ambiguity handling. |
+| `focus` | `Berka Mono Focus` | Debugging-first, clearer ambiguity cases, compact rhythm. |
 | `retina` | `Berka Mono Retina` | High-DPI screens where you want heavier optical strokes and full ligatures. |
 | `control` | `Berka Mono Control` | Terminal-first compact feel with full Iosevka `default-calt`. |
 | `closer` | `Berka Mono Closer` | Wider, calm original cut. |
@@ -70,6 +71,7 @@ fonts/ttf-narrow/
 fonts/ttf-control/
 fonts/ttf-retina/
 fonts/ttf-focus/
+fonts/ttf-instrument/
 fonts/ttf-text/
 ```
 
@@ -83,6 +85,7 @@ fonts/woff2-narrow/
 fonts/woff2-control/
 fonts/woff2-retina/
 fonts/woff2-focus/
+fonts/woff2-instrument/
 fonts/woff2-text/
 ```
 
@@ -102,6 +105,7 @@ Berka Mono Closer Narrow
 Berka Mono Control
 Berka Mono Retina
 Berka Mono Focus
+Berka Mono Instrument
 Berka Text
 ```
 
@@ -111,9 +115,9 @@ VS Code, Cursor, and Windsurf:
 
 ```json
 {
-  "editor.fontFamily": "'Berka Mono Focus', Menlo, Monaco, monospace",
+  "editor.fontFamily": "'Berka Mono Instrument', 'Berka Mono Focus', Menlo, Monaco, monospace",
   "editor.fontLigatures": true,
-  "terminal.integrated.fontFamily": "Berka Mono Focus"
+  "terminal.integrated.fontFamily": "Berka Mono Instrument"
 }
 ```
 
@@ -121,13 +125,13 @@ Zed:
 
 ```json
 {
-  "buffer_font_family": "Berka Mono Focus",
+  "buffer_font_family": "Berka Mono Instrument",
   "buffer_font_features": {
     "calt": true,
     "liga": true
   },
   "terminal": {
-    "font_family": "Berka Mono Focus"
+    "font_family": "Berka Mono Instrument"
   }
 }
 ```
@@ -135,10 +139,10 @@ Zed:
 Ghostty:
 
 ```conf
-font-family = "Berka Mono Focus"
-font-family-bold = "Berka Mono Focus"
-font-family-italic = "Berka Mono Focus"
-font-family-bold-italic = "Berka Mono Focus"
+font-family = "Berka Mono Instrument"
+font-family-bold = "Berka Mono Instrument"
+font-family-italic = "Berka Mono Instrument"
+font-family-bold-italic = "Berka Mono Instrument"
 font-size = 15
 font-feature = liga
 font-feature = calt
@@ -149,10 +153,10 @@ font-thicken = true
 Kitty:
 
 ```conf
-font_family      family="Berka Mono Focus"
-bold_font        family="Berka Mono Focus" style="Bold"
-italic_font      family="Berka Mono Focus" style="Italic"
-bold_italic_font family="Berka Mono Focus" style="Bold Italic"
+font_family      family="Berka Mono Instrument"
+bold_font        family="Berka Mono Instrument" style="Bold"
+italic_font      family="Berka Mono Instrument" style="Italic"
+bold_italic_font family="Berka Mono Instrument" style="Bold Italic"
 font_size        15.0
 disable_ligatures never
 ```
@@ -189,7 +193,7 @@ Use WOFF2 files for websites. Example:
 ```
 
 `Berka Text` is the recommended website body family. Pair it with `Berka Mono
-Focus` or `Berka Mono Closer` for inline code and code blocks:
+Instrument`, `Berka Mono Focus`, or `Berka Mono Closer` for inline code and code blocks:
 
 ```css
 body {
@@ -200,7 +204,7 @@ body {
 
 code,
 pre {
-  font-family: "Berka Mono Focus", ui-monospace, monospace;
+  font-family: "Berka Mono Instrument", ui-monospace, monospace;
 }
 ```
 
@@ -218,13 +222,21 @@ width, weight, leading, italic construction, and ligature policy:
 | `Berka Mono Control` | 595 | 400, 450, 500, 600, 700 | 1180 | oblique | full Iosevka `default-calt` |
 | `Berka Mono Retina` | 605 | 430, 470, 530, 630, 730 | 1180 | oblique | full Iosevka `default-calt` |
 | `Berka Mono Focus` | 592 | 425, 465, 525, 620, 710 | 1170 | oblique | debugging-first `default-calt` subset |
+| `Berka Mono Instrument` | 590 | 420, 460, 520, 615, 705 | 1165 | oblique | expanded audited `calt` |
 | `Berka Text` | 600 | 410, 455, 520, 610, 690 | 1260 | italic | no programming ligatures |
 
 All families include Regular, Italic, Medium, Medium Italic, SemiBold,
-SemiBold Italic, Bold, and Bold Italic. Control, Retina, Focus, and Text also
-include Book and Book Italic.
+SemiBold Italic, Bold, and Bold Italic. Control, Retina, Focus, Instrument,
+and Text also include Book and Book Italic.
 
-Focus is the recommended everyday coding cut. It keeps useful operator
+Instrument is the recommended everyday coding cut. It is a legally distinct
+Iosevka build tuned after studying the TX-02 datasheet as design research:
+instrument-panel density, expanded audited programming ligatures, high-DPI
+stroke weight, a dotted zero, a flat-top `1`, a high underscore for
+`snake_case`, compact punctuation, and explicit ambiguous glyphs. It does not
+copy TX-02 outlines, metrics, font data, or protected names.
+
+Focus is the debugging-first cut. It keeps useful operator
 ligatures but disables decorative wave arrows, HTML comment ligatures, trig
 ligatures, and tilde chaining so raw source stays easy to inspect. It also uses
 a dotted zero, a flat-top `1`, a high underscore for `snake_case`, larger
@@ -247,16 +259,30 @@ Closer, Compact, SemiCondensed, and Narrow intentionally disable a few more deco
 - `trig`
 
 Control and Retina keep the full `default-calt` set for broader language and
-markup coverage.
+markup coverage. Instrument starts from `default-calt` and adds existing
+Iosevka groups for counter arrows, fast operator chains, slash equality,
+logic, bracket bars, and operator centering.
+
+Instrument was audited against a TX-02-datasheet-inspired programming sequence
+catalog without copying TX-02 shapes, metrics, names, or binaries. The current
+Instrument build transforms 124 of 157 audited sequences through normal
+OpenType shaping. See [Instrument ligature audit](docs/instrument-ligature-audit.md)
+for the exact residual list.
 
 ## VS Code Screenshots
 
 Each family below is shown as a close-up editor crop, using the actual
 checked-in WOFF2 files.
 
+### Berka Mono Instrument
+
+Recommended default for expanded ligatures and compact engineered texture.
+
+<img src="images/vscode-instrument.png" alt="Berka Mono Instrument in VS Code" width="960">
+
 ### Berka Mono Focus
 
-Recommended default for everyday coding.
+Debugging-first cut with restrained ligatures.
 
 <img src="images/vscode-focus.png" alt="Berka Mono Focus in VS Code" width="960">
 
@@ -338,6 +364,8 @@ cp /path/to/berka-mono-closer/sources/retina/private-build-plans.toml ./private-
 npm run build -- ttf::BerkaMonoRetina --jCmd=2
 cp /path/to/berka-mono-closer/sources/focus/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoFocus --jCmd=2
+cp /path/to/berka-mono-closer/sources/instrument/private-build-plans.toml ./private-build-plans.toml
+npm run build -- ttf::BerkaMonoInstrument --jCmd=2
 cp /path/to/berka-mono-closer/sources/text/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaText --jCmd=2
 ```
@@ -352,6 +380,7 @@ dist/BerkaMonoCloserNarrow/TTF/
 dist/BerkaMonoControl/TTF/
 dist/BerkaMonoRetina/TTF/
 dist/BerkaMonoFocus/TTF/
+dist/BerkaMonoInstrument/TTF/
 dist/BerkaText/TTF/
 ```
 
@@ -361,7 +390,7 @@ You can also run:
 ./scripts/build.sh /path/to/Iosevka
 ```
 
-The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow`, `sources/retina/private-build-plans.toml` for `Berka Mono Retina`, `sources/focus/private-build-plans.toml` for `Berka Mono Focus`, and `sources/text/private-build-plans.toml` for `Berka Text`.
+The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow`, `sources/retina/private-build-plans.toml` for `Berka Mono Retina`, `sources/focus/private-build-plans.toml` for `Berka Mono Focus`, `sources/instrument/private-build-plans.toml` for `Berka Mono Instrument`, and `sources/text/private-build-plans.toml` for `Berka Text`.
 
 Generate WOFF2 files from the checked-in TTF files:
 
@@ -382,6 +411,7 @@ What makes this legal:
 - The design goal is a general visual direction: calm, wide, rectangular, readable coding text. It is not a clone of any proprietary font.
 - The Control variant is guided by public high-level design language from a datasheet, but it is generated only from Iosevka source and documented custom-build parameters.
 - The Focus variant is an original coding-readability tuning built from Iosevka parameters for ambiguity reduction, compact scan density, and restrained ligatures.
+- The Instrument variant is an original coding tuning informed by public TX-02 datasheet themes such as engineering texture, broad programming ligature coverage, and terminal density, but it is generated only from Iosevka source and documented custom-build parameters.
 - The Text variant is an original prose-readability tuning built from Iosevka parameters for quasi-proportional spacing, taller reading rhythm, and website body text.
 
 This project is not affiliated with, endorsed by, or derived from Berkeley Mono or US Graphics Company. Berkeley Mono is a separate commercial font.
