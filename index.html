@@ -3,681 +3,879 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Berka Mono</title>
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Berka Mono is an open coding type system tuned for clear glyphs, dense terminals, and expressive ligatures.">
+  <meta property="og:title" content="Berka Mono — Calibrated for code">
+  <meta property="og:description" content="Four open font families for code, terminals, debugging, and long-form text.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vinitkumar.github.io/berka-mono-closer/">
+  <meta property="og:image" content="https://vinitkumar.github.io/berka-mono-closer/images/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://vinitkumar.github.io/berka-mono-closer/images/og.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <title>Berka Mono — Calibrated for Code</title>
   <style>
     @font-face {
       font-family: "Berka Mono Closer";
       src: url("fonts/woff2/BerkaMonoCloser-Regular.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer";
+      src: url("fonts/woff2/BerkaMonoCloser-Medium.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berka Mono Closer";
+      src: url("fonts/woff2/BerkaMonoCloser-SemiBold.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Mono Closer";
       src: url("fonts/woff2/BerkaMonoCloser-Bold.woff2") format("woff2");
       font-weight: 700;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Mono Closer";
       src: url("fonts/woff2/BerkaMonoCloser-Italic.woff2") format("woff2");
       font-weight: 400;
       font-style: italic;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Mono Focus";
       src: url("fonts/woff2-focus/BerkaMonoFocus-Regular.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Mono Focus";
       src: url("fonts/woff2-focus/BerkaMonoFocus-Bold.woff2") format("woff2");
       font-weight: 700;
       font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Focus";
-      src: url("fonts/woff2-focus/BerkaMonoFocus-Italic.woff2") format("woff2");
-      font-weight: 400;
-      font-style: italic;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Mono Instrument";
       src: url("fonts/woff2-instrument/BerkaMonoInstrument-Regular.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berka Mono Instrument";
+      src: url("fonts/woff2-instrument/BerkaMonoInstrument-Book.woff2") format("woff2");
+      font-weight: 450;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berka Mono Instrument";
+      src: url("fonts/woff2-instrument/BerkaMonoInstrument-Medium.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berka Mono Instrument";
+      src: url("fonts/woff2-instrument/BerkaMonoInstrument-SemiBold.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Mono Instrument";
       src: url("fonts/woff2-instrument/BerkaMonoInstrument-Bold.woff2") format("woff2");
       font-weight: 700;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Mono Instrument";
       src: url("fonts/woff2-instrument/BerkaMonoInstrument-Italic.woff2") format("woff2");
       font-weight: 400;
       font-style: italic;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Text";
       src: url("fonts/woff2-text/BerkaText-Regular.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Text";
       src: url("fonts/woff2-text/BerkaText-Bold.woff2") format("woff2");
       font-weight: 700;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: "Berka Text";
       src: url("fonts/woff2-text/BerkaText-Italic.woff2") format("woff2");
       font-weight: 400;
       font-style: italic;
+      font-display: swap;
     }
 
     :root {
       color-scheme: light;
-      --bg: #f4f6f4;
-      --panel: #ffffff;
-      --ink: #161817;
-      --muted: #5d6662;
-      --line: #d4dad6;
-      --accent: #146c5c;
-      --accent-ink: #ffffff;
-      --code-bg: #101311;
-      --code-ink: #edf2ee;
-      --code-dim: #98a29a;
-      --code-hot: #d5b15d;
-      --radius: 8px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      --paper: #f3efdf;
+      --paper-2: #fffbed;
+      --ink: #111111;
+      --muted: #666156;
+      --magenta: #ff3aa7;
+      --cyan: #20e4ff;
+      --acid: #d9ff3f;
+      --orange: #ff6838;
+      --line: rgba(17, 17, 17, 0.22);
+      --display: "Berka Mono Instrument", ui-monospace, monospace;
+      --text: "Berka Text", system-ui, sans-serif;
+      --sample-font: "Berka Mono Instrument", ui-monospace, monospace;
+      --sample-size: 22px;
+      --sample-weight: 450;
+      --sample-ligatures: contextual common-ligatures;
+      background: var(--paper);
       color: var(--ink);
+      font-family: var(--display);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      min-height: 100vh;
-      background: var(--bg);
+      min-width: 320px;
+      overflow-x: hidden;
+      background:
+        linear-gradient(rgba(17,17,17,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,.045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
     }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    ::selection { background: var(--magenta); color: var(--ink); }
 
-    a {
-      color: inherit;
-      text-decoration-color: color-mix(in srgb, var(--accent), transparent 45%);
-      text-underline-offset: 3px;
-    }
-
-    .shell {
-      width: min(1160px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 28px 0 40px;
-    }
-
-    header {
+    .topbar {
+      position: relative;
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--line);
+      min-height: 68px;
+      padding: 0 clamp(18px, 4vw, 64px);
+      border-bottom: 2px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper-2);
     }
-
-    .brand {
-      display: grid;
-      gap: 6px;
-    }
-
-    h1 {
-      margin: 0;
-      font: 700 4rem/0.98 "Berka Mono Instrument", ui-monospace, monospace;
-      letter-spacing: 0;
-    }
-
-    .lede {
-      max-width: 720px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.55;
-    }
-
-    .install {
+    .wordmark {
       display: inline-flex;
       align-items: center;
+      gap: 10px;
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      text-decoration: none;
+    }
+    .wordmark-mark {
+      display: grid;
+      width: 27px;
+      height: 27px;
+      place-items: center;
+      background: var(--acid);
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 38px); }
+    .nav-links a {
+      font-size: .76rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-github {
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.4);
+    }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      border-bottom: 2px solid var(--ink);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(390px, .92fr);
+      min-height: calc(100vh - 68px);
+    }
+    .hero-copy {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(36px, 5vw, 78px) clamp(24px, 5.5vw, 86px) clamp(34px, 4vw, 58px);
+      overflow: hidden;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 30px;
+      font-size: clamp(.7rem, 1vw, .82rem);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 42px; height: 8px; background: var(--magenta); }
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 7ch;
+      margin: 0;
+      font-size: clamp(4.5rem, 10.6vw, 10.6rem);
+      font-weight: 700;
+      letter-spacing: -.085em;
+      line-height: .76;
+      text-transform: uppercase;
+    }
+    .hero-kicker {
+      position: absolute;
+      right: clamp(12px, 4vw, 64px);
+      top: clamp(150px, 22vw, 290px);
+      width: clamp(96px, 12vw, 156px);
+      aspect-ratio: 1;
+      transform: rotate(7deg);
+      background: var(--cyan);
+      mix-blend-mode: multiply;
+    }
+    .hero-kicker::after {
+      content: "Aa\A 07";
+      display: grid;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+      color: var(--ink);
+      font-size: clamp(1.6rem, 3vw, 3.5rem);
+      font-weight: 700;
+      line-height: .88;
+      text-align: center;
+      white-space: pre;
+    }
+    .hero-bottom { position: relative; z-index: 2; display: grid; gap: 28px; margin-top: 74px; }
+    .hero-description {
+      max-width: 650px;
+      margin: 0;
+      font-family: var(--text);
+      font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+      line-height: 1.35;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
       justify-content: center;
-      min-height: 40px;
-      padding: 0 14px;
-      border: 1px solid var(--ink);
-      border-radius: var(--radius);
+      gap: 12px;
+      padding: 0 20px;
+      border: 2px solid var(--ink);
       background: var(--ink);
       color: white;
-      font-weight: 650;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
-      gap: 28px;
-      padding-top: 28px;
-    }
-
-    .controls {
-      align-self: start;
-      display: grid;
-      gap: 20px;
-      position: sticky;
-      top: 20px;
-    }
-
-    fieldset {
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
-
-    legend,
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .font-list {
-      display: grid;
-      gap: 6px;
-    }
-
-    .font-option {
-      display: flex;
-      width: 100%;
-      min-height: 40px;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 12px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: transparent;
-      color: var(--ink);
       cursor: pointer;
-      font: 600 0.92rem/1.1 inherit;
-      text-align: left;
+      font-size: .78rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 140ms ease, box-shadow 140ms ease;
     }
+    .button:hover { transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--magenta); }
+    .button.alt { background: var(--acid); color: var(--ink); }
 
-    .font-option[aria-pressed="true"] {
-      border-color: var(--accent);
-      background: color-mix(in srgb, var(--accent), transparent 88%);
-      color: #063b32;
-    }
-
-    select,
-    textarea,
-    input[type="range"] {
-      width: 100%;
-    }
-
-    select,
-    textarea {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      color: var(--ink);
-      font: 500 0.95rem/1.4 inherit;
-    }
-
-    select {
-      height: 40px;
-      padding: 0 10px;
-    }
-
-    textarea {
-      min-height: 180px;
-      resize: vertical;
-      padding: 12px;
-      font-family: "Berka Mono Closer", ui-monospace, monospace;
-    }
-
-    input[type="range"] {
-      accent-color: var(--accent);
-    }
-
-    .preview {
+    .hero-terminal {
+      display: grid;
       min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--panel);
+      grid-template-rows: auto 1fr auto;
+      border-left: 2px solid var(--ink);
+      background: #141414;
+      color: #f7f2e5;
     }
-
-    .preview[hidden] {
-      display: none;
-    }
-
-    .preview-head {
+    .terminal-head, .terminal-foot {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 650;
+      gap: 20px;
+      min-height: 54px;
+      padding: 0 clamp(18px, 3vw, 34px);
+      border-bottom: 1px solid rgba(255,255,255,.18);
+      color: #a8a49b;
+      font-size: .72rem;
+      text-transform: uppercase;
     }
+    .terminal-foot { border-top: 1px solid rgba(255,255,255,.18); border-bottom: 0; }
+    .terminal-dots { display: flex; gap: 7px; }
+    .terminal-dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--magenta); }
+    .terminal-dots i:nth-child(2) { background: var(--acid); }
+    .terminal-dots i:nth-child(3) { background: var(--cyan); }
+    .hero-code {
+      margin: 0;
+      overflow: auto;
+      padding: clamp(30px, 5vw, 70px) clamp(22px, 4vw, 54px);
+      font-family: "Berka Mono Instrument", ui-monospace, monospace;
+      font-size: clamp(.9rem, 1.5vw, 1.28rem);
+      font-weight: 450;
+      font-variant-ligatures: contextual common-ligatures;
+      line-height: 1.72;
+      tab-size: 2;
+      white-space: pre-wrap;
+    }
+    .c-pink { color: #ff70bd; }
+    .c-cyan { color: #6ceaff; }
+    .c-acid { color: #d9ff3f; }
+    .c-orange { color: #ff8a64; }
+    .c-dim { color: #77756f; font-style: italic; }
+    .live-light { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--acid); box-shadow: 0 0 14px var(--acid); }
 
-    .metrics {
+    .marquee {
+      overflow: hidden;
+      border-bottom: 2px solid var(--ink);
+      background: var(--magenta);
+    }
+    .marquee-track {
       display: flex;
-      gap: 14px;
+      width: max-content;
+      animation: drift 22s linear infinite;
+    }
+    .marquee-track span {
+      padding: 15px 22px;
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
       white-space: nowrap;
     }
+    @keyframes drift { to { transform: translateX(-50%); } }
 
-    pre {
+    .section { border-bottom: 2px solid var(--ink); }
+    .section-inner { width: min(1460px, 100%); margin: 0 auto; padding: clamp(72px, 10vw, 150px) clamp(20px, 5vw, 76px); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr minmax(280px, 520px);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: clamp(42px, 7vw, 80px);
+    }
+    .section-index { margin: 0 0 14px; font-size: .72rem; font-weight: 700; text-transform: uppercase; }
+    h2 {
+      max-width: 10ch;
       margin: 0;
-      min-height: 500px;
-      overflow: auto;
-      padding: clamp(16px, 4vw, 28px);
-      background: var(--code-bg);
-      color: var(--code-ink);
-      font-family: var(--sample-font), ui-monospace, monospace;
+      font-size: clamp(3.2rem, 7vw, 7.5rem);
+      font-weight: 700;
+      letter-spacing: -.075em;
+      line-height: .82;
+      text-transform: uppercase;
+    }
+    .section-intro { margin: 0; font-family: var(--text); font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.45; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 2px solid var(--ink); }
+    .feature-card { min-height: 380px; padding: clamp(25px, 3.5vw, 48px); border-right: 2px solid var(--ink); background: var(--paper-2); }
+    .feature-card:last-child { border-right: 0; }
+    .feature-card:nth-child(2) { background: var(--cyan); }
+    .feature-card:nth-child(3) { background: var(--acid); }
+    .feature-number { font-size: .72rem; font-weight: 700; }
+    .feature-glyph { margin: 52px 0 48px; font-size: clamp(4.6rem, 7vw, 7.8rem); font-weight: 500; letter-spacing: -.08em; line-height: .7; }
+    .feature-card h3 { margin: 0 0 14px; font-size: 1.15rem; text-transform: uppercase; }
+    .feature-card p { margin: 0; font-family: var(--text); font-size: 1.02rem; line-height: 1.45; }
+
+    .lab { background: var(--ink); color: var(--paper-2); }
+    .lab .section-inner { width: 100%; }
+    .lab .section-head { border-color: rgba(255,255,255,.25); }
+    .lab .section-intro { color: #bbb7ad; }
+    .lab-shell { border: 1px solid rgba(255,255,255,.35); }
+    .lab-controls {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      border-bottom: 1px solid rgba(255,255,255,.35);
+    }
+    .control { min-width: 0; padding: 16px 20px; border-right: 1px solid rgba(255,255,255,.35); }
+    .control:last-child { border-right: 0; }
+    .control-label { display: block; margin-bottom: 10px; color: #929088; font-size: .67rem; text-transform: uppercase; }
+    .family-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+    .family-tab, .ligature-toggle {
+      min-height: 34px;
+      padding: 0 11px;
+      border: 1px solid #5b5954;
+      background: transparent;
+      color: #cbc7bb;
+      cursor: pointer;
+      font-size: .68rem;
+      text-transform: uppercase;
+    }
+    .family-tab[aria-pressed="true"], .ligature-toggle[aria-pressed="true"] { border-color: var(--acid); background: var(--acid); color: var(--ink); }
+    .control select, .control input[type="range"] { width: 100%; }
+    .control select { height: 34px; border: 0; background: #2a2927; color: white; padding: 0 10px; }
+    .control input[type="range"] { accent-color: var(--magenta); }
+    .ligature-toggle { height: 100%; min-width: 118px; }
+    .lab-editor-wrap { display: grid; grid-template-columns: 54px 1fr; min-height: 510px; background: #0b0b0b; }
+    .line-numbers {
+      padding: 44px 12px;
+      border-right: 1px solid #353431;
+      color: #55534f;
+      font-family: var(--sample-font);
       font-size: var(--sample-size);
-      font-style: var(--sample-style);
-      line-height: var(--sample-leading);
-      font-variant-ligatures: contextual common-ligatures;
+      font-weight: var(--sample-weight);
+      line-height: 1.58;
+      text-align: right;
+      user-select: none;
+    }
+    .lab-editor {
+      width: 100%;
+      min-height: 510px;
+      resize: none;
+      padding: 44px clamp(20px, 4vw, 54px);
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: #f4efe2;
+      caret-color: var(--magenta);
+      font-family: var(--sample-font);
+      font-size: var(--sample-size);
+      font-weight: var(--sample-weight);
+      font-variant-ligatures: var(--sample-ligatures);
+      line-height: 1.58;
       tab-size: 2;
+      white-space: pre;
     }
 
-    .preview code {
-      color: inherit;
-      font: inherit;
-    }
-
-    .article-preview {
+    .ambiguity { background: var(--cyan); }
+    .ambiguity-grid { display: grid; grid-template-columns: 1.35fr .65fr; border: 2px solid var(--ink); }
+    .ambiguity-glyphs {
+      display: flex;
       min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #fbfaf6;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(30px, 6vw, 86px) 18px;
+      border-right: 2px solid var(--ink);
+      background: var(--paper-2);
+      font-family: "Berka Mono Instrument", monospace;
+      font-size: clamp(3.8rem, 11vw, 10.5rem);
+      font-weight: 500;
+      letter-spacing: -.09em;
+      white-space: nowrap;
     }
+    .ambiguity-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 64px; padding: clamp(30px, 5vw, 70px); }
+    .ambiguity-copy h3 { margin: 0; font-size: clamp(1.8rem, 3vw, 3.2rem); line-height: .95; text-transform: uppercase; }
+    .ambiguity-copy p { margin: 0; font-family: var(--text); font-size: 1.1rem; line-height: 1.5; }
+    .ambiguity-tag { align-self: flex-start; padding: 8px 10px; background: var(--ink); color: white; font-size: .65rem; text-transform: uppercase; }
 
-    .article-preview[hidden] {
-      display: none;
-    }
-
-    .article-surface {
-      min-height: 500px;
-      padding: clamp(22px, 5vw, 46px);
-      color: #171916;
-      font-family: var(--sample-font), ui-sans-serif, system-ui, sans-serif;
-    }
-
-    .article {
-      max-width: 68ch;
-      margin: 0 auto;
-    }
-
-    .article-kicker,
-    .article-meta {
-      color: var(--muted);
-      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .article-title {
-      max-width: 14ch;
-      margin: 10px 0 10px;
-      font-family: var(--sample-font), ui-sans-serif, system-ui, sans-serif;
-      font-size: clamp(2.1rem, 6vw, 4.3rem);
-      font-style: normal;
-      font-weight: 700;
-      letter-spacing: 0;
-      line-height: 0.98;
-    }
-
-    .article-meta {
-      margin-bottom: clamp(22px, 4vw, 34px);
-      text-transform: none;
-    }
-
-    .article-copy {
+    .family-matrix { display: grid; border-top: 2px solid var(--ink); }
+    .family-row {
       display: grid;
-      gap: 1.05em;
-      font-size: var(--sample-size);
-      font-style: var(--sample-style);
-      line-height: var(--sample-leading);
+      grid-template-columns: 56px minmax(220px, .8fr) minmax(300px, 1.3fr) 130px;
+      align-items: center;
+      gap: 20px;
+      min-height: 126px;
+      padding: 20px 0;
+      border-bottom: 2px solid var(--ink);
     }
+    .family-row:last-child { border-bottom: 0; }
+    .family-row:hover { background: var(--paper-2); }
+    .family-id { color: var(--muted); font-size: .72rem; }
+    .family-name { font-size: clamp(1.5rem, 2.4vw, 2.6rem); font-weight: 700; letter-spacing: -.05em; }
+    .family-sample { overflow: hidden; font-size: clamp(1rem, 1.45vw, 1.32rem); white-space: nowrap; }
+    .family-use { font-size: .68rem; font-weight: 700; text-align: right; text-transform: uppercase; }
 
-    .article-copy p,
-    .article-copy blockquote {
-      margin: 0;
-    }
-
-    .article-copy em {
-      font-style: italic;
-    }
-
-    .article-copy blockquote {
-      margin: 0.25em 0;
-      padding-left: 1em;
-      border-left: 3px solid color-mix(in srgb, var(--accent), transparent 35%);
-      color: #29302c;
-      font-weight: 450;
-    }
-
-    .kw { color: #85d6c9; }
-    .fn { color: #e3cf8b; }
-    .str { color: #b8dc8e; }
-    .num { color: #e0a06f; }
-    .com { color: var(--code-dim); font-style: italic; }
-    .op { color: var(--code-hot); }
-
-    .samples {
+    .install-section { background: var(--magenta); }
+    .install-card { display: grid; grid-template-columns: .7fr 1.3fr; border: 2px solid var(--ink); background: var(--paper-2); }
+    .install-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding: clamp(30px, 5vw, 70px); border-right: 2px solid var(--ink); }
+    .install-copy h2 { font-size: clamp(3.4rem, 6vw, 6.8rem); }
+    .install-copy p { margin: 0; font-family: var(--text); font-size: 1.1rem; line-height: 1.45; }
+    .install-panel { display: flex; flex-direction: column; justify-content: center; gap: 18px; min-width: 0; padding: clamp(30px, 5vw, 70px); background: var(--ink); color: white; }
+    .install-command {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      border: 1px solid #5e5b55;
+      background: #181818;
     }
-
-    .texture {
-      min-width: 0;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-    }
-
-    .texture h2 {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0;
-    }
-
-    .texture p {
-      margin: 0;
-      overflow-wrap: anywhere;
-      font-family: var(--sample-font), ui-monospace, monospace;
-      font-size: 1.05rem;
-      line-height: 1.45;
-    }
+    .install-command code { overflow-x: auto; padding: 22px; color: var(--acid); font-size: clamp(.72rem, 1.1vw, 1rem); white-space: nowrap; }
+    .copy-button { align-self: stretch; min-width: 90px; border: 0; border-left: 1px solid #5e5b55; background: var(--cyan); color: var(--ink); cursor: pointer; font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+    .install-note { margin: 0; color: #8f8c85; font-size: .7rem; }
 
     footer {
-      padding-top: 28px;
-      color: var(--muted);
-      font-size: 0.9rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: end;
+      padding: clamp(50px, 8vw, 110px) clamp(22px, 5vw, 76px) 34px;
+      background: var(--ink);
+      color: var(--paper-2);
     }
+    .footer-title { margin: 0; font-size: clamp(3rem, 9vw, 9rem); font-weight: 700; letter-spacing: -.09em; line-height: .72; text-transform: uppercase; }
+    .footer-meta { display: grid; gap: 12px; justify-items: end; color: #9b978e; font-size: .7rem; text-align: right; text-transform: uppercase; }
+    .footer-meta a:hover { color: var(--cyan); }
 
-    @media (max-width: 840px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      header,
-      main {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .controls {
-        position: static;
-      }
-
-      .samples {
-        grid-template-columns: 1fr;
-      }
-
-      .metrics {
-        flex-wrap: wrap;
-      }
+    @media (max-width: 980px) {
+      .hero-grid, .install-card { grid-template-columns: 1fr; }
+      .hero-terminal, .install-copy { border-left: 0; border-top: 2px solid var(--ink); }
+      .hero-terminal { min-height: 650px; }
+      .install-copy { border-right: 0; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card { min-height: 0; border-right: 0; border-bottom: 2px solid var(--ink); }
+      .feature-card:last-child { border-bottom: 0; }
+      .feature-glyph { margin: 38px 0; }
+      .lab-controls { grid-template-columns: 1fr 1fr; }
+      .control:nth-child(2) { border-right: 0; }
+      .control:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.35); }
+      .ambiguity-grid { grid-template-columns: 1fr; }
+      .ambiguity-glyphs { border-right: 0; border-bottom: 2px solid var(--ink); }
+      .family-row { grid-template-columns: 42px minmax(190px, 1fr) 110px; }
+      .family-sample { grid-column: 2 / 4; grid-row: 2; padding-bottom: 16px; }
+    }
+    @media (max-width: 700px) {
+      .nav-links a:not(.nav-github) { display: none; }
+      .hero-grid { min-height: auto; }
+      .hero-copy { min-height: 650px; }
+      h1 { font-size: clamp(4.1rem, 23vw, 7rem); }
+      .hero-kicker { top: 200px; }
+      .section-head { grid-template-columns: 1fr; }
+      .section-intro { max-width: 38rem; }
+      .lab-controls { grid-template-columns: 1fr; }
+      .control { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+      .control:nth-child(2) { border-right: 0; }
+      .lab-editor-wrap { grid-template-columns: 40px 1fr; }
+      .line-numbers, .lab-editor { padding-top: 28px; }
+      .ambiguity-glyphs { font-size: clamp(3rem, 19vw, 7rem); }
+      .family-row { grid-template-columns: 34px 1fr; gap: 12px; }
+      .family-use { grid-column: 2; text-align: left; }
+      .family-sample { grid-column: 2; grid-row: auto; }
+      .install-command { grid-template-columns: 1fr; }
+      .copy-button { min-height: 46px; border-top: 1px solid #5e5b55; border-left: 0; }
+      footer { grid-template-columns: 1fr; }
+      .footer-meta { justify-items: start; text-align: left; }
+    }
+    @media (max-width: 500px) {
+      .topbar { gap: 10px; }
+      .nav-links { display: none; }
+      .hero-copy { width: 100%; }
+      .hero-description { overflow-wrap: anywhere; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+      .hero-kicker { right: -24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .marquee-track { animation: none; }
+      .button { transition: none; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header>
-      <div class="brand">
-        <h1>Berka Mono</h1>
-        <p class="lede">A family of Iosevka-based coding fonts tuned for calm rectangular texture, terminal density, and readable ligatures.</p>
-      </div>
-      <a class="install" href="https://github.com/vinitkumar/berka-mono-closer#install">Install</a>
-    </header>
+  <nav class="topbar" aria-label="Primary navigation">
+    <a class="wordmark" href="#top"><span class="wordmark-mark">B</span><span>Berka Mono / 1.0</span></a>
+    <div class="nav-links">
+      <a href="#lab">Playground</a>
+      <a href="#families">Families</a>
+      <a href="#install">Install</a>
+      <a class="nav-github" href="https://github.com/vinitkumar/berka-mono-closer">GitHub ↗</a>
+    </div>
+  </nav>
 
-    <main>
-      <aside class="controls" aria-label="Preview controls">
-        <fieldset>
-          <legend>Family</legend>
-          <div class="font-list" id="fontList"></div>
-        </fieldset>
-
-        <div>
-          <label for="size">Size <span id="sizeValue">18</span>px</label>
-          <input id="size" type="range" min="13" max="28" value="18">
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div>
+            <p class="eyebrow">Open type system for developers</p>
+            <h1 id="hero-title">Berka Mono</h1>
+            <div class="hero-kicker" aria-hidden="true"></div>
+          </div>
+          <div class="hero-bottom">
+            <p class="hero-description">Calibrated for code. Four Iosevka-based cuts shaped for terminal density, fast debugging, clean ligatures, and longer reading.</p>
+            <div class="hero-actions">
+              <a class="button" href="#install">Install Instrument <span>↓</span></a>
+              <a class="button alt" href="#lab">Try the typeface <span>↘</span></a>
+            </div>
+          </div>
         </div>
+        <div class="hero-terminal" aria-label="Berka Mono Instrument code specimen">
+          <div class="terminal-head">
+            <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>instrument-panel.ts</span>
+          </div>
+          <pre class="hero-code"><code><span class="c-pink">type</span> Signal = {
+  source: <span class="c-cyan">"sensor"</span> | <span class="c-cyan">"manual"</span>;
+  value: number;
+  stable: boolean;
+};
 
-        <div>
-          <label for="leading">Line height <span id="leadingValue">1.45</span></label>
-          <input id="leading" type="range" min="1.1" max="1.8" value="1.45" step="0.05">
-        </div>
+<span class="c-pink">export function</span> <span class="c-acid">calibrate</span>(signal: Signal) {
+  <span class="c-pink">const</span> row_0 = signal.value >= <span class="c-orange">120</span>;
+  <span class="c-pink">const</span> ready = row_0 !== <span class="c-orange">false</span>
+    &amp;&amp; signal.source != <span class="c-orange">null</span>;
 
-        <div>
-          <label for="style">Style</label>
-          <select id="style">
-            <option value="normal">Regular</option>
-            <option value="italic">Italic</option>
-          </select>
-        </div>
-
-        <div id="sampleControl">
-          <label for="source">Sample</label>
-          <textarea id="source" spellcheck="false">type FontFamily =
-  | "Berka Mono Closer"
-  | "Berka Mono Focus"
-  | "Berka Mono Instrument"
-  | "Berka Text";
-
-export function pickFont(input: string) {
-  const row_0 = input.trim().length >= 120;
-  return row_0 ? "Instrument" : "Focus";
+  <span class="c-pink">return</span> ready ? <span class="c-cyan">"ARM => RUN"</span>
+               : <span class="c-cyan">"WAIT -> RETRY"</span>;
 }
 
-// ambiguity: 0O 1Il rn m snake_case
-// ligatures: != !== <= >= => -> === ~~ <!--</textarea>
-        </div>
-      </aside>
-
-      <section>
-        <div class="preview" id="codePreview">
-          <div class="preview-head">
-            <span id="activeName">Berka Mono Closer</span>
-            <span class="metrics">
-              <span id="widthName">Wide</span>
-              <span id="ligatureName">Ligatures on</span>
-            </span>
-          </div>
-          <pre aria-label="Code preview"><code id="previewCode"></code></pre>
-        </div>
-
-        <div class="article-preview" id="articlePreview" hidden>
-          <div class="preview-head">
-            <span id="articleActiveName">Berka Text</span>
-            <span class="metrics">
-              <span>Article view</span>
-              <span>Ligatures off</span>
-            </span>
-          </div>
-          <div class="article-surface">
-            <article class="article" aria-label="Article preview">
-              <div class="article-kicker">Field Note</div>
-              <h2 class="article-title">A quieter page for longer thoughts</h2>
-              <div class="article-meta">June 24, 2026 · 5 minute read</div>
-              <div class="article-copy">
-                <p>The blog page is a quiet machine for thought. It should hold long sentences without turning them into code, let emphasis feel natural, and keep numbers, initials, and punctuation clear at reading speed.</p>
-                <p>Berka Text keeps the rectangular Berka voice, but the rhythm loosens: narrow letters get their own space, wide letters stop forcing every line into the same grid, and paragraphs feel written instead of assembled.</p>
-                <blockquote>Good prose type does not disappear by becoming bland. It disappears by making the sentence easier to trust.</blockquote>
-                <p>The result should still feel related to Berka Mono Focus in code blocks, but the body copy now has its own texture, pace, and editorial voice.</p>
-              </div>
-            </article>
+<span class="c-dim">// 0O 1Il 7  rn m  snake_case</span>
+<span class="c-dim">// != !== &lt;= &gt;= =&gt; -&gt; === ~~</span></code></pre>
+          <div class="terminal-foot">
+            <span><i class="live-light"></i>Ligatures active</span>
+            <span>420 / 590 / 1165</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="samples" aria-label="Glyph texture samples">
-          <section class="texture">
-            <h2>Letters</h2>
-            <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz</p>
-          </section>
-          <section class="texture">
-            <h2>Numbers</h2>
-            <p>0123456789<br>0O 1Il 5S 8B 2Z</p>
-          </section>
-          <section class="texture">
-            <h2>Operators</h2>
-            <p>== != === !== &lt;= &gt;=<br>=&gt; -&gt; &lt;- :: |&gt; &amp;&amp;</p>
-          </section>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Instrument ✦ Focus ✦ Closer ✦ Text ✦ OFL 1.1 ✦ 124 audited sequences ✦ Bent 7 ✦ Dotted zero ✦</span>
+        <span>Instrument ✦ Focus ✦ Closer ✦ Text ✦ OFL 1.1 ✦ 124 audited sequences ✦ Bent 7 ✦ Dotted zero ✦</span>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="engineered-title">
+      <div class="section-inner">
+        <header class="section-head">
+          <div>
+            <p class="section-index">01 / The system</p>
+            <h2 id="engineered-title">Built for the read path</h2>
+          </div>
+          <p class="section-intro">Every decision earns its pixels: recognizable numerals, rectangular rhythm, and operators that read as ideas without hiding the source beneath them.</p>
+        </header>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-number">A / 01</span>
+            <div class="feature-glyph">0O·</div>
+            <h3>Explicit ambiguity</h3>
+            <p>A long dotted zero, differentiated stems, and a bent crossbar seven keep logs and identifiers unambiguous.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number">B / 02</span>
+            <div class="feature-glyph">!=→</div>
+            <h3>Audited ligatures</h3>
+            <p>Instrument transforms 124 of 157 tested programming sequences while preserving a disciplined coding texture.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number">C / 03</span>
+            <div class="feature-glyph">{_}</div>
+            <h3>Dense, not cramped</h3>
+            <p>A 590-unit cell and high underscore tighten the scan without turning nested code into visual noise.</p>
+          </article>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer>
-      <span>Install with </span><code>curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh</code>
-    </footer>
-  </div>
+    <section class="section lab" id="lab" aria-labelledby="lab-title">
+      <div class="section-inner">
+        <header class="section-head">
+          <div>
+            <p class="section-index">02 / Type lab</p>
+            <h2 id="lab-title">Make it yours</h2>
+          </div>
+          <p class="section-intro">Switch families, tune weight and size, toggle ligatures, then write directly in the specimen.</p>
+        </header>
+        <div class="lab-shell">
+          <div class="lab-controls">
+            <div class="control">
+              <span class="control-label">Family</span>
+              <div class="family-tabs" id="familyTabs"></div>
+            </div>
+            <label class="control" for="weightSelect">
+              <span class="control-label">Weight</span>
+              <select id="weightSelect">
+                <option value="400">Regular 400</option>
+                <option value="450" selected>Book 450</option>
+                <option value="500">Medium 500</option>
+                <option value="600">Semibold 600</option>
+                <option value="700">Bold 700</option>
+              </select>
+            </label>
+            <label class="control" for="sizeRange">
+              <span class="control-label">Size / <span id="sizeOutput">22</span> px</span>
+              <input id="sizeRange" type="range" min="14" max="42" value="22">
+            </label>
+            <button class="ligature-toggle" id="ligatureToggle" type="button" aria-pressed="true">Ligatures on</button>
+          </div>
+          <div class="lab-editor-wrap">
+            <div class="line-numbers" id="lineNumbers" aria-hidden="true"></div>
+            <textarea class="lab-editor" id="labEditor" aria-label="Editable font specimen" spellcheck="false">type FontFamily =
+  | "Berka Mono Instrument"
+  | "Berka Mono Focus"
+  | "Berka Mono Closer";
+
+export function inspect(input: string) {
+  const row_0 = input.trim().length &gt;= 120;
+  const ok = row_0 !== false &amp;&amp; input != null;
+  return ok ? "ARM =&gt; RUN" : "retry -&gt; &lt;=";
+}
+
+// 0O 1Il 7 rn m nn snake_case kebab-case
+// != !== == === &lt;= &gt;= =&gt; -&gt; &lt;- :: |&gt; &amp;&amp;</textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ambiguity" aria-labelledby="ambiguity-title">
+      <div class="section-inner">
+        <header class="section-head">
+          <div>
+            <p class="section-index">03 / Recognition</p>
+            <h2 id="ambiguity-title">No second guesses</h2>
+          </div>
+          <p class="section-intro">Look once. Know the glyph. The Instrument cut exaggerates the differences that matter when you are reading code under pressure.</p>
+        </header>
+        <div class="ambiguity-grid">
+          <div class="ambiguity-glyphs" aria-label="Ambiguous glyph comparison">0O1Il7</div>
+          <div class="ambiguity-copy">
+            <span class="ambiguity-tag">debug set / 006</span>
+            <h3>Distinct by construction</h3>
+            <p>Dotted zero. Short-serifed capital I. Baseless one. Serifed lowercase l. Crossbar seven. Each remains itself at terminal size.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="families" aria-labelledby="families-title">
+      <div class="section-inner">
+        <header class="section-head">
+          <div>
+            <p class="section-index">04 / Family</p>
+            <h2 id="families-title">Four cuts, one voice</h2>
+          </div>
+          <p class="section-intro">Use Instrument for everyday code, Focus when debugging, Closer for a calmer wider rhythm, and Text when the paragraph matters more than the grid.</p>
+        </header>
+        <div class="family-matrix">
+          <div class="family-row" style="font-family:'Berka Mono Instrument'">
+            <span class="family-id">01</span><span class="family-name">Instrument</span><span class="family-sample">signal_07 != null => calibrate()</span><span class="family-use">Everyday code</span>
+          </div>
+          <div class="family-row" style="font-family:'Berka Mono Focus'">
+            <span class="family-id">02</span><span class="family-name">Focus</span><span class="family-sample">debug_07 !== false -> inspect()</span><span class="family-use">Debugging</span>
+          </div>
+          <div class="family-row" style="font-family:'Berka Mono Closer'">
+            <span class="family-id">03</span><span class="family-name">Closer</span><span class="family-sample">compose_07(value) >= threshold</span><span class="family-use">Wide rhythm</span>
+          </div>
+          <div class="family-row" style="font-family:'Berka Text'">
+            <span class="family-id">04</span><span class="family-name">Text</span><span class="family-sample">A quieter page for longer thoughts.</span><span class="family-use">Prose</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section install-section" id="install" aria-labelledby="install-title">
+      <div class="section-inner">
+        <div class="install-card">
+          <div class="install-copy">
+            <div>
+              <p class="section-index">05 / Get Berka</p>
+              <h2 id="install-title">Ready to run</h2>
+            </div>
+            <p>Free and open under the SIL Open Font License. Install Instrument in one command, or choose another family interactively.</p>
+          </div>
+          <div class="install-panel">
+            <div class="install-command">
+              <code id="installCommand">curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- instrument</code>
+              <button class="copy-button" id="copyButton" type="button">Copy</button>
+            </div>
+            <p class="install-note">macOS / Linux / Windows · Per-user installation · No editor configuration is modified.</p>
+            <a class="button alt" href="https://github.com/vinitkumar/berka-mono-closer/releases/latest">Download release <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-title">Berka<br>Mono</p>
+    <div class="footer-meta">
+      <span>Built from Iosevka · OFL 1.1</span>
+      <a href="https://github.com/vinitkumar/berka-mono-closer">Source on GitHub ↗</a>
+      <span>Not affiliated with Berkeley Mono</span>
+    </div>
+  </footer>
 
   <script>
-    const fonts = [
-      { key: "instrument", name: "Berka Mono Instrument", width: "Instrument" },
-      { key: "closer", name: "Berka Mono Closer", width: "Wide" },
-      { key: "focus", name: "Berka Mono Focus", width: "Focus" },
-      { key: "text", name: "Berka Text", width: "Prose" }
+    const families = [
+      { key: "instrument", label: "Instrument", name: "Berka Mono Instrument" },
+      { key: "focus", label: "Focus", name: "Berka Mono Focus" },
+      { key: "closer", label: "Closer", name: "Berka Mono Closer" },
+      { key: "text", label: "Text", name: "Berka Text" }
     ];
-    const requestedFamily = new URLSearchParams(location.search).get("family");
-    const initialFont = fonts.find(font => font.key === requestedFamily) || fonts[0];
-
-    const state = {
-      font: initialFont,
-      size: 18,
-      leading: 1.45,
-      style: "normal"
-    };
-
+    const state = { family: families[0], ligatures: true };
     const root = document.documentElement;
-    const fontList = document.querySelector("#fontList");
-    const codePreview = document.querySelector("#codePreview");
-    const articlePreview = document.querySelector("#articlePreview");
-    const preview = document.querySelector("#previewCode");
-    const source = document.querySelector("#source");
-    const sampleControl = document.querySelector("#sampleControl");
-    const activeName = document.querySelector("#activeName");
-    const articleActiveName = document.querySelector("#articleActiveName");
-    const widthName = document.querySelector("#widthName");
-    const ligatureName = document.querySelector("#ligatureName");
-    const size = document.querySelector("#size");
-    const leading = document.querySelector("#leading");
-    const style = document.querySelector("#style");
-    const sizeValue = document.querySelector("#sizeValue");
-    const leadingValue = document.querySelector("#leadingValue");
+    const familyTabs = document.querySelector("#familyTabs");
+    const labEditor = document.querySelector("#labEditor");
+    const lineNumbers = document.querySelector("#lineNumbers");
+    const weightSelect = document.querySelector("#weightSelect");
+    const sizeRange = document.querySelector("#sizeRange");
+    const sizeOutput = document.querySelector("#sizeOutput");
+    const ligatureToggle = document.querySelector("#ligatureToggle");
+    const copyButton = document.querySelector("#copyButton");
+    const installCommand = document.querySelector("#installCommand");
 
-    function escapeHtml(value) {
-      return value
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
-    }
-
-    function wrapToken(token) {
-      const escaped = escapeHtml(token);
-      if (/^\/\/.*/.test(token)) return `<span class="com">${escaped}</span>`;
-      if (/^"[^"]*"$/.test(token)) return `<span class="str">${escaped}</span>`;
-      if (/^(type|export|function|const|return|true|false)$/.test(token)) return `<span class="kw">${escaped}</span>`;
-      if (/^\d+$/.test(token)) return `<span class="num">${escaped}</span>`;
-      if (/^(<=|>=|=>|->|!==|!=|===|==|~~|\|>|&&)$/.test(token)) return `<span class="op">${escaped}</span>`;
-      return escaped;
-    }
-
-    function highlightLine(line) {
-      const tokenPattern = /(\/\/.*|"[^"]*"|<=|>=|=>|->|!==|!=|===|==|~~|\|>|&&|\b(?:type|export|function|const|return|true|false)\b|\b\d+\b)/g;
-      let html = "";
-      let offset = 0;
-      for (const match of line.matchAll(tokenPattern)) {
-        html += escapeHtml(line.slice(offset, match.index));
-        html += wrapToken(match[0]);
-        offset = match.index + match[0].length;
-      }
-      html += escapeHtml(line.slice(offset));
-      return html.replace(/\b([A-Za-z_][A-Za-z0-9_]*)(?=\()/g, '<span class="fn">$1</span>');
-    }
-
-    function highlight(value) {
-      return value.split("\n").map(highlightLine).join("\n");
-    }
-
-    function renderButtons() {
-      fontList.innerHTML = "";
-      for (const font of fonts) {
+    function renderTabs() {
+      familyTabs.replaceChildren(...families.map((family) => {
         const button = document.createElement("button");
         button.type = "button";
-        button.className = "font-option";
-        button.setAttribute("aria-pressed", String(font.key === state.font.key));
-        button.textContent = font.name.replace("Berka Mono ", "");
+        button.className = "family-tab";
+        button.textContent = family.label;
+        button.setAttribute("aria-pressed", String(family.key === state.family.key));
         button.addEventListener("click", () => {
-          state.font = font;
-          render();
+          state.family = family;
+          root.style.setProperty("--sample-font", `"${family.name}", ui-monospace, monospace`);
+          renderTabs();
         });
-        fontList.appendChild(button);
+        return button;
+      }));
+    }
+
+    function updateLines() {
+      const count = labEditor.value.split("\n").length;
+      lineNumbers.innerHTML = Array.from({ length: count }, (_, index) => `<div>${index + 1}</div>`).join("");
+    }
+
+    weightSelect.addEventListener("change", () => root.style.setProperty("--sample-weight", weightSelect.value));
+    sizeRange.addEventListener("input", () => {
+      sizeOutput.textContent = sizeRange.value;
+      root.style.setProperty("--sample-size", `${sizeRange.value}px`);
+    });
+    ligatureToggle.addEventListener("click", () => {
+      state.ligatures = !state.ligatures;
+      ligatureToggle.setAttribute("aria-pressed", String(state.ligatures));
+      ligatureToggle.textContent = `Ligatures ${state.ligatures ? "on" : "off"}`;
+      root.style.setProperty("--sample-ligatures", state.ligatures ? "contextual common-ligatures" : "none");
+    });
+    labEditor.addEventListener("input", updateLines);
+    labEditor.addEventListener("scroll", () => { lineNumbers.scrollTop = labEditor.scrollTop; });
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(installCommand.textContent);
+        copyButton.textContent = "Copied";
+        window.setTimeout(() => { copyButton.textContent = "Copy"; }, 1600);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(installCommand);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        copyButton.textContent = "Selected";
       }
-    }
-
-    function render() {
-      const isText = state.font.key === "text";
-      root.style.setProperty("--sample-font", `"${state.font.name}"`);
-      root.style.setProperty("--sample-size", `${state.size}px`);
-      root.style.setProperty("--sample-leading", state.leading);
-      root.style.setProperty("--sample-style", state.style);
-      activeName.textContent = state.font.name;
-      articleActiveName.textContent = state.font.name;
-      widthName.textContent = state.font.width;
-      ligatureName.textContent = isText ? "Ligatures off" : "Ligatures on";
-      sizeValue.textContent = state.size;
-      leadingValue.textContent = state.leading.toFixed(2);
-      codePreview.hidden = isText;
-      articlePreview.hidden = !isText;
-      sampleControl.hidden = isText;
-      preview.innerHTML = highlight(source.value);
-      renderButtons();
-    }
-
-    size.addEventListener("input", () => {
-      state.size = Number(size.value);
-      render();
     });
-    leading.addEventListener("input", () => {
-      state.leading = Number(leading.value);
-      render();
-    });
-    style.addEventListener("change", () => {
-      state.style = style.value;
-      render();
-    });
-    source.addEventListener("input", render);
 
-    render();
+    renderTabs();
+    updateLines();
   </script>
 </body>
 </html>

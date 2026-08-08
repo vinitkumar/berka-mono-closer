@@ -3,279 +3,174 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Berka Editor Close-Up</title>
+  <title>Berka Font Specimen</title>
   <style>
-    @font-face {
-      font-family: "Berka Mono Closer";
-      src: url("../fonts/woff2/BerkaMonoCloser-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer";
-      src: url("../fonts/woff2/BerkaMonoCloser-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Focus";
-      src: url("../fonts/woff2-focus/BerkaMonoFocus-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Focus";
-      src: url("../fonts/woff2-focus/BerkaMonoFocus-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Instrument";
-      src: url("../fonts/woff2-instrument/BerkaMonoInstrument-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Instrument";
-      src: url("../fonts/woff2-instrument/BerkaMonoInstrument-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Text";
-      src: url("../fonts/woff2-text/BerkaText-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Text";
-      src: url("../fonts/woff2-text/BerkaText-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
+    @font-face { font-family: "Berka Mono Closer"; src: url("../fonts/woff2/BerkaMonoCloser-Regular.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Berka Mono Closer"; src: url("../fonts/woff2/BerkaMonoCloser-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Berka Mono Focus"; src: url("../fonts/woff2-focus/BerkaMonoFocus-Regular.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Berka Mono Focus"; src: url("../fonts/woff2-focus/BerkaMonoFocus-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Berka Mono Instrument"; src: url("../fonts/woff2-instrument/BerkaMonoInstrument-Regular.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Berka Mono Instrument"; src: url("../fonts/woff2-instrument/BerkaMonoInstrument-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Berka Text"; src: url("../fonts/woff2-text/BerkaText-Regular.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Berka Text"; src: url("../fonts/woff2-text/BerkaText-Bold.woff2") format("woff2"); font-weight: 700; }
 
     :root {
-      color-scheme: dark;
-      --editor-font: "Berka Mono Focus";
-      --font-size: 31px;
-      --line-height: 1.48;
-      --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --bg: #0f1419;
-      --chrome: #151b23;
-      --line: #293340;
-      --text: #dbe3ec;
-      --muted: #788492;
-      --blue: #82aaff;
-      --green: #c3e88d;
-      --yellow: #ffcb6b;
-      --orange: #f78c6c;
-      --cyan: #89ddff;
-      --purple: #c792ea;
-      --comment: #727ca8;
-      font-family: var(--ui);
-      background: #05080c;
-      color: var(--text);
+      --font: "Berka Mono Instrument";
+      --paper: #f3efdf;
+      --ink: #111111;
+      --pink: #ff3aa7;
+      --cyan: #20e4ff;
+      --acid: #d9ff3f;
+      --orange: #ff7a49;
+      font-family: var(--font), ui-monospace, monospace;
+      background: var(--ink);
+      color: var(--paper);
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      width: 1440px;
-      height: 900px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 15% 4%, rgba(20, 108, 92, 0.24), transparent 34%),
-        linear-gradient(135deg, #0b1016, #05080c 72%);
-    }
-
-    .stage {
-      width: 1440px;
-      height: 900px;
-      padding: 52px 60px;
-    }
-
-    .editor {
-      display: grid;
-      grid-template-rows: 54px 1fr;
-      width: 1320px;
-      height: 796px;
-      overflow: hidden;
-      border: 1px solid #2a3441;
-      border-radius: 8px;
-      background: var(--bg);
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.46);
-    }
-
-    .bar {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-      background: var(--chrome);
-    }
-
-    .tab {
-      align-self: stretch;
-      display: flex;
-      align-items: center;
-      width: 360px;
-      padding: 0 22px;
-      border-right: 1px solid var(--line);
-      background: var(--bg);
-      color: #d6dee8;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .family {
-      padding-right: 22px;
-      color: #9aa6b5;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: 76px 1fr;
-      min-height: 0;
-      overflow: hidden;
-    }
-
-    .gutter,
-    .code {
-      padding-top: 38px;
-      font-family: var(--editor-font), ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: var(--font-size);
-      line-height: var(--line-height);
-      font-variant-ligatures: contextual common-ligatures;
-      tab-size: 2;
-    }
-
-    .gutter {
-      border-right: 1px solid rgba(38, 49, 61, 0.74);
-      color: #536170;
-      text-align: right;
-      user-select: none;
-    }
-
-    .gutter div {
-      padding-right: 18px;
-    }
-
-    .code {
-      overflow: hidden;
-      padding-left: 30px;
-      color: var(--text);
-      white-space: pre;
-    }
-
-    .kw { color: var(--purple); }
-    .type { color: var(--yellow); }
-    .fn { color: var(--blue); }
-    .str { color: var(--green); }
-    .num { color: var(--orange); }
-    .op { color: var(--cyan); }
-    .com { color: var(--comment); font-style: italic; }
-    .prop { color: #f07178; }
+    * { box-sizing: border-box; }
+    body { margin: 0; width: 1440px; height: 900px; overflow: hidden; background: var(--ink); }
+    .frame { display: grid; grid-template-rows: 62px 1fr 54px; width: 100%; height: 100%; border: 14px solid var(--ink); }
+    .topbar, .status { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 0 24px; background: var(--paper); color: var(--ink); font-size: 15px; font-weight: 700; text-transform: uppercase; }
+    .brand { display: flex; align-items: center; gap: 13px; }
+    .mark { display: grid; width: 30px; height: 30px; place-items: center; background: var(--acid); }
+    .dots { display: flex; gap: 7px; }
+    .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--pink); }
+    .dots i:nth-child(2) { background: var(--acid); }
+    .dots i:nth-child(3) { background: var(--cyan); }
+    .stage { display: grid; grid-template-columns: 330px 1fr; min-height: 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+    .rail { position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 38px 32px 34px; overflow: hidden; background: var(--pink); color: var(--ink); }
+    .rail::after { content: "07"; position: absolute; right: -16px; bottom: 50px; color: rgba(17,17,17,.11); font-size: 230px; font-weight: 700; letter-spacing: -.13em; line-height: .7; }
+    .rail-index { font-size: 14px; font-weight: 700; }
+    .rail h1 { position: relative; z-index: 1; max-width: 4ch; margin: 0; font-size: 74px; font-weight: 700; letter-spacing: -.08em; line-height: .78; text-transform: uppercase; white-space: pre-line; }
+    .rail-meta { position: relative; z-index: 1; display: grid; gap: 9px; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .editor { display: grid; grid-template-rows: 46px 1fr; min-width: 0; background: #0b0b0b; }
+    .editor-head { display: flex; align-items: center; justify-content: space-between; padding: 0 30px; border-bottom: 1px solid #373633; color: #85817a; font-size: 13px; text-transform: uppercase; }
+    .live { color: var(--acid); }
+    .content { display: grid; grid-template-columns: 70px 1fr; min-height: 0; overflow: hidden; }
+    .gutter, .code { margin: 0; padding-top: 31px; font-family: var(--font), ui-monospace, monospace; font-size: var(--font-size, 29px); font-weight: 400; font-variant-ligatures: contextual common-ligatures; line-height: var(--line-height, 1.46); }
+    .gutter { padding-right: 17px; border-right: 1px solid #292825; color: #4b4945; text-align: right; user-select: none; }
+    .code { overflow: hidden; padding-left: 30px; color: #f3efe5; white-space: pre; }
+    .pink { color: #ff70bd; }
+    .cyan { color: #6ceaff; }
+    .acid { color: #d9ff3f; }
+    .orange { color: #ff926e; }
+    .dim { color: #74716a; font-style: italic; }
+    .status { background: var(--cyan); font-size: 13px; }
+    .status strong { letter-spacing: .03em; }
   </style>
 </head>
 <body>
-  <div class="stage">
-    <section class="editor">
-      <div class="bar">
-        <div class="tab" id="tabName">debug-session.ts</div>
-        <div class="family" id="familyName">Berka Mono Focus</div>
-      </div>
-      <div class="content">
-        <div class="gutter" id="gutter"></div>
-        <pre class="code" id="code"></pre>
-      </div>
-    </section>
+  <div class="frame">
+    <header class="topbar">
+      <div class="brand"><span class="mark">B</span><span>Berka Mono / Current Build</span></div>
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    </header>
+    <main class="stage">
+      <aside class="rail">
+        <span class="rail-index" id="specimenIndex">01 / 04</span>
+        <h1 id="familyLabel">Instrument</h1>
+        <div class="rail-meta"><span id="familyUse">Everyday coding</span><span id="familyMetrics">590 cell / 420 weight</span></div>
+      </aside>
+      <section class="editor">
+        <div class="editor-head"><span id="fileName">instrument-panel.ts</span><span class="live">● Ligatures active</span></div>
+        <div class="content">
+          <div class="gutter" id="gutter"></div>
+          <pre class="code" id="code"></pre>
+        </div>
+      </section>
+    </main>
+    <footer class="status"><strong id="familyName">Berka Mono Instrument</strong><span>0O · 1Il · 7 · != !== <= >= => -></span></footer>
   </div>
 
   <script>
     const families = {
-      closer: {
-        name: "Berka Mono Closer",
-        label: "Closer",
-        ident: "closer",
-        file: "font-preview.ts",
-        size: "31px"
+      instrument: {
+        name: "Berka Mono Instrument", label: "Instru\nment", index: "01 / 04", use: "Everyday coding", metrics: "590 cell / 420 weight", file: "instrument-panel.ts", size: "29px",
+        code: [
+          '<span class="pink">type</span> <span class="acid">Signal</span> = {',
+          '  source: <span class="cyan">"sensor"</span> | <span class="cyan">"manual"</span>;',
+          '  value: number;',
+          '  stable: boolean;',
+          '};',
+          '',
+          '<span class="pink">export function</span> <span class="acid">calibrate</span>(signal: Signal) {',
+          '  <span class="pink">const</span> row_0 = signal.value <span class="cyan">&gt;=</span> <span class="orange">120</span>;',
+          '  <span class="pink">const</span> ready = row_0 <span class="cyan">!==</span> <span class="orange">false</span> <span class="cyan">&amp;&amp;</span> signal <span class="cyan">!=</span> null;',
+          '  <span class="pink">return</span> ready ? <span class="cyan">"ARM =&gt; RUN"</span> : <span class="cyan">"WAIT -&gt; RETRY"</span>;',
+          '}',
+          '',
+          '<span class="dim">// 0O 1Il 7 rn m nn snake_case kebab-case</span>',
+          '<span class="dim">// != !== == === &lt;= &gt;= =&gt; -&gt; &lt;- :: |&gt; &amp;&amp;</span>'
+        ]
       },
       focus: {
-        name: "Berka Mono Focus",
-        label: "Focus",
-        ident: "focus",
-        file: "debug-session.ts",
-        size: "31px"
+        name: "Berka Mono Focus", label: "Focus", index: "02 / 04", use: "Debugging", metrics: "592 cell / 425 weight", file: "debug-session.ts", size: "29px",
+        code: [
+          '<span class="pink">interface</span> <span class="acid">Frame</span> { id: string; state: <span class="cyan">"open"</span> | <span class="cyan">"closed"</span>; }',
+          '',
+          '<span class="pink">export const</span> <span class="acid">inspect</span> = (frames: Frame[]) =&gt; {',
+          '  <span class="pink">const</span> active = frames.filter(row =&gt; row.state <span class="cyan">!==</span> <span class="cyan">"closed"</span>);',
+          '  <span class="pink">const</span> row_0 = active[<span class="orange">0</span>] <span class="cyan">!=</span> null <span class="cyan">&amp;&amp;</span> active.length <span class="cyan">&gt;=</span> <span class="orange">1</span>;',
+          '',
+          '  <span class="pink">return</span> {',
+          '    ok: row_0 <span class="cyan">!==</span> <span class="orange">false</span>,',
+          '    path: row_0 ? <span class="cyan">"trace -&gt; root"</span> : <span class="cyan">"retry &lt;= scan"</span>',
+          '  };',
+          '};',
+          '',
+          '<span class="dim">// isolate: 0O 1Il 7 rn m / raw operators stay visible</span>'
+        ]
       },
-      instrument: {
-        name: "Berka Mono Instrument",
-        label: "Instrument",
-        ident: "instrument",
-        file: "instrument-panel.ts",
-        size: "31px"
+      closer: {
+        name: "Berka Mono Closer", label: "Closer", index: "03 / 04", use: "Calm wide rhythm", metrics: "620 cell / 400 weight", file: "compose-layout.ts", size: "28px",
+        code: [
+          '<span class="pink">type</span> <span class="acid">Column</span> = { width: number; gap: number; };',
+          '',
+          '<span class="pink">export function</span> <span class="acid">compose</span>(columns: Column[]) {',
+          '  <span class="pink">const</span> available = <span class="orange">1440</span> - columns.length * <span class="orange">24</span>;',
+          '  <span class="pink">const</span> ratio = available <span class="cyan">&gt;=</span> <span class="orange">960</span> ? <span class="orange">1</span> : <span class="orange">0.75</span>;',
+          '',
+          '  <span class="pink">return</span> columns.map((column, index) =&gt; ({',
+          '    id: <span class="cyan">`column_${index}`</span>,',
+          '    width: column.width * ratio,',
+          '    ready: column.width <span class="cyan">!==</span> <span class="orange">0</span> <span class="cyan">&amp;&amp;</span> ratio <span class="cyan">!=</span> null',
+          '  }));',
+          '}',
+          '',
+          '<span class="dim">// 0123456789 · 0O 1Il 7 · {} [] () @ # $ %</span>'
+        ]
       },
       text: {
-        name: "Berka Text",
-        label: "Text",
-        ident: "text",
-        file: "release-notes.md",
-        size: "30px",
-        lineHeight: "1.5",
+        name: "Berka Text", label: "Text", index: "04 / 04", use: "Long-form prose", metrics: "Quasi-proportional / 410", file: "field-note.md", size: "27px", lineHeight: "1.54",
         code: [
-          '<span class="kw">#</span> A quieter page for longer thoughts',
-          "",
-          'Berka Text keeps the rectangular Berka voice, but the rhythm loosens.',
-          'Narrow letters get their own space; wide letters stop forcing every',
+          '<span class="pink">#</span> <span class="acid">A quieter page for longer thoughts</span>',
+          '',
+          'Berka Text keeps the rectangular voice of the family, but lets the rhythm',
+          'loosen. Narrow letters get their own space; wide letters stop forcing every',
           'line into the same grid, and paragraphs feel written instead of assembled.',
-          "",
-          '<span class="kw">##</span> Texture check',
-          "",
-          'Numbers: <span class="str">0123456789</span>  Ambiguity: <span class="str">0O 1Il rn m</span>',
-          'Punctuation: <span class="str">{ } [ ] ( ) @ # $ % &amp; * / \\\\ | ~</span>',
-          "",
-          '<span class="com">&gt; Good prose type does not disappear by becoming bland.</span>'
+          '',
+          '<span class="pink">##</span> <span class="acid">Texture check</span>',
+          '',
+          'Numbers: <span class="cyan">0123456789</span>   Ambiguity: <span class="cyan">0O 1Il 7 rn m</span>',
+          'Punctuation: <span class="cyan">{ } [ ] ( ) @ # $ % &amp; * / \\ | ~</span>',
+          '',
+          '<span class="dim">&gt; Good prose type does not disappear by becoming bland.</span>'
         ]
       }
     };
 
-    const baseCode = [
-      '<span class="kw">type</span> <span class="type">FontFamily</span> <span class="op">=</span> <span class="str">"__FAMILY__"</span>;',
-      "",
-      '<span class="kw">export</span> <span class="kw">function</span> <span class="fn">inspect__IDENT__</span>(input: <span class="type">string</span>) {',
-      '  <span class="kw">const</span> row_0 <span class="op">=</span> input.<span class="fn">trim</span>().length <span class="op">&gt;=</span> <span class="num">120</span>;',
-      '  <span class="kw">const</span> ok <span class="op">=</span> row_0 <span class="op">!==</span> <span class="kw">false</span> <span class="op">&amp;&amp;</span> input <span class="op">!=</span> <span class="kw">null</span>;',
-      '  <span class="kw">return</span> ok ? <span class="str">"__LABEL__ =&gt; clear"</span> : <span class="str">"retry -&gt; &lt;="</span>;',
-      "}",
-      "",
-      '<span class="com">// 0O 1Il | rn m nn snake_case kebab-case</span>',
-      '<span class="com">// != !== == === &lt;= &gt;= =&gt; -&gt; &lt;- :: |&gt; &amp;&amp;</span>',
-      '<span class="kw">const</span> glyphs <span class="op">=</span> <span class="str">"{} [] () @ # $ % &amp; * / \\\\ | ~"</span>;',
-      '<span class="kw">export</span> <span class="kw">default</span> { <span class="prop">glyphs</span>, <span class="prop">inspect__IDENT__</span> };'
-    ];
-
-    const query = new URLSearchParams(location.search);
-    const key = query.get("family") || "focus";
-    const family = families[key] || families.focus;
-    const sourceCode = family.code || baseCode;
-    const code = sourceCode.map(line => line
-      .replaceAll("__FAMILY__", family.name)
-      .replaceAll("__LABEL__", family.label)
-      .replaceAll("__IDENT__", family.ident));
-
-    document.documentElement.style.setProperty("--editor-font", `"${family.name}"`);
+    const key = new URLSearchParams(location.search).get("family") || "instrument";
+    const family = families[key] || families.instrument;
+    document.documentElement.style.setProperty("--font", `"${family.name}"`);
     document.documentElement.style.setProperty("--font-size", family.size);
-    if (family.lineHeight) {
-      document.documentElement.style.setProperty("--line-height", family.lineHeight);
-    }
+    if (family.lineHeight) document.documentElement.style.setProperty("--line-height", family.lineHeight);
+    document.querySelector("#specimenIndex").textContent = family.index;
+    document.querySelector("#familyLabel").textContent = family.label;
+    document.querySelector("#familyUse").textContent = family.use;
+    document.querySelector("#familyMetrics").textContent = family.metrics;
+    document.querySelector("#fileName").textContent = family.file;
     document.querySelector("#familyName").textContent = family.name;
-    document.querySelector("#tabName").textContent = family.file;
-    document.querySelector("#code").innerHTML = code.join("\n");
-    document.querySelector("#gutter").innerHTML = code.map((_, index) => `<div>${index + 1}</div>`).join("");
+    document.querySelector("#code").innerHTML = family.code.join("\n");
+    document.querySelector("#gutter").innerHTML = family.code.map((_, index) => `<div>${String(index + 1).padStart(2, "0")}</div>`).join("");
   </script>
 </body>
 </html>

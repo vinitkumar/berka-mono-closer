@@ -246,34 +246,35 @@ Instrument build transforms 124 of 157 audited sequences through normal
 OpenType shaping. See [Instrument ligature audit](docs/instrument-ligature-audit.md)
 for the exact residual list.
 
-## VS Code Screenshots
+## Current Font Specimens
 
-Each family below is shown as a close-up editor crop, using the actual
-checked-in WOFF2 files.
+Each family below is rendered directly from the current checked-in WOFF2 build.
+The specimens include the latest numeral shapes, ambiguity set, punctuation,
+and programming ligatures.
 
 ### Berka Mono Instrument
 
 Recommended default for expanded ligatures and compact engineered texture.
 
-<img src="images/vscode-instrument.png" alt="Berka Mono Instrument in VS Code" width="960">
+<img src="images/vscode-instrument.png" alt="Current Berka Mono Instrument code specimen" width="960">
 
 ### Berka Mono Focus
 
 Debugging-first cut with restrained ligatures.
 
-<img src="images/vscode-focus.png" alt="Berka Mono Focus in VS Code" width="960">
+<img src="images/vscode-focus.png" alt="Current Berka Mono Focus debugging specimen" width="960">
 
 ### Berka Mono Closer
 
 The wider original cut.
 
-<img src="images/vscode-closer.png" alt="Berka Mono Closer in VS Code" width="960">
+<img src="images/vscode-closer.png" alt="Current Berka Mono Closer code specimen" width="960">
 
 ### Berka Text
 
 The prose cut, shown in a Markdown editing context.
 
-<img src="images/vscode-text.png" alt="Berka Text in VS Code" width="960">
+<img src="images/vscode-text.png" alt="Current Berka Text prose specimen" width="960">
 
 ## Build From Source
 
