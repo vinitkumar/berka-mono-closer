@@ -40,19 +40,14 @@ WezTerm, Windows Terminal, Neovim GUI, Neovide, Vim GUI, and CSS.
 | Choice | Family name | Best for |
 | --- | --- | --- |
 | `instrument` | `Berka Mono Instrument` | Recommended default. Instrument-panel coding feel, expanded audited ligatures, compact scan density, explicit ambiguity handling. |
-| `focus` | `Berka Mono Focus` | Debugging-first, clearer ambiguity cases, compact rhythm. |
-| `retina` | `Berka Mono Retina` | High-DPI screens where you want heavier optical strokes and full ligatures. |
-| `control` | `Berka Mono Control` | Terminal-first compact feel with full Iosevka `default-calt`. |
 | `closer` | `Berka Mono Closer` | Wider, calm original cut. |
-| `compact` | `Berka Mono Closer Compact` | Slightly denser original cut. |
-| `semi-condensed` | `Berka Mono Closer SemiCondensed` | More columns without going narrow. |
-| `narrow` | `Berka Mono Closer Narrow` | Maximum terminal/editor density. |
+| `focus` | `Berka Mono Focus` | Debugging-first, clearer ambiguity cases, compact rhythm. |
 | `text` | `Berka Text` | Blog prose and long-form reading, with quasi-proportional spacing. |
 
 Install a different family by changing the final argument:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- retina
+curl -fsSL https://raw.githubusercontent.com/vinitkumar/berka-mono-closer/main/scripts/install.sh | sh -s -- focus
 ```
 
 Try the fonts in the browser: <https://vinitkumar.github.io/berka-mono-closer/>
@@ -65,11 +60,6 @@ Install the TTF files from:
 
 ```text
 fonts/ttf/
-fonts/ttf-compact/
-fonts/ttf-semi-condensed/
-fonts/ttf-narrow/
-fonts/ttf-control/
-fonts/ttf-retina/
 fonts/ttf-focus/
 fonts/ttf-instrument/
 fonts/ttf-text/
@@ -79,11 +69,6 @@ Use the WOFF2 files for websites:
 
 ```text
 fonts/woff2/
-fonts/woff2-compact/
-fonts/woff2-semi-condensed/
-fonts/woff2-narrow/
-fonts/woff2-control/
-fonts/woff2-retina/
 fonts/woff2-focus/
 fonts/woff2-instrument/
 fonts/woff2-text/
@@ -99,11 +84,6 @@ Use one of these family names in editors and terminals:
 
 ```text
 Berka Mono Closer
-Berka Mono Closer Compact
-Berka Mono Closer SemiCondensed
-Berka Mono Closer Narrow
-Berka Mono Control
-Berka Mono Retina
 Berka Mono Focus
 Berka Mono Instrument
 Berka Text
@@ -216,50 +196,47 @@ width, weight, leading, italic construction, and ligature policy:
 | Family | Cell width | Weights | Leading | Italic | Ligature policy |
 | --- | ---: | --- | ---: | --- | --- |
 | `Berka Mono Closer` | 620 | 400, 500, 600, 700 | 1200 | italic | disables `arrow-wave`, `counter-arrow-wave`, `html-comment`, `trig` |
-| `Berka Mono Closer Compact` | 605 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
-| `Berka Mono Closer SemiCondensed` | 585 | 400, 500, 600, 700 | 1200 | italic | same disables as Closer |
-| `Berka Mono Closer Narrow` | 520 | 400, 500, 600, 700 | 1180 | italic | same disables as Closer |
-| `Berka Mono Control` | 595 | 400, 450, 500, 600, 700 | 1180 | oblique | full Iosevka `default-calt` |
-| `Berka Mono Retina` | 605 | 430, 470, 530, 630, 730 | 1180 | oblique | full Iosevka `default-calt` |
 | `Berka Mono Focus` | 592 | 425, 465, 525, 620, 710 | 1170 | oblique | debugging-first `default-calt` subset |
 | `Berka Mono Instrument` | 590 | 420, 460, 520, 615, 705 | 1165 | oblique | expanded audited `calt` |
 | `Berka Text` | 600 | 410, 455, 520, 610, 690 | 1260 | italic | no programming ligatures |
 
 All families include Regular, Italic, Medium, Medium Italic, SemiBold,
-SemiBold Italic, Bold, and Bold Italic. Control, Retina, Focus, Instrument,
-and Text also include Book and Book Italic.
+SemiBold Italic, Bold, and Bold Italic. Focus, Instrument, and Text also include
+Book and Book Italic.
+
+All four official families use a bent `7` with a short upright stem for clearer
+numerals in timestamps, counters, and tabular data.
 
 Instrument is the recommended everyday coding cut. It is a legally distinct
 Iosevka build tuned after studying the TX-02 datasheet as design research:
 instrument-panel density, expanded audited programming ligatures, high-DPI
-stroke weight, a dotted zero, a flat-top `1`, a high underscore for
+stroke weight, a long-dotted zero, a baseless `1`, a high underscore for
 `snake_case`, compact punctuation, and explicit ambiguous glyphs. It does not
 copy TX-02 outlines, metrics, font data, or protected names.
 
 Focus is the debugging-first cut. It keeps useful operator
 ligatures but disables decorative wave arrows, HTML comment ligatures, trig
 ligatures, and tilde chaining so raw source stays easy to inspect. It also uses
-a dotted zero, a flat-top `1`, a high underscore for `snake_case`, larger
+a long-dotted zero, a baseless `1`, a high underscore for `snake_case`, larger
 parentheses, and curly-flat braces for nested code.
 
 Text is the prose cut. It keeps the Berka rectangular voice, but switches to
-quasi-proportional spacing, taller leading, true italic emphasis, an unslashed
-zero, smoother punctuation, and no programming ligatures so paragraphs feel
+quasi-proportional spacing, taller leading, true italic emphasis, the shared
+long-dotted zero, smoother punctuation, and no programming ligatures so paragraphs feel
 like essays instead of source code.
 
 ## Ligatures
 
 Programming ligatures are enabled through Iosevka's `default-calt` set.
 
-Closer, Compact, SemiCondensed, and Narrow intentionally disable a few more decorative groups:
+Closer intentionally disables a few more decorative groups:
 
 - `arrow-wave`
 - `counter-arrow-wave`
 - `html-comment`
 - `trig`
 
-Control and Retina keep the full `default-calt` set for broader language and
-markup coverage. Instrument starts from `default-calt` and adds existing
+Instrument starts from `default-calt` and adds existing
 Iosevka groups for counter arrows, fast operator chains, slash equality,
 logic, bracket bars, and operator centering.
 
@@ -286,41 +263,11 @@ Debugging-first cut with restrained ligatures.
 
 <img src="images/vscode-focus.png" alt="Berka Mono Focus in VS Code" width="960">
 
-### Berka Mono Retina
-
-Heavier optical strokes for high-DPI screens.
-
-<img src="images/vscode-retina.png" alt="Berka Mono Retina in VS Code" width="960">
-
-### Berka Mono Control
-
-Compact terminal-first rhythm with full Iosevka `default-calt`.
-
-<img src="images/vscode-control.png" alt="Berka Mono Control in VS Code" width="960">
-
 ### Berka Mono Closer
 
 The wider original cut.
 
 <img src="images/vscode-closer.png" alt="Berka Mono Closer in VS Code" width="960">
-
-### Berka Mono Closer Compact
-
-Slightly denser than the original cut.
-
-<img src="images/vscode-compact.png" alt="Berka Mono Closer Compact in VS Code" width="960">
-
-### Berka Mono Closer SemiCondensed
-
-More columns without going fully narrow.
-
-<img src="images/vscode-semi-condensed.png" alt="Berka Mono Closer SemiCondensed in VS Code" width="960">
-
-### Berka Mono Closer Narrow
-
-Maximum density for terminals and narrow editor panes.
-
-<img src="images/vscode-narrow.png" alt="Berka Mono Closer Narrow in VS Code" width="960">
 
 ### Berka Text
 
@@ -352,16 +299,6 @@ cd Iosevka
 cp /path/to/berka-mono-closer/sources/private-build-plans.toml ./private-build-plans.toml
 npm install
 npm run build -- ttf::BerkaMonoCloser --jCmd=2
-cp /path/to/berka-mono-closer/sources/compact/private-build-plans.toml ./private-build-plans.toml
-npm run build -- ttf::BerkaMonoCloserCompact --jCmd=2
-cp /path/to/berka-mono-closer/sources/semi-condensed/private-build-plans.toml ./private-build-plans.toml
-npm run build -- ttf::BerkaMonoCloserSemiCondensed --jCmd=2
-cp /path/to/berka-mono-closer/sources/narrow/private-build-plans.toml ./private-build-plans.toml
-npm run build -- ttf::BerkaMonoCloserNarrow --jCmd=2
-cp /path/to/berka-mono-closer/sources/control/private-build-plans.toml ./private-build-plans.toml
-npm run build -- ttf::BerkaMonoControl --jCmd=2
-cp /path/to/berka-mono-closer/sources/retina/private-build-plans.toml ./private-build-plans.toml
-npm run build -- ttf::BerkaMonoRetina --jCmd=2
 cp /path/to/berka-mono-closer/sources/focus/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaMonoFocus --jCmd=2
 cp /path/to/berka-mono-closer/sources/instrument/private-build-plans.toml ./private-build-plans.toml
@@ -374,11 +311,6 @@ The generated files will be in:
 
 ```text
 dist/BerkaMonoCloser/TTF/
-dist/BerkaMonoCloserCompact/TTF/
-dist/BerkaMonoCloserSemiCondensed/TTF/
-dist/BerkaMonoCloserNarrow/TTF/
-dist/BerkaMonoControl/TTF/
-dist/BerkaMonoRetina/TTF/
 dist/BerkaMonoFocus/TTF/
 dist/BerkaMonoInstrument/TTF/
 dist/BerkaText/TTF/
@@ -390,7 +322,8 @@ You can also run:
 ./scripts/build.sh /path/to/Iosevka
 ```
 
-The script copies each family-specific build plan before building that family, including `sources/narrow/private-build-plans.toml` for `Berka Mono Closer Narrow`, `sources/retina/private-build-plans.toml` for `Berka Mono Retina`, `sources/focus/private-build-plans.toml` for `Berka Mono Focus`, `sources/instrument/private-build-plans.toml` for `Berka Mono Instrument`, and `sources/text/private-build-plans.toml` for `Berka Text`.
+The script builds only the four official families: Closer, Focus, Instrument,
+and Text.
 
 Generate WOFF2 files from the checked-in TTF files:
 
@@ -409,7 +342,6 @@ What makes this legal:
 - The name is changed to `Berka Mono Closer`, so it does not use Iosevka's reserved font name as the primary family name.
 - No commercial font software, outlines, metrics files, or binaries are included.
 - The design goal is a general visual direction: calm, wide, rectangular, readable coding text. It is not a clone of any proprietary font.
-- The Control variant is guided by public high-level design language from a datasheet, but it is generated only from Iosevka source and documented custom-build parameters.
 - The Focus variant is an original coding-readability tuning built from Iosevka parameters for ambiguity reduction, compact scan density, and restrained ligatures.
 - The Instrument variant is an original coding tuning informed by public TX-02 datasheet themes such as engineering texture, broad programming ligature coverage, and terminal density, but it is generated only from Iosevka source and documented custom-build parameters.
 - The Text variant is an original prose-readability tuning built from Iosevka parameters for quasi-proportional spacing, taller reading rhythm, and website body text.

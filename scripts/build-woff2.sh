@@ -22,22 +22,12 @@ build_family() {
 }
 
 build_family "$repo_dir/fonts/ttf" "$repo_dir/fonts/woff2"
-build_family "$repo_dir/fonts/ttf-compact" "$repo_dir/fonts/woff2-compact"
-build_family "$repo_dir/fonts/ttf-semi-condensed" "$repo_dir/fonts/woff2-semi-condensed"
-build_family "$repo_dir/fonts/ttf-narrow" "$repo_dir/fonts/woff2-narrow"
-build_family "$repo_dir/fonts/ttf-control" "$repo_dir/fonts/woff2-control"
-build_family "$repo_dir/fonts/ttf-retina" "$repo_dir/fonts/woff2-retina"
 build_family "$repo_dir/fonts/ttf-focus" "$repo_dir/fonts/woff2-focus"
 build_family "$repo_dir/fonts/ttf-instrument" "$repo_dir/fonts/woff2-instrument"
 build_family "$repo_dir/fonts/ttf-text" "$repo_dir/fonts/woff2-text"
 
 echo "Built WOFF2 fonts in:"
 echo "  $repo_dir/fonts/woff2"
-echo "  $repo_dir/fonts/woff2-compact"
-echo "  $repo_dir/fonts/woff2-semi-condensed"
-echo "  $repo_dir/fonts/woff2-narrow"
-echo "  $repo_dir/fonts/woff2-control"
-echo "  $repo_dir/fonts/woff2-retina"
 echo "  $repo_dir/fonts/woff2-focus"
 echo "  $repo_dir/fonts/woff2-instrument"
 echo "  $repo_dir/fonts/woff2-text"

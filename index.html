@@ -24,96 +24,6 @@
       font-style: italic;
     }
     @font-face {
-      font-family: "Berka Mono Closer Compact";
-      src: url("fonts/woff2-compact/BerkaMonoCloserCompact-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer Compact";
-      src: url("fonts/woff2-compact/BerkaMonoCloserCompact-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer Compact";
-      src: url("fonts/woff2-compact/BerkaMonoCloserCompact-Italic.woff2") format("woff2");
-      font-weight: 400;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer SemiCondensed";
-      src: url("fonts/woff2-semi-condensed/BerkaMonoCloserSemiCondensed-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer SemiCondensed";
-      src: url("fonts/woff2-semi-condensed/BerkaMonoCloserSemiCondensed-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer SemiCondensed";
-      src: url("fonts/woff2-semi-condensed/BerkaMonoCloserSemiCondensed-Italic.woff2") format("woff2");
-      font-weight: 400;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer Narrow";
-      src: url("fonts/woff2-narrow/BerkaMonoCloserNarrow-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer Narrow";
-      src: url("fonts/woff2-narrow/BerkaMonoCloserNarrow-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Closer Narrow";
-      src: url("fonts/woff2-narrow/BerkaMonoCloserNarrow-Italic.woff2") format("woff2");
-      font-weight: 400;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: "Berka Mono Control";
-      src: url("fonts/woff2-control/BerkaMonoControl-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Control";
-      src: url("fonts/woff2-control/BerkaMonoControl-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Control";
-      src: url("fonts/woff2-control/BerkaMonoControl-Italic.woff2") format("woff2");
-      font-weight: 400;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: "Berka Mono Retina";
-      src: url("fonts/woff2-retina/BerkaMonoRetina-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Retina";
-      src: url("fonts/woff2-retina/BerkaMonoRetina-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Berka Mono Retina";
-      src: url("fonts/woff2-retina/BerkaMonoRetina-Italic.woff2") format("woff2");
-      font-weight: 400;
-      font-style: italic;
-    }
-    @font-face {
       font-family: "Berka Mono Focus";
       src: url("fonts/woff2-focus/BerkaMonoFocus-Regular.woff2") format("woff2");
       font-weight: 400;
@@ -225,7 +135,7 @@
 
     h1 {
       margin: 0;
-      font: 700 4rem/0.98 "Berka Mono Retina", ui-monospace, monospace;
+      font: 700 4rem/0.98 "Berka Mono Instrument", ui-monospace, monospace;
       letter-spacing: 0;
     }
 
@@ -579,18 +489,13 @@
           <label for="source">Sample</label>
           <textarea id="source" spellcheck="false">type FontFamily =
   | "Berka Mono Closer"
-  | "Berka Mono Closer Compact"
-  | "Berka Mono Closer SemiCondensed"
-  | "Berka Mono Closer Narrow"
-  | "Berka Mono Control"
-  | "Berka Mono Retina"
   | "Berka Mono Focus"
   | "Berka Mono Instrument"
   | "Berka Text";
 
 export function pickFont(input: string) {
   const row_0 = input.trim().length >= 120;
-  return row_0 ? "Narrow" : "Focus";
+  return row_0 ? "Instrument" : "Focus";
 }
 
 // ambiguity: 0O 1Il rn m snake_case
@@ -659,11 +564,6 @@ export function pickFont(input: string) {
     const fonts = [
       { key: "instrument", name: "Berka Mono Instrument", width: "Instrument" },
       { key: "closer", name: "Berka Mono Closer", width: "Wide" },
-      { key: "compact", name: "Berka Mono Closer Compact", width: "Compact" },
-      { key: "semi", name: "Berka Mono Closer SemiCondensed", width: "Dense" },
-      { key: "narrow", name: "Berka Mono Closer Narrow", width: "Narrow" },
-      { key: "control", name: "Berka Mono Control", width: "Tight" },
-      { key: "retina", name: "Berka Mono Retina", width: "Retina" },
       { key: "focus", name: "Berka Mono Focus", width: "Focus" },
       { key: "text", name: "Berka Text", width: "Prose" }
     ];

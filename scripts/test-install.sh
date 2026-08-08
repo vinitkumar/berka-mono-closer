@@ -46,11 +46,11 @@ assert_contains "$mac_output" "BerkaMonoInstrument-BoldItalic.ttf"
 assert_contains "$mac_output" "VS Code, Cursor, Windsurf:"
 assert_contains "$mac_output" "font-family = \"Berka Mono Instrument\""
 
-printf '[test-install] Linux dry run with alias\n'
-linux_output=$(BERKA_DRY_RUN=1 BERKA_OS=Linux "$installer" semi)
-assert_contains "$linux_output" "Berka Mono Closer SemiCondensed"
-assert_contains "$linux_output" "BerkaMonoCloserSemiCondensed-Regular.ttf"
-assert_contains "$linux_output" "BerkaMonoCloserSemiCondensed-BoldItalic.ttf"
+printf '[test-install] Linux dry run\n'
+linux_output=$(BERKA_DRY_RUN=1 BERKA_OS=Linux "$installer" focus)
+assert_contains "$linux_output" "Berka Mono Focus"
+assert_contains "$linux_output" "BerkaMonoFocus-Regular.ttf"
+assert_contains "$linux_output" "BerkaMonoFocus-BoldItalic.ttf"
 
 printf '[test-install] Windows dry run\n'
 windows_output=$(BERKA_DRY_RUN=1 BERKA_OS=Windows "$installer" text)
@@ -90,13 +90,13 @@ assert_file_count "$font_dir" 8
 printf '[test-install] downloads through curl raw-base path\n'
 font_dir="$tmp_root/downloaded-fonts"
 download_output="$tmp_root/download.out"
-BERKA_OS=Linux BERKA_FONT_DIR="$font_dir" BERKA_RAW_BASE="file://$repo_dir" "$installer" compact >"$download_output"
-assert_contains "$(cat "$download_output")" "Downloading Berka Mono Closer Compact from file://$repo_dir"
-assert_contains "$(cat "$download_output")" "Verified 8 local TTF files for Berka Mono Closer Compact"
-assert_contains "$(cat "$download_output")" "Installed Berka Mono Closer Compact into $font_dir"
+BERKA_OS=Linux BERKA_FONT_DIR="$font_dir" BERKA_RAW_BASE="file://$repo_dir" "$installer" closer >"$download_output"
+assert_contains "$(cat "$download_output")" "Downloading Berka Mono Closer from file://$repo_dir"
+assert_contains "$(cat "$download_output")" "Verified 8 local TTF files for Berka Mono Closer"
+assert_contains "$(cat "$download_output")" "Installed Berka Mono Closer into $font_dir"
 assert_file_count "$font_dir" 8
-[ -f "$font_dir/BerkaMonoCloserCompact-Regular.ttf" ] || fail "downloaded compact regular font was not installed"
-[ -f "$font_dir/BerkaMonoCloserCompact-BoldItalic.ttf" ] || fail "downloaded compact bold italic font was not installed"
+[ -f "$font_dir/BerkaMonoCloser-Regular.ttf" ] || fail "downloaded closer regular font was not installed"
+[ -f "$font_dir/BerkaMonoCloser-BoldItalic.ttf" ] || fail "downloaded closer bold italic font was not installed"
 
 printf '[test-install] rejects incomplete local font set\n'
 partial_source="$tmp_root/partial-source"

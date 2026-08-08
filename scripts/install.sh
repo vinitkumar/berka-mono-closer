@@ -4,7 +4,7 @@ set -eu
 repo="vinitkumar/berka-mono-closer"
 branch="${BERKA_BRANCH:-main}"
 raw_base="${BERKA_RAW_BASE:-https://raw.githubusercontent.com/$repo/$branch}"
-families="instrument focus retina control closer compact semi-condensed narrow text"
+families="instrument closer focus text"
 
 family="${BERKA_FONT:-}"
 family_from_arg=0
@@ -32,13 +32,8 @@ Usage:
 
 Families:
   instrument       Berka Mono Instrument
-  focus            Berka Mono Focus
-  retina           Berka Mono Retina
-  control          Berka Mono Control
   closer           Berka Mono Closer
-  compact          Berka Mono Closer Compact
-  semi-condensed   Berka Mono Closer SemiCondensed
-  narrow           Berka Mono Closer Narrow
+  focus            Berka Mono Focus
   text             Berka Text
 
 Environment:
@@ -58,14 +53,9 @@ need() {
 
 canonical_family() {
   case "$1" in
-    focus) printf '%s\n' focus ;;
     instrument) printf '%s\n' instrument ;;
-    retina) printf '%s\n' retina ;;
-    control) printf '%s\n' control ;;
     closer) printf '%s\n' closer ;;
-    compact) printf '%s\n' compact ;;
-    semi-condensed|semicondensed|semi) printf '%s\n' semi-condensed ;;
-    narrow) printf '%s\n' narrow ;;
+    focus) printf '%s\n' focus ;;
     text) printf '%s\n' text ;;
     *) return 1 ;;
   esac
@@ -81,27 +71,17 @@ select_family() {
     {
       printf 'Choose the Berka family to install:\n'
       printf '  1) Berka Mono Instrument (recommended)\n'
-      printf '  2) Berka Mono Focus\n'
-      printf '  3) Berka Mono Retina\n'
-      printf '  4) Berka Mono Control\n'
-      printf '  5) Berka Mono Closer\n'
-      printf '  6) Berka Mono Closer Compact\n'
-      printf '  7) Berka Mono Closer SemiCondensed\n'
-      printf '  8) Berka Mono Closer Narrow\n'
-      printf '  9) Berka Text\n'
+      printf '  2) Berka Mono Closer\n'
+      printf '  3) Berka Mono Focus\n'
+      printf '  4) Berka Text\n'
       printf 'Selection [1]: '
     } >/dev/tty
     read -r answer </dev/tty
     case "${answer:-1}" in
       1) printf '%s\n' instrument ;;
-      2) printf '%s\n' focus ;;
-      3) printf '%s\n' retina ;;
-      4) printf '%s\n' control ;;
-      5) printf '%s\n' closer ;;
-      6) printf '%s\n' compact ;;
-      7) printf '%s\n' semi-condensed ;;
-      8) printf '%s\n' narrow ;;
-      9) printf '%s\n' text ;;
+      2) printf '%s\n' closer ;;
+      3) printf '%s\n' focus ;;
+      4) printf '%s\n' text ;;
       *) return 1 ;;
     esac
     return 0
@@ -112,14 +92,9 @@ select_family() {
 
 family_name() {
   case "$1" in
-    focus) printf '%s\n' "Berka Mono Focus" ;;
     instrument) printf '%s\n' "Berka Mono Instrument" ;;
-    retina) printf '%s\n' "Berka Mono Retina" ;;
-    control) printf '%s\n' "Berka Mono Control" ;;
     closer) printf '%s\n' "Berka Mono Closer" ;;
-    compact) printf '%s\n' "Berka Mono Closer Compact" ;;
-    semi-condensed) printf '%s\n' "Berka Mono Closer SemiCondensed" ;;
-    narrow) printf '%s\n' "Berka Mono Closer Narrow" ;;
+    focus) printf '%s\n' "Berka Mono Focus" ;;
     text) printf '%s\n' "Berka Text" ;;
     *) return 1 ;;
   esac
@@ -128,11 +103,6 @@ family_name() {
 family_dir() {
   case "$1" in
     closer) printf '%s\n' "fonts/ttf" ;;
-    compact) printf '%s\n' "fonts/ttf-compact" ;;
-    semi-condensed) printf '%s\n' "fonts/ttf-semi-condensed" ;;
-    narrow) printf '%s\n' "fonts/ttf-narrow" ;;
-    control) printf '%s\n' "fonts/ttf-control" ;;
-    retina) printf '%s\n' "fonts/ttf-retina" ;;
     focus) printf '%s\n' "fonts/ttf-focus" ;;
     instrument) printf '%s\n' "fonts/ttf-instrument" ;;
     text) printf '%s\n' "fonts/ttf-text" ;;
@@ -143,11 +113,6 @@ family_dir() {
 family_files() {
   case "$1" in
     closer) prefix="BerkaMonoCloser"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
-    compact) prefix="BerkaMonoCloserCompact"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
-    semi-condensed) prefix="BerkaMonoCloserSemiCondensed"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
-    narrow) prefix="BerkaMonoCloserNarrow"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
-    control) prefix="BerkaMonoControl"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
-    retina) prefix="BerkaMonoRetina"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     focus) prefix="BerkaMonoFocus"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     instrument) prefix="BerkaMonoInstrument"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     text) prefix="BerkaText"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
