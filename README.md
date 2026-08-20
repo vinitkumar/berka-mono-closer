@@ -207,12 +207,16 @@ Book and Book Italic.
 All four official families use a bent `7` with a short upright stem for clearer
 numerals in timestamps, counters, and tabular data.
 
+They also use an open fourfold `@`. Its outer bowl, inner counter, and exit
+stroke remain distinct at terminal size, making addresses and decorators easier
+to recognize.
+
 Instrument is the recommended everyday coding cut. It is a legally distinct
 Iosevka build tuned after studying the TX-02 datasheet as design research:
 instrument-panel density, expanded audited programming ligatures, high-DPI
 stroke weight, a long-dotted zero, a baseless `1`, a high underscore for
-`snake_case`, compact punctuation, and explicit ambiguous glyphs. It does not
-copy TX-02 outlines, metrics, font data, or protected names.
+`snake_case`, compact punctuation, a clear open `@`, and explicit ambiguous
+glyphs. It does not copy TX-02 outlines, metrics, font data, or protected names.
 
 Focus is the debugging-first cut. It keeps useful operator
 ligatures but disables decorative wave arrows, HTML comment ligatures, trig
