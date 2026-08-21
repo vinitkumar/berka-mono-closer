@@ -244,9 +244,13 @@ Instrument starts from `default-calt` and adds existing
 Iosevka groups for counter arrows, fast operator chains, slash equality,
 logic, bracket bars, and operator centering.
 
+The `brace-bar` group is intentionally excluded. Keeping `{|` and `|}` as
+separate monospace glyphs prevents the bar from visually collapsing into the
+curly brace at Instrument's compact cell width.
+
 Instrument was audited against a TX-02-datasheet-inspired programming sequence
 catalog without copying TX-02 shapes, metrics, names, or binaries. The current
-Instrument build transforms 124 of 157 audited sequences through normal
+Instrument build transforms 122 of 157 audited sequences through normal
 OpenType shaping. See [Instrument ligature audit](docs/instrument-ligature-audit.md)
 for the exact residual list.
 

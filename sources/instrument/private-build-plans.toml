@@ -89,7 +89,6 @@ enables = [
   "center-op-trigger-bar-r",
   "slasheq",
   "logic",
-  "brace-bar",
   "brack-bar",
   "plus-plus",
   "minus-minus",

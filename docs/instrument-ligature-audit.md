@@ -17,8 +17,8 @@ Result:
 
 ```text
 total=157
-covered=124
-missing=33
+covered=122
+missing=35
 ```
 
 The audit compares HarfBuzz shaping with `calt`, `liga`, and `clig` enabled
@@ -37,7 +37,6 @@ center-op-trigger-bar-l
 center-op-trigger-bar-r
 slasheq
 logic
-brace-bar
 brack-bar
 plus-plus
 minus-minus
@@ -48,6 +47,10 @@ tilde-tilde
 
 These groups cover useful coding cases without copying proprietary font
 outlines, metrics, binaries, or names.
+
+The `brace-bar` group is intentionally excluded because joining `{|` and `|}`
+makes the bar collide visually with the curly brace at Instrument's compact
+cell width.
 
 ## Residual Sequences
 
@@ -87,6 +90,8 @@ www
 %%
 #:
 #{}
+{|
+|}
 ```
 
 Most of these are language-specific reader, template, shell, or decorative
