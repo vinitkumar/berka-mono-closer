@@ -109,6 +109,20 @@
       font-display: swap;
     }
     @font-face {
+      font-family: "Berka Mono Plain";
+      src: url("fonts/woff2-plain/BerkaMonoPlain-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berka Mono Plain";
+      src: url("fonts/woff2-plain/BerkaMonoPlain-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
       font-family: "Berka Text";
       src: url("fonts/woff2-text/BerkaText-Regular.woff2") format("woff2");
       font-weight: 400;
@@ -582,7 +596,7 @@
 </head>
 <body>
   <nav class="topbar" aria-label="Primary navigation">
-    <a class="wordmark" href="#top"><span class="wordmark-mark">B</span><span>Berka Mono / 1.1.2</span></a>
+    <a class="wordmark" href="#top"><span class="wordmark-mark">B</span><span>Berka Mono / 1.2.0</span></a>
     <div class="nav-links">
       <a href="#lab">Playground</a>
       <a href="#families">Families</a>
@@ -640,8 +654,8 @@
 
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>Instrument ✦ Focus ✦ Closer ✦ Text ✦ OFL 1.1 ✦ 122 audited sequences ✦ Clear {| pairs ✦ Bent 7 ✦ Open @ ✦</span>
-        <span>Instrument ✦ Focus ✦ Closer ✦ Text ✦ OFL 1.1 ✦ 122 audited sequences ✦ Clear {| pairs ✦ Bent 7 ✦ Open @ ✦</span>
+        <span>Instrument ✦ Plain ✦ Focus ✦ Closer ✦ Text ✦ OFL 1.1 ✦ 122 audited sequences ✦ Clear {| pairs ✦ Bent 7 ✦ Open @ ✦</span>
+        <span>Instrument ✦ Plain ✦ Focus ✦ Closer ✦ Text ✦ OFL 1.1 ✦ 122 audited sequences ✦ Clear {| pairs ✦ Bent 7 ✦ Open @ ✦</span>
       </div>
     </div>
 
@@ -712,6 +726,7 @@
             <div class="line-numbers" id="lineNumbers" aria-hidden="true"></div>
             <textarea class="lab-editor" id="labEditor" aria-label="Editable font specimen" spellcheck="false">type FontFamily =
   | "Berka Mono Instrument"
+  | "Berka Mono Plain"
   | "Berka Mono Focus"
   | "Berka Mono Closer";
 
@@ -753,22 +768,25 @@ export function inspect(input: string) {
         <header class="section-head">
           <div>
             <p class="section-index">04 / Family</p>
-            <h2 id="families-title">Four cuts, one voice</h2>
+            <h2 id="families-title">Five cuts, one voice</h2>
           </div>
-          <p class="section-intro">Use Instrument for everyday code, Focus when debugging, Closer for a calmer wider rhythm, and Text when the paragraph matters more than the grid.</p>
+          <p class="section-intro">Use Instrument for everyday code, Plain when ligatures must stay out of the way, Focus when debugging, Closer for a calmer wider rhythm, and Text when the paragraph matters more than the grid.</p>
         </header>
         <div class="family-matrix">
           <div class="family-row" style="font-family:'Berka Mono Instrument'">
             <span class="family-id">01</span><span class="family-name">Instrument</span><span class="family-sample">signal_07 != null => calibrate()</span><span class="family-use">Everyday code</span>
           </div>
+          <div class="family-row" style="font-family:'Berka Mono Plain'">
+            <span class="family-id">02</span><span class="family-name">Plain</span><span class="family-sample">raw_07 -> next != null; // no ligatures</span><span class="family-use">Terminals &amp; diffs</span>
+          </div>
           <div class="family-row" style="font-family:'Berka Mono Focus'">
-            <span class="family-id">02</span><span class="family-name">Focus</span><span class="family-sample">debug_07 !== false -> inspect()</span><span class="family-use">Debugging</span>
+            <span class="family-id">03</span><span class="family-name">Focus</span><span class="family-sample">debug_07 !== false -> inspect()</span><span class="family-use">Debugging</span>
           </div>
           <div class="family-row" style="font-family:'Berka Mono Closer'">
-            <span class="family-id">03</span><span class="family-name">Closer</span><span class="family-sample">compose_07(value) >= threshold</span><span class="family-use">Wide rhythm</span>
+            <span class="family-id">04</span><span class="family-name">Closer</span><span class="family-sample">compose_07(value) >= threshold</span><span class="family-use">Wide rhythm</span>
           </div>
           <div class="family-row" style="font-family:'Berka Text'">
-            <span class="family-id">04</span><span class="family-name">Text</span><span class="family-sample">A quieter page for longer thoughts.</span><span class="family-use">Prose</span>
+            <span class="family-id">05</span><span class="family-name">Text</span><span class="family-sample">A quieter page for longer thoughts.</span><span class="family-use">Prose</span>
           </div>
         </div>
       </div>
@@ -809,6 +827,7 @@ export function inspect(input: string) {
   <script>
     const families = [
       { key: "instrument", label: "Instrument", name: "Berka Mono Instrument" },
+      { key: "plain", label: "Plain", name: "Berka Mono Plain" },
       { key: "focus", label: "Focus", name: "Berka Mono Focus" },
       { key: "closer", label: "Closer", name: "Berka Mono Closer" },
       { key: "text", label: "Text", name: "Berka Text" }

@@ -28,8 +28,12 @@ npm run build -- ttf::BerkaMonoInstrument --jCmd="${JOBS:-2}"
 cp "$repo_dir/sources/text/private-build-plans.toml" "$iosevka_dir/private-build-plans.toml"
 npm run build -- ttf::BerkaText --jCmd="${JOBS:-2}"
 
+cp "$repo_dir/sources/plain/private-build-plans.toml" "$iosevka_dir/private-build-plans.toml"
+npm run build -- ttf::BerkaMonoPlain --jCmd="${JOBS:-2}"
+
 echo "Built fonts in:"
 echo "  $iosevka_dir/dist/BerkaMonoCloser/TTF"
 echo "  $iosevka_dir/dist/BerkaMonoFocus/TTF"
 echo "  $iosevka_dir/dist/BerkaMonoInstrument/TTF"
 echo "  $iosevka_dir/dist/BerkaText/TTF"
+echo "  $iosevka_dir/dist/BerkaMonoPlain/TTF"

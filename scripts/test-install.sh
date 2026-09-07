@@ -59,6 +59,12 @@ assert_contains "$windows_output" "register it in HKCU"
 assert_contains "$windows_output" "Windows Terminal:"
 assert_contains "$windows_output" "BerkaText-Regular.ttf"
 
+printf '[test-install] plain dry run\n'
+plain_output=$(BERKA_DRY_RUN=1 BERKA_OS=Darwin "$installer" plain)
+assert_contains "$plain_output" "Dry run: would install Berka Mono Plain into"
+assert_contains "$plain_output" "BerkaMonoPlain-Book.ttf"
+assert_contains "$plain_output" "BerkaMonoPlain-BoldItalic.ttf"
+
 printf '[test-install] rejects unknown family\n'
 bad_output="$tmp_root/bad.out"
 if BERKA_DRY_RUN=1 BERKA_OS=Linux "$installer" nope >"$bad_output" 2>&1; then
@@ -75,6 +81,15 @@ assert_contains "$(cat "$local_output")" "Verified 10 local TTF files for Berka 
 assert_file_count "$font_dir" 10
 [ -f "$font_dir/BerkaMonoInstrument-Regular.ttf" ] || fail "instrument regular font was not installed"
 [ -f "$font_dir/BerkaMonoInstrument-BoldItalic.ttf" ] || fail "instrument bold italic font was not installed"
+
+printf '[test-install] installs selected local plain fonts into temp directory\n'
+font_dir="$tmp_root/plain-fonts"
+plain_local_output="$tmp_root/plain-local.out"
+BERKA_OS=Linux BERKA_FONT_DIR="$font_dir" "$installer" --source-dir "$repo_dir" plain >"$plain_local_output"
+assert_contains "$(cat "$plain_local_output")" "Installed Berka Mono Plain into $font_dir"
+assert_contains "$(cat "$plain_local_output")" "Verified 10 local TTF files for Berka Mono Plain"
+assert_file_count "$font_dir" 10
+[ -f "$font_dir/BerkaMonoPlain-Regular.ttf" ] || fail "plain regular font was not installed"
 
 printf '[test-install] installs all local fonts with closer guide into temp directory\n'
 font_dir="$tmp_root/closer-fonts"

@@ -11,6 +11,8 @@
     @font-face { font-family: "Berka Mono Focus"; src: url("../fonts/woff2-focus/BerkaMonoFocus-Bold.woff2") format("woff2"); font-weight: 700; }
     @font-face { font-family: "Berka Mono Instrument"; src: url("../fonts/woff2-instrument/BerkaMonoInstrument-Regular.woff2") format("woff2"); font-weight: 400; }
     @font-face { font-family: "Berka Mono Instrument"; src: url("../fonts/woff2-instrument/BerkaMonoInstrument-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Berka Mono Plain"; src: url("../fonts/woff2-plain/BerkaMonoPlain-Regular.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Berka Mono Plain"; src: url("../fonts/woff2-plain/BerkaMonoPlain-Bold.woff2") format("woff2"); font-weight: 700; }
     @font-face { font-family: "Berka Text"; src: url("../fonts/woff2-text/BerkaText-Regular.woff2") format("woff2"); font-weight: 400; }
     @font-face { font-family: "Berka Text"; src: url("../fonts/woff2-text/BerkaText-Bold.woff2") format("woff2"); font-weight: 700; }
 
@@ -84,7 +86,7 @@
   <script>
     const families = {
       instrument: {
-        name: "Berka Mono Instrument", label: "Instru\nment", index: "01 / 04", use: "Everyday coding", metrics: "590 cell / 420 weight", file: "instrument-panel.ts", size: "29px",
+        name: "Berka Mono Instrument", label: "Instru\nment", index: "01 / 05", use: "Everyday coding", metrics: "590 cell / 420 weight", file: "instrument-panel.ts", size: "29px",
         code: [
           '<span class="pink">type</span> <span class="acid">Signal</span> = {',
           '  source: <span class="cyan">"sensor"</span> | <span class="cyan">"manual"</span>;',
@@ -102,8 +104,24 @@
           '<span class="dim">// raw pairs: {| |} [| |] ||</span>'
         ]
       },
+      plain: {
+        name: "Berka Mono Plain", label: "Plain", index: "02 / 05", use: "No ligatures", metrics: "590 cell / 420 weight", file: "raw-operators.rs", size: "29px", live: "● No ligatures",
+        code: [
+          '<span class="pink">fn</span> <span class="acid">merge</span>(left: <span class="cyan">&amp;[u8]</span>, right: <span class="cyan">&amp;[u8]</span>) -&gt; Vec&lt;u8&gt; {',
+          '    <span class="pink">let</span> row_0 = left.len() <span class="cyan">&gt;=</span> <span class="orange">120</span> <span class="cyan">&amp;&amp;</span> right.len() <span class="cyan">!=</span> <span class="orange">0</span>;',
+          '    <span class="pink">let</span> ok = row_0 <span class="cyan">||</span> left[<span class="orange">0</span>] <span class="cyan">==</span> right[<span class="orange">0</span>];',
+          '    <span class="pink">match</span> ok {',
+          '        <span class="orange">true</span> <span class="cyan">=&gt;</span> [left, right].concat(),',
+          '        <span class="orange">false</span> <span class="cyan">=&gt;</span> Vec::new(),',
+          '    }',
+          '}',
+          '',
+          '<span class="dim">// raw pairs: -&gt; =&gt; != &lt;= &gt;= :: |&gt; {| |} &lt;- ==</span>',
+          '<span class="dim">// 0O 1Il 7 · square dots . , : ; i j · one cell each</span>'
+        ]
+      },
       focus: {
-        name: "Berka Mono Focus", label: "Focus", index: "02 / 04", use: "Debugging", metrics: "592 cell / 425 weight", file: "debug-session.ts", size: "29px",
+        name: "Berka Mono Focus", label: "Focus", index: "03 / 05", use: "Debugging", metrics: "592 cell / 425 weight", file: "debug-session.ts", size: "29px",
         code: [
           '<span class="pink">interface</span> <span class="acid">Frame</span> { id: string; state: <span class="cyan">"open"</span> | <span class="cyan">"closed"</span>; }',
           '',
@@ -121,7 +139,7 @@
         ]
       },
       closer: {
-        name: "Berka Mono Closer", label: "Closer", index: "03 / 04", use: "Calm wide rhythm", metrics: "620 cell / 400 weight", file: "compose-layout.ts", size: "28px",
+        name: "Berka Mono Closer", label: "Closer", index: "04 / 05", use: "Calm wide rhythm", metrics: "620 cell / 400 weight", file: "compose-layout.ts", size: "28px",
         code: [
           '<span class="pink">type</span> <span class="acid">Column</span> = { width: number; gap: number; };',
           '',
@@ -140,7 +158,7 @@
         ]
       },
       text: {
-        name: "Berka Text", label: "Text", index: "04 / 04", use: "Long-form prose", metrics: "Quasi-proportional / 410", file: "field-note.md", size: "27px", lineHeight: "1.54",
+        name: "Berka Text", label: "Text", index: "05 / 05", use: "Long-form prose", metrics: "Quasi-proportional / 410", file: "field-note.md", size: "27px", lineHeight: "1.54",
         code: [
           '<span class="pink">#</span> <span class="acid">A quieter page for longer thoughts</span>',
           '',
@@ -169,6 +187,7 @@
     document.querySelector("#familyMetrics").textContent = family.metrics;
     document.querySelector("#fileName").textContent = family.file;
     document.querySelector("#familyName").textContent = family.name;
+    if (family.live) document.querySelector(".live").textContent = family.live;
     document.querySelector("#code").innerHTML = family.code.join("\n");
     document.querySelector("#gutter").innerHTML = family.code.map((_, index) => `<div>${String(index + 1).padStart(2, "0")}</div>`).join("");
   </script>

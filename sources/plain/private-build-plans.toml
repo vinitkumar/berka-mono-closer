@@ -1,0 +1,121 @@
+# A legally distinct Iosevka custom build for a ligature-free Berka coding cut.
+# It keeps the Instrument glyph design and metrics, so it is a drop-in swap,
+# but ships with strict monospace spacing and no contextual shaping at all.
+# Every character is exactly one cell wide, so it renders identically in
+# terminals, diff tools, and editors that have no ligature support.
+
+[buildPlans.BerkaMonoPlain]
+family = "Berka Mono Plain"
+# "fixed" = fontconfig-strict monospace: no wide glyphs, no NWID/WWID, no ligation.
+spacing = "fixed"
+serifs = "sans"
+# Glyph choices are baked in below; drop the cv##/ss## toggles to shrink the files.
+noCvSs = true
+noLigation = true
+# Glyph names only matter for ligature support in Kitty.
+exportGlyphNames = false
+
+[buildPlans.BerkaMonoPlain.variants]
+inherits = "ss09"
+
+[buildPlans.BerkaMonoPlain.variants.design]
+capital-a = "straight-serifless"
+capital-b = "standard-serifless"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-corner-serifless-hooked"
+capital-i = "short-serifed"
+capital-j = "serifed"
+capital-k = "straight-serifless"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-r = "straight-serifless"
+capital-w = "straight-flat-top-serifless"
+capital-y = "straight-serifless"
+
+a = "double-storey-serifless"
+b = "toothless-corner-serifless"
+d = "toothed-serifless"
+f = "flat-hook-serifless-crossbar-at-x-height"
+# Single-storey g stays open at 12-13px; the double-storey bowls merge there.
+g = "single-storey-serifless"
+i = "serifed"
+j = "serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+m = "serifless"
+n = "straight-serifless"
+p = "earless-corner-serifless"
+q = "earless-corner-straight-serifless"
+# Base serif fills the cell and keeps `rn` from reading as `m`.
+r = "hookless-base-serifed"
+t = "flat-hook"
+u = "toothed-serifless"
+w = "straight-flat-top-serifless"
+y = "straight-serifless"
+
+zero = "oval-long-dotted"
+one = "no-base"
+two = "straight-neck-serifless"
+three = "flat-top-serifless"
+four = "open-non-crossing-serifless"
+five = "upright-flat-serifless"
+six = "straight-bar"
+seven = "bend-serifless-crossbar"
+eight = "two-circles"
+nine = "straight-bar"
+
+asterisk = "penta-low"
+brace = "curly-flat-boundary"
+paren = "large-contour"
+caret = "medium"
+dollar = "through"
+ampersand = "upper-open"
+at = "fourfold"
+percent = "rings-continuous-slash"
+# Upright strokes land on the pixel grid; slanted ones alias on low-DPI screens.
+number-sign = "upright-open"
+underscore = "high"
+bar = "force-upright"
+question = "corner-flat-hooked"
+pilcrow = "low"
+ascii-grave = "straight"
+ascii-single-quote = "straight"
+tilde = "low"
+# Square dots stay crisp on the pixel grid at terminal sizes and match the
+# rectangular Berka voice. Applies to . , : ; ? ! and to i/j tittles.
+punctuation-dot = "square"
+tittle = "square"
+diacritic-dot = "square"
+
+[buildPlans.BerkaMonoPlain.weights]
+Regular = { shape = 420, menu = 400, css = 400 }
+Book = { shape = 460, menu = 450, css = 450 }
+Medium = { shape = 520, menu = 500, css = 500 }
+SemiBold = { shape = 615, menu = 600, css = 600 }
+Bold = { shape = 705, menu = 700, css = 700 }
+
+[buildPlans.BerkaMonoPlain.widths]
+Normal = { shape = 590, menu = 5, css = "normal" }
+
+[buildPlans.BerkaMonoPlain.slopes.Upright]
+angle = 0
+shape = "upright"
+menu = "upright"
+css = "normal"
+
+[buildPlans.BerkaMonoPlain.slopes.Italic]
+# 6 degrees is hard to tell from upright at 12px; 9 keeps comments visibly italic.
+angle = 9
+shape = "oblique"
+menu = "italic"
+css = "italic"
+
+[buildPlans.BerkaMonoPlain.metricOverride]
+leading = 1165
+# Iosevka default is 140 at weight 400 and 200 at 900. Plain has no ligatures,
+# so . , : ; carry every operator chain; +10% keeps them above one pixel at 12px.
+periodSize = 'blend(weight, [100, 60], [400, 154], [900, 220])'
+winMetricAscenderPad = 0
+winMetricDescenderPad = 0
+powerlineScaleY = 1.08
+powerlineScaleX = 1.0

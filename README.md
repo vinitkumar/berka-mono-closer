@@ -40,6 +40,7 @@ WezTerm, Windows Terminal, Neovim GUI, Neovide, Vim GUI, and CSS.
 | Choice | Family name | Best for |
 | --- | --- | --- |
 | `instrument` | `Berka Mono Instrument` | Recommended default. Instrument-panel coding feel, expanded audited ligatures, compact scan density, explicit ambiguity handling. |
+| `plain` | `Berka Mono Plain` | Instrument without ligatures. Strict one-cell monospace, square dots, one-seventh the file size. Terminals, diffs, and editors without ligature support. |
 | `closer` | `Berka Mono Closer` | Wider, calm original cut. |
 | `focus` | `Berka Mono Focus` | Debugging-first, clearer ambiguity cases, compact rhythm. |
 | `text` | `Berka Text` | Blog prose and long-form reading, with quasi-proportional spacing. |
@@ -62,6 +63,7 @@ Install the TTF files from:
 fonts/ttf/
 fonts/ttf-focus/
 fonts/ttf-instrument/
+fonts/ttf-plain/
 fonts/ttf-text/
 ```
 
@@ -71,6 +73,7 @@ Use the WOFF2 files for websites:
 fonts/woff2/
 fonts/woff2-focus/
 fonts/woff2-instrument/
+fonts/woff2-plain/
 fonts/woff2-text/
 ```
 
@@ -86,6 +89,7 @@ Use one of these family names in editors and terminals:
 Berka Mono Closer
 Berka Mono Focus
 Berka Mono Instrument
+Berka Mono Plain
 Berka Text
 ```
 
@@ -198,11 +202,12 @@ width, weight, leading, italic construction, and ligature policy:
 | `Berka Mono Closer` | 620 | 400, 500, 600, 700 | 1200 | italic | disables `arrow-wave`, `counter-arrow-wave`, `html-comment`, `trig` |
 | `Berka Mono Focus` | 592 | 425, 465, 525, 620, 710 | 1170 | oblique | debugging-first `default-calt` subset |
 | `Berka Mono Instrument` | 590 | 420, 460, 520, 615, 705 | 1165 | oblique | expanded audited `calt` |
+| `Berka Mono Plain` | 590 | 420, 460, 520, 615, 705 | 1165 | oblique | none, `spacing = "fixed"` |
 | `Berka Text` | 600 | 410, 455, 520, 610, 690 | 1260 | italic | no programming ligatures |
 
 All families include Regular, Italic, Medium, Medium Italic, SemiBold,
-SemiBold Italic, Bold, and Bold Italic. Focus, Instrument, and Text also include
-Book and Book Italic.
+SemiBold Italic, Bold, and Bold Italic. Focus, Instrument, Plain, and Text also
+include Book and Book Italic.
 
 All four official families use a bent `7` with a short upright stem for clearer
 numerals in timestamps, counters, and tabular data.
@@ -218,6 +223,40 @@ stroke weight, a long-dotted zero, a baseless `1`, a high underscore for
 `snake_case`, compact punctuation, a clear open `@`, and explicit ambiguous
 glyphs. It does not copy TX-02 outlines, metrics, font data, or protected names.
 
+Plain is Instrument with every ligature removed. It shares Instrument's cell
+width, weights, and leading, so switching between the two never reflows a file.
+It differs in these practical ways:
+
+- `spacing = "fixed"`: fontconfig-strict monospace. Every non-combining glyph is
+  exactly one cell wide, so Linux font pickers list it as monospace and no
+  symbol ever spills into the next cell. The 23 double-width long arrows
+  (`U+27F5`..`U+27FF` and friends) are dropped, which is what makes this true.
+- No `calt`, `liga`, `clig`, or `dlig`. `->`, `=>`, `!=`, `<=`, `::`, `|>`,
+  `{|`, and every other operator pair stays as separate glyphs in every editor,
+  terminal, diff viewer, and browser, with no feature flags to set.
+- No `cv##` or `ss##` toggles. The Berka glyph choices are baked in, and the
+  unreachable alternates are not shipped: 8.8k glyphs instead of 46.8k, so each
+  TTF is about 1.4 MB instead of 10 MB and each WOFF2 about 370 KB instead of
+  1.6 MB.
+- Square dots on `. , : ; ? !`, on `i`/`j`, and on diacritics, and periods 10%
+  larger than Iosevka's default. Square dots sit on the pixel grid and stay
+  crisp at terminal sizes on low-DPI screens, and without ligatures `.` and
+  `:` carry every operator chain.
+- Small-size glyph swaps: single-storey `g` (the double-storey bowls merge at
+  12px), base-serifed `r` (keeps `rn` from reading as `m`), and an upright
+  open `#` (diagonal strokes alias on low-DPI screens).
+- Oblique angle 9° instead of 6°, so comments stay visibly italic at 12px.
+
+Verify the contract on the checked-in files with:
+
+```sh
+python3 scripts/check-plain.py
+```
+
+It checks that no ligature or stylistic-set feature exists, that every glyph
+advance is 590 units, and that 60 operator sequences shape to one glyph per
+character. See [Plain contract](docs/plain-contract.md).
+
 Focus is the debugging-first cut. It keeps useful operator
 ligatures but disables decorative wave arrows, HTML comment ligatures, trig
 ligatures, and tilde chaining so raw source stays easy to inspect. It also uses
@@ -231,7 +270,8 @@ like essays instead of source code.
 
 ## Ligatures
 
-Programming ligatures are enabled through Iosevka's `default-calt` set.
+Programming ligatures are enabled through Iosevka's `default-calt` set. Plain
+and Text ship no programming ligatures at all.
 
 Closer intentionally disables a few more decorative groups:
 
@@ -265,6 +305,12 @@ and programming ligatures.
 Recommended default for expanded ligatures and compact engineered texture.
 
 <img src="images/vscode-instrument.png" alt="Current Berka Mono Instrument code specimen" width="960">
+
+### Berka Mono Plain
+
+Instrument without ligatures. Strict monospace, square dots, smaller files.
+
+<img src="images/vscode-plain.png" alt="Current Berka Mono Plain code specimen" width="960">
 
 ### Berka Mono Focus
 
@@ -314,6 +360,8 @@ cp /path/to/berka-mono-closer/sources/instrument/private-build-plans.toml ./priv
 npm run build -- ttf::BerkaMonoInstrument --jCmd=2
 cp /path/to/berka-mono-closer/sources/text/private-build-plans.toml ./private-build-plans.toml
 npm run build -- ttf::BerkaText --jCmd=2
+cp /path/to/berka-mono-closer/sources/plain/private-build-plans.toml ./private-build-plans.toml
+npm run build -- ttf::BerkaMonoPlain --jCmd=2
 ```
 
 The generated files will be in:
@@ -323,6 +371,7 @@ dist/BerkaMonoCloser/TTF/
 dist/BerkaMonoFocus/TTF/
 dist/BerkaMonoInstrument/TTF/
 dist/BerkaText/TTF/
+dist/BerkaMonoPlain/TTF/
 ```
 
 You can also run:
@@ -331,8 +380,8 @@ You can also run:
 ./scripts/build.sh /path/to/Iosevka
 ```
 
-The script builds only the four official families: Closer, Focus, Instrument,
-and Text.
+The script builds only the five official families: Closer, Focus, Instrument,
+Plain, and Text.
 
 Generate WOFF2 files from the checked-in TTF files:
 
@@ -354,6 +403,7 @@ What makes this legal:
 - The Focus variant is an original coding-readability tuning built from Iosevka parameters for ambiguity reduction, compact scan density, and restrained ligatures.
 - The Instrument variant is an original coding tuning informed by public TX-02 datasheet themes such as engineering texture, broad programming ligature coverage, and terminal density, but it is generated only from Iosevka source and documented custom-build parameters.
 - The Text variant is an original prose-readability tuning built from Iosevka parameters for quasi-proportional spacing, taller reading rhythm, and website body text.
+- The Plain variant is the Instrument tuning rebuilt with Iosevka's `fixed` spacing, no ligation, and no stylistic-set features.
 
 This project is not affiliated with, endorsed by, or derived from Berkeley Mono or US Graphics Company. Berkeley Mono is a separate commercial font.
 

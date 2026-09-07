@@ -4,7 +4,7 @@ set -eu
 repo="vinitkumar/berka-mono-closer"
 branch="${BERKA_BRANCH:-main}"
 raw_base="${BERKA_RAW_BASE:-https://raw.githubusercontent.com/$repo/$branch}"
-families="instrument closer focus text"
+families="instrument plain closer focus text"
 
 family="${BERKA_FONT:-}"
 family_from_arg=0
@@ -32,6 +32,7 @@ Usage:
 
 Families:
   instrument       Berka Mono Instrument
+  plain            Berka Mono Plain (ligature-free)
   closer           Berka Mono Closer
   focus            Berka Mono Focus
   text             Berka Text
@@ -54,6 +55,7 @@ need() {
 canonical_family() {
   case "$1" in
     instrument) printf '%s\n' instrument ;;
+    plain) printf '%s\n' plain ;;
     closer) printf '%s\n' closer ;;
     focus) printf '%s\n' focus ;;
     text) printf '%s\n' text ;;
@@ -71,17 +73,19 @@ select_family() {
     {
       printf 'Choose the Berka family to install:\n'
       printf '  1) Berka Mono Instrument (recommended)\n'
-      printf '  2) Berka Mono Closer\n'
-      printf '  3) Berka Mono Focus\n'
-      printf '  4) Berka Text\n'
+      printf '  2) Berka Mono Plain (no ligatures)\n'
+      printf '  3) Berka Mono Closer\n'
+      printf '  4) Berka Mono Focus\n'
+      printf '  5) Berka Text\n'
       printf 'Selection [1]: '
     } >/dev/tty
     read -r answer </dev/tty
     case "${answer:-1}" in
       1) printf '%s\n' instrument ;;
-      2) printf '%s\n' closer ;;
-      3) printf '%s\n' focus ;;
-      4) printf '%s\n' text ;;
+      2) printf '%s\n' plain ;;
+      3) printf '%s\n' closer ;;
+      4) printf '%s\n' focus ;;
+      5) printf '%s\n' text ;;
       *) return 1 ;;
     esac
     return 0
@@ -93,6 +97,7 @@ select_family() {
 family_name() {
   case "$1" in
     instrument) printf '%s\n' "Berka Mono Instrument" ;;
+    plain) printf '%s\n' "Berka Mono Plain" ;;
     closer) printf '%s\n' "Berka Mono Closer" ;;
     focus) printf '%s\n' "Berka Mono Focus" ;;
     text) printf '%s\n' "Berka Text" ;;
@@ -105,6 +110,7 @@ family_dir() {
     closer) printf '%s\n' "fonts/ttf" ;;
     focus) printf '%s\n' "fonts/ttf-focus" ;;
     instrument) printf '%s\n' "fonts/ttf-instrument" ;;
+    plain) printf '%s\n' "fonts/ttf-plain" ;;
     text) printf '%s\n' "fonts/ttf-text" ;;
     *) return 1 ;;
   esac
@@ -115,6 +121,7 @@ family_files() {
     closer) prefix="BerkaMonoCloser"; styles="Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     focus) prefix="BerkaMonoFocus"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     instrument) prefix="BerkaMonoInstrument"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
+    plain) prefix="BerkaMonoPlain"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     text) prefix="BerkaText"; styles="Book BookItalic Regular Italic Medium MediumItalic SemiBold SemiBoldItalic Bold BoldItalic" ;;
     *) return 1 ;;
   esac
